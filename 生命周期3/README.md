@@ -45,3 +45,7 @@ beforeDestroy、destroyed 函数执行
 注释掉 //el: '#app', 会发现控制台只运行到created 就结束；
 在控制台输入： app.$mount("app")，vue实例开始mount
 beforeMount、mounted 函数执行
+
+
+## 模板优先级
+ render函数选项 > template选项 > outer HTML.
