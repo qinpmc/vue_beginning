@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src ="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--遍历数组-->
+        <ul id="ul_1" >
+            <li v-for="item in ul_1">{{item}}</li>
+        </ul>
+
+        <!--遍历对象数组-->
+        <ul id="ul_2" >
+            <li v-for="item in ul_2">{{item.name}}</li>
+        </ul>
+
+        <!--index 索引从0开始-->
+        <ul id="ul_22" >
+            <li v-for="(item,index) in ul_2">{{item.name}} --{{ index}}</li>
+        </ul>
+
+        <!--用 v-for 通过一个对象的属性来迭代-->
+        <ul id="ul_23" >
+            <li v-for="value in object">
+                {{ value }}
+            </li>
+        </ul>
+
+        <ul id="ul_24" >
+            <li v-for="(value,key,index ) in object">
+               键：{{ key}} --- 值：{{ value }}---序号{{index}}
+            </li>
+        </ul>
+    </div>
+
+<script>
+    // 列表渲染 v-for
+
+    var app = new Vue({
+        el:"#app",
+        data:{
+            ul_1:[11,12,13],
+            ul_2:[{name:"qq1"},{name:"qq2"}],
+            object: {
+                firstName: 'John',
+                lastName: 'Doe',
+                age: 30
+            }
+        }
+    });
+
+
+</script>
+</body>
+</html>
