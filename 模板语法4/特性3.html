@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src ="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <span v-bind:id="dynamicId"> </span> <br>
+        <h3>注意：布尔特性的属性，它们的存在即暗示为 true</h3>
+        <button v-bind:disabled="isDisabled">v-text-Message: </button><br>
+        <input type="checkbox" v-bind:checked="isChecked">足球</input>
+    </div>
+
+<!--
+
+    -->
+
+</body>
+<script>
+
+/*    v-bind
+
+   Mustache 语法（即 {{ }} 语法）不能作用在 HTML 特性上，遇到这种情况应该使用 v-bind 指令
+    */
+    var app = new Vue({
+        el:"#app",
+        data:{
+            dynamicId:"span1",
+            isDisabled:false,
+            isChecked:undefined
+        }
+    });
+
+</script>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src ="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <span >Message: {{ msg }}</span> <br>
+        <span v-text="msg">v-text-Message: </span><br>
+        <span v-html="msg">v-html-Message: </span>
+    </div>
+
+<!--
+    Message: <span style='color:red'>红色span</span>
+    <span style='color:red'>红色span</span>
+    红色span
+    -->
+
+</body>
+<script>
+
+/*    {{ }}   会进行转义
+     v-text   会进行转义
+     v-html   不转义
+    */
+    var app = new Vue({
+        el:"#app",
+        data:{
+            msg:"<span style='color:red'>红色span</span>"
+        }
+    });
+
+</script>
+</html>

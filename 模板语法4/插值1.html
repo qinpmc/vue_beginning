@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src ="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <span >Message: {{ msg }}</span> <br>
+        <span v-once>不改变Message: {{ msg }}</span>
+    </div>
+</body>
+<script>
+
+/*    {{ }}
+     v-once
+    */
+    var app = new Vue({
+        el:"#app",
+        data:{
+            msg:"hello"
+        }
+    });
+    setTimeout(function(){
+        app.msg = "world";
+    },1000);
+
+</script>
+</html>

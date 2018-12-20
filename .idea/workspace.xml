@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="106ea6a0-177f-43c1-882b-c88c24faae21" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/生命周期3/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/生命周期3/模板和outer HTML优先级2.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/生命周期3/生命周期1.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/配置2/配置1.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/模板语法4/插值1.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/模板语法4/插值2.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/模板语法4/特性3.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/模板语法4/绑定表达式4.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/start1/组件.html" afterPath="$PROJECT_DIR$/start1/组件5.html" />
     </list>
     <ignored path="vue入门.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,22 +27,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="生命周期1.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/生命周期3/生命周期1.html">
+      <file leaf-file-name="特性3.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/模板语法4/特性3.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.6764705">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="38" />
+            <state vertical-scroll-proportion="0.8602826">
+              <caret line="31" column="31" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="模板和outer HTML优先级2.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/生命周期3/模板和outer HTML优先级2.html">
+      <file leaf-file-name="绑定表达式4.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/模板语法4/绑定表达式4.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6986634">
-              <caret line="23" column="5" selection-start-line="23" selection-start-column="3" selection-end-line="23" selection-end-column="45" />
+            <state vertical-scroll-proportion="-6.617647">
+              <caret line="15" column="49" selection-start-line="15" selection-start-column="49" selection-end-line="15" selection-end-column="49" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="插值2.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/模板语法4/插值2.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.735294">
+              <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+              <folding>
+                <marker date="1545290558746" expanded="true" signature="618:627" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -75,6 +86,10 @@
         <option value="$PROJECT_DIR$/生命周期3/README.md" />
         <option value="$PROJECT_DIR$/生命周期3/模板和outer HTML优先级.html" />
         <option value="$PROJECT_DIR$/生命周期3/模板和outer HTML优先级2.html" />
+        <option value="$PROJECT_DIR$/模板语法4/插值1.html" />
+        <option value="$PROJECT_DIR$/模板语法4/插值2.html" />
+        <option value="$PROJECT_DIR$/模板语法4/绑定3.html" />
+        <option value="$PROJECT_DIR$/模板语法4/绑定表达式4.html" />
       </list>
     </option>
   </component>
@@ -84,10 +99,10 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
+    <option name="x" value="316" />
+    <option name="y" value="127" />
     <option name="width" value="1938" />
-    <option name="height" value="1048" />
+    <option name="height" value="862" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -157,7 +172,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="生命周期3" />
+              <option name="myItemId" value="模板语法4" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -175,6 +190,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\notes\vue\vue入门\模板语法4" />
       <recent name="F:\notes\vue\vue入门\生命周期3" />
       <recent name="F:\notes\vue\vue入门\配置2" />
       <recent name="F:\notes\vue\vue入门\start1" />
@@ -239,7 +255,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <frame x="316" y="127" width="1938" height="862" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973601" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -284,30 +300,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/start1/指令2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.382353">
-          <caret line="29" column="12" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/start1/双向绑定4.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.294118">
-          <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/start1/事件3.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.294118">
-          <caret line="14" column="12" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/start1/模板语法1.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-13.176471">
@@ -323,14 +315,6 @@
           <folding>
             <marker date="1545274155202" expanded="true" signature="288486:288495" placeholder="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/配置2/配置1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.147059">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -355,8 +339,74 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/生命周期3/模板和outer HTML优先级2.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6986634">
-          <caret line="23" column="5" selection-start-line="23" selection-start-column="3" selection-end-line="23" selection-end-column="45" />
+        <state vertical-scroll-proportion="-19.117647">
+          <caret line="26" column="7" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/配置2/配置1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.6764705">
+          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/start1/事件3.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.7941177">
+          <caret line="14" column="12" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/start1/双向绑定4.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.264706">
+          <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/start1/指令2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.51811594">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="29" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/模板语法4/插值1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.76966935">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/模板语法4/插值2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.735294">
+          <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+          <folding>
+            <marker date="1545290558746" expanded="true" signature="618:627" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/模板语法4/绑定表达式4.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.617647">
+          <caret line="15" column="49" selection-start-line="15" selection-start-column="49" selection-end-line="15" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/模板语法4/特性3.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8602826">
+          <caret line="31" column="31" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
           <folding />
         </state>
       </provider>
