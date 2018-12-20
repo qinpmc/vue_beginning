@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src ="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--
+
+        当 Vue.js 用 v-for 正在更新已渲染过的元素列表时，它默认用“就地复用”策略。
+        如果数据项的顺序被改变，Vue 将不会移动 DOM 元素来匹配数据项的顺序， 而是简单复用此处每个元素，并且确保它在特定索引下显示已被渲染过的每个元素。
+        这个默认的模式是高效的，但是只适用于不依赖子组件状态或临时 DOM 状态 (例如：表单输入值) 的列表渲染输出。
+        为了给 Vue 一个提示，以便它能跟踪每个节点的身份，从而重用和重新排序现有元素，
+        需要为每项提供一个唯一 key 属性。理想的 key 值是每项都有的唯一 id
+
+        -->
+        <ul id="ul_1" >
+            <li v-for="item in object" :key="item">{{item}}</li>
+        </ul>
+        <ul id="ul_2" >
+            <li v-for="item in arr1" :key="item">{{item}}</li>
+        </ul>
+        <ul id="ul_3" >
+            <li v-for="item in arr2" :key="item">{{item}}</li>
+        </ul>
+    </div>
+
+<script>
+    // 列表渲染 v-for
+
+    var app = new Vue({
+        el:"#app",
+        data:{
+            arr1:[11,12,13],
+            arr2:[-11,-12,-13],
+            object: {
+                firstName: 'John',
+                lastName: 'Doe',
+                age: 30
+            }
+        }
+    });
+
+/*
+   Vue 包含一组观察数组的变异方法，所以它们也将会触发视图更新。这些方法如下：
+
+    push()
+    pop()
+    shift()
+    unshift()
+    splice()
+    sort()
+    reverse()
+    */
+
+
+    setTimeout(function(){
+        app.arr1.push(99);
+    },2000);
+
+
+    setTimeout(function(){
+        app.arr2.slice(1);
+        console.log(app.arr2); // [ -11,-12,-13]
+    },2000);
+
+
+/*    filter(), concat() 和 slice() 。这些不会改变原始数组，
+    但总是返回一个新数组。当使用非变异方法时，可以用新数组替换旧数组*/
+    setTimeout(function(){
+        app.arr2 = app.arr2.slice(1); //替换原数组
+        console.log(app.arr2); // [ -11,-12,-13]
+    },2500);
+
+
+/*    Vue 不能检测以下变动的数组：
+
+    当你利用索引直接设置一个项时，例如：vm.items[indexOfItem] = newValue
+    当你修改数组的长度时，例如：vm.items.length = newLength
+
+   一、解决根据索引修改某项值：
+
+    第一种：Vue.set(vm.items, indexOfItem, newValue)
+    第二种：vm.items.splice(indexOfItem, 1, newValue)
+    第三种：vm.$set(vm.items, indexOfItem, newValue)
+
+    二、解决根据length修改数组：
+    为了解决第二类问题，你可以使用 splice：
+    vm.items.splice(newLength)
+ */
+</script>
+</body>
+</html>

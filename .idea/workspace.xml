@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="106ea6a0-177f-43c1-882b-c88c24faae21" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/模板语法4/指令6.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/模板语法4/指令7.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/模板语法4/指令5.html" afterPath="$PROJECT_DIR$/模板语法4/指令5.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/模板语法4/绑定表达式4.html" afterPath="$PROJECT_DIR$/模板语法4/绑定表达式4.html" />
     </list>
     <ignored path="vue入门.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,11 +24,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="指令6.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/模板语法4/指令6.html">
+      <file leaf-file-name="指令7.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/模板语法4/指令7.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.039808918">
-              <caret line="32" column="40" selection-start-line="32" selection-start-column="40" selection-end-line="32" selection-end-column="40" />
+            <state vertical-scroll-proportion="0.93924665">
+              <caret line="89" column="27" selection-start-line="89" selection-start-column="27" selection-end-line="89" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -69,6 +67,7 @@
         <option value="$PROJECT_DIR$/模板语法4/绑定表达式4.html" />
         <option value="$PROJECT_DIR$/模板语法4/指令5.html" />
         <option value="$PROJECT_DIR$/模板语法4/指令6.html" />
+        <option value="$PROJECT_DIR$/模板语法4/指令7.html" />
       </list>
     </option>
   </component>
@@ -78,10 +77,10 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-16" />
-    <option name="y" value="436" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
     <option name="width" value="1938" />
-    <option name="height" value="853" />
+    <option name="height" value="1048" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -248,7 +247,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-16" y="436" width="1938" height="853" extended-state="0" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973601" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -414,8 +413,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/模板语法4/指令6.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.039808918">
-          <caret line="32" column="40" selection-start-line="32" selection-start-column="40" selection-end-line="32" selection-end-column="40" />
+        <state vertical-scroll-proportion="-0.7352941">
+          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/模板语法4/指令7.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.93924665">
+          <caret line="89" column="27" selection-start-line="89" selection-start-column="27" selection-end-line="89" selection-end-column="27" />
           <folding />
         </state>
       </provider>
