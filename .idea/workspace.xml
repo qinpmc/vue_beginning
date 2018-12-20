@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="106ea6a0-177f-43c1-882b-c88c24faae21" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/start1/事件3.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/start1/双向绑定4.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/start1/指令2.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/start1/模板语法1.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/start1/组件.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/生命周期3/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/生命周期3/模板和outer HTML优先级2.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/生命周期3/生命周期1.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/配置2/配置1.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/start1/组件.html" afterPath="$PROJECT_DIR$/start1/组件5.html" />
     </list>
     <ignored path="vue入门.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,51 +28,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="组件.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/start1/组件.html">
+      <file leaf-file-name="生命周期1.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/生命周期3/生命周期1.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="9.558824">
+            <state vertical-scroll-proportion="-3.6764705">
               <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="38" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="双向绑定4.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/start1/双向绑定4.html">
+      <file leaf-file-name="模板和outer HTML优先级2.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/生命周期3/模板和outer HTML优先级2.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.294118">
-              <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="模板语法1.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/start1/模板语法1.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.54434997">
-              <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="指令2.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/start1/指令2.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.382353">
-              <caret line="29" column="12" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="事件3.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/start1/事件3.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.294118">
-              <caret line="14" column="12" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="12" />
+            <state vertical-scroll-proportion="0.6986634">
+              <caret line="23" column="5" selection-start-line="23" selection-start-column="3" selection-end-line="23" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -99,6 +70,11 @@
         <option value="$PROJECT_DIR$/start1/双向绑定4.html" />
         <option value="$PROJECT_DIR$/start1/指令2.html" />
         <option value="$PROJECT_DIR$/start1/模板语法1.html" />
+        <option value="$PROJECT_DIR$/配置2/配置1.html" />
+        <option value="$PROJECT_DIR$/生命周期3/生命周期1.html" />
+        <option value="$PROJECT_DIR$/生命周期3/README.md" />
+        <option value="$PROJECT_DIR$/生命周期3/模板和outer HTML优先级.html" />
+        <option value="$PROJECT_DIR$/生命周期3/模板和outer HTML优先级2.html" />
       </list>
     </option>
   </component>
@@ -157,6 +133,34 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vue入门" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vue入门" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="配置2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vue入门" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vue入门" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="生命周期3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -171,6 +175,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\notes\vue\vue入门\生命周期3" />
+      <recent name="F:\notes\vue\vue入门\配置2" />
       <recent name="F:\notes\vue\vue入门\start1" />
     </key>
   </component>
@@ -270,18 +276,7 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vue.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.94165695">
-          <caret line="11061" column="5" selection-start-line="11061" selection-start-column="5" selection-end-line="11061" selection-end-column="5" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <marker date="1545274155202" expanded="true" signature="288486:288495" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/start1/组件.html">
+    <entry file="file://$PROJECT_DIR$/start1/组件5.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="9.558824">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="38" />
@@ -315,8 +310,53 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/start1/模板语法1.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.54434997">
+        <state vertical-scroll-proportion="-13.176471">
           <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vue.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1" column="10" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="17" />
+          <folding>
+            <marker date="1545274155202" expanded="true" signature="288486:288495" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/配置2/配置1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.147059">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/生命周期3/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor vertical-scroll-proportion="0.75757575">
+            <caret line="45" column="38" selection-start-line="45" selection-start-column="38" selection-end-line="45" selection-end-column="38" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/生命周期3/生命周期1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.6764705">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/生命周期3/模板和outer HTML优先级2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6986634">
+          <caret line="23" column="5" selection-start-line="23" selection-start-column="3" selection-end-line="23" selection-end-column="45" />
           <folding />
         </state>
       </provider>

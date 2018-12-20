@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src ="../vue.js"></script>
+    <script>Vue.config.silent = true</script>
+</head>
+<body>
+<div id="app-5">
+    <p>{{ message }}</p>
+    <button v-on:click="reverseMessage">逆转消息</button>
+    <button @click="reverseMessage">逆转消息</button>
+</div>
+<script>
+    //Vue.config.productionTip = false; //设置后控制台不输出  You are running Vue in development mode......
+
+
+    var app5 = new Vue({
+        el:"#app-5",
+        data:{
+            message:"hello"
+        },
+        methods:{
+            reverseMessage:function(e){
+                console.log(e);
+                console.log(this); // this === app5;
+                this.message = this.message.split("").reverse().join("");
+            }
+        }
+    })
+
+
+/*
+    采用的是 开发版v2.5.21 ，控制台输出：
+    Download the Vue Devtools extension for a better development experience: https://github.com/vuejs/vue-devtools
+    You are running Vue in development mode.
+    Make sure to turn on production mode when deploying for production.
+    See more tips at https: vuejs.org/guide/deployment.html
+    */
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src ="../vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <!--html中修改的-->
+    <h6>{{message + '这是在outer HTML中的'}}</h6>
+</div>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        template: "<h6>{{message +'这是在template中的'}}</h6>", //在vue配置项中修改的
+        data: {
+            message: 'Vue的生命周期 '
+        },
+        render: function(createElement) {
+            return createElement('span', 'this is createElement')
+        }
+    })
+   /* render函数选项 > template选项 > outer HTML.*/
+</script>
+</body>
+</html>
