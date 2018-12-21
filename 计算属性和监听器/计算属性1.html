@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src ="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--
+            计算属性
+        -->
+        <ul id="ul_1" >
+            <li>这个是原始值mes：{{mes}}</li>
+            <li>这个是根据原始值计算的属性（会缓存）：{{reverseMes2}}</li>
+            <li>这个是采用调用方法计算的值（不缓存）：{{ reverseMes()}}</li>
+            <li>每当触发重新渲染时，调用方法将总会再次执行函数，不缓存</li>
+        </ul>
+    </div>
+
+<script>
+    //  对于任何复杂逻辑，都应当使用计算属性，而不应当在模板中进行计算。
+
+    var app = new Vue({
+        el:"#app",
+        data:{
+            mes:"HelloWorld",
+            num1:10
+        },
+        methods:{
+            reverseMes:function(){
+                // this 指向 app 实例
+                return this.mes.split('').reverse().join('');
+            }
+        },
+        computed:{
+            reverseMes2:function(){
+                // this 指向 app 实例,注意：如果下方methods中方法与此处同名，此处不会取计算值
+                return this.mes.split('').reverse().join('');
+            },
+            // 仅读取
+            Double: function () {
+                return this.num1 * 2
+            },
+            // 读取和设置
+            Plus: {
+                get: function () {
+                    return this.num1 + 1
+                },
+                set: function (v) {
+                    this.num1 = v - 1
+                }
+            }
+        },
+    });
+/*
+    控制台进行如下调试：
+    app.Plus; //11,app.num1 此时为10
+    app.Plus; //11,app.num1 此时为10
+    app.Plus = 20; // app.num1 此时为19
+    app.Double;  //38
+    app.Double = 100 ;// 报错，Computed property "Double" was assigned to but it has no setter.
+    */
+
+</script>
+</body>
+</html>
