@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .active{
+            background-color: red;
+        }
+        .text-danger{
+            border: solid blue 2px;
+        }
+    </style>
+    <script src ="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-bind:class="{active:isActive}">  样式active:isActive </li>
+            <li v-bind:class="{active:isActive,'text-danger':hasError}">  样式 :isActive/text-danger </li>
+        </ul>
+    </div>
+    <div id="app2">
+        <ul>
+            <li v-bind:class="classObj">  样式classObj </li>
+
+        </ul>
+    </div>
+
+    <div id="app3">
+        <ul>
+            <li v-bind:class="classObj">  样式classObj </li>
+
+        </ul>
+    </div>
+<script>
+    //第一种方式设置 css，写入模板里
+
+    var app = new Vue({
+        el:"#app",
+        data:{
+            isActive:true,
+            //hasError:false,
+            hasError:true
+        }
+    });
+
+    // 第二种方式设置 css
+    var app2 = new Vue({
+        el:"#app2",
+        data:{
+            classObj:{
+                active:true,
+                'text-danger':true
+            }
+        }
+    });
+
+    // 第三种方式设置 css，采用计算属性
+    var app3 = new Vue({
+        el:"#app3",
+        data:{
+            isActive:true,
+            error:null
+        },
+        computed:{
+            classObj:function(){
+                return {
+                    active:this.isActive &&  this.error,
+                    "text-danger":this.error && this.error.type==="fatal"
+                }
+            }
+        }
+    });
+    setTimeout(function(){
+        app3.error = {
+            type:"fatal"
+        }
+        console.log(app3.error)
+    },1000)
+/*
+
+    */
+
+</script>
+</body>
+</html>
