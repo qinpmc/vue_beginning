@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src ="../vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <!--
+         侦听
+    -->
+    <ul id="ul_1" >
+        <li><button @click="a++">a加1</button></li>
+        <li>{{ mes}}</li>
+    </ul>
+</div>
+<script>
+    var app = new Vue({
+        el:"#app",
+        data:{
+            a:5,
+            mes:""
+        },
+        /*watch:{
+            a:function(newVal,oldVal){
+                this.mes = "a 的旧值为： "+oldVal+", 新值为："+newVal;
+            }
+        }*/
+    });
+    //可以使用实例对象的$watch方法， 该方法的返回值是一个取消观察函数，用来停止触发回调
+    unwatch = app.$watch("a",function(newVal,oldVal){
+        if(newVal ===10){
+            unwatch();
+        }
+        this.mes = "a 的旧值为： "+oldVal+", 新值为："+newVal;
+    })
+
+
+</script>
+</body>
+</html>

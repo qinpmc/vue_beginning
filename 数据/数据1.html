@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src ="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--
+            数据属性
+        -->
+        <ul id="ul_1" >
+            <li> {{ mes }}</li>
+        </ul>
+    </div>
+
+<script>
+    //
+
+    var app = new Vue({
+        el:"#app",
+        data:{
+            mes:"HelloWorld"
+        }
+    });
+
+    console.log(app.$data.mes); // HelloWorld
+    console.log(app.mes); // HelloWorld
+
+/*
+      //被代理的属性是响应的，也就是说值的任何改变都是触发视图的重新渲染
+       控制台输入 app.mes = 111；
+       视图上显示为 111
+    */
+
+</script>
+</body>
+</html>

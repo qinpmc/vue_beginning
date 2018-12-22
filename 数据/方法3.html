@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src ="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--
+            计算属性 与 methods
+        -->
+        <ul id="ul_1" >
+
+            <li> 计算属性（缓存）: "{{ time1 }}"</li>
+            <li>这个是采用调用方法计算的值（不缓存）：{{ time2()}}</li>
+            <li>每当触发重新渲染时，调用方法将总会再次执行函数，不缓存</li>
+        </ul>
+    </div>
+
+<script>
+    //  对于任何复杂逻辑，都应当使用计算属性，而不应当在模板中进行计算。
+
+    var app = new Vue({
+        el:"#app",
+
+        methods:{
+            time2:function(){
+                return (new Date()).toLocaleString();
+            }
+        },
+        computed:{
+            // 缓存
+            time1:function(){
+                return (new Date()).toLocaleString()
+            }
+        }
+    });
+/*
+    控制台进行如下调试：
+    app.time1; // "2018/12/22 下午9:45:07"
+    app.time1;// "2018/12/22 下午9:45:07"    时间不变---缓存类
+    app.time2();  // "2018/12/22 下午9:45:19"
+    app.time2();  ;// "2018/12/22 下午9:45:20"
+    */
+
+</script>
+</body>
+</html>
