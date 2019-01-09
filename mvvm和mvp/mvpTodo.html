@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+MVP 形式的todoList
+
+M: 模型层， V：视图层 ，P: 控制器
+
+
+<div id="app">
+    <input type="text" id="inputItem">
+    <button id="addBtn">添加</button>
+
+    <ul id="ul_1" >
+        <li></li>
+    </ul>
+</div>
+<script>
+    function Page(){}
+    $.extend(Page.prototype,{
+        init:function(){
+            this.bindEvents();
+        },
+        bindEvents:function(){
+            $("#addBtn").on("click",function(){
+                console.log(this);
+                var inputEle = $("#inputItem");
+                var inputItem =inputEle .val();
+                $("#ul_1").append("<li>"+inputItem+"</li>");
+                inputEle.val("");
+            })
+        }
+    })
+    var page = new Page();
+    page.init();
+
+</script>
+</body>
+</html>

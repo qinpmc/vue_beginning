@@ -26,7 +26,8 @@
         }
     });
     setTimeout(()=>{
-        app3.seen = false;
+        //app3.seen = false;
+        app3.$data.seen = false; //和上句等价
     },2000);
 
     var app4 = new Vue({

@@ -7,7 +7,7 @@
 </head>
 <body>
     <div id="app">
-        <span v-bind:id="dynamicId"> </span> <br>
+        <span v-bind:id="dynamicId"> dynamicId</span> <br>
         <h3>注意：布尔特性的属性，它们的存在即暗示为 true</h3>
         <button v-bind:disabled="isDisabled">v-text-Message: </button><br>
         <input type="checkbox" v-bind:checked="isChecked">足球</input>
@@ -28,7 +28,7 @@
         el:"#app",
         data:{
             dynamicId:"span1",
-            isDisabled:false,
+            isDisabled:true,
             isChecked:undefined
         }
     });

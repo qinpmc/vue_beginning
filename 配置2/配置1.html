@@ -25,6 +25,7 @@
             reverseMessage:function(e){
                 console.log(e);
                 console.log(this); // this === app5;
+                console.log(this===app5); // true
                 this.message = this.message.split("").reverse().join("");
             }
         }
