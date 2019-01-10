@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src ="../vue.js"></script>
+</head>
+<body>
+MVVM 形式的todoList
+采用 vue全局组件实现：
+<div id="app">
+    <input type="text" v-model="todoItem">
+    <button @click="addItem">添加</button>
+
+    <ul id="ul_1" >
+        <todo-item v-bind:content="item" v-for="item in items" v-bind:key="item"></todo-item>
+    </ul>
+</div>
+<script>
+
+    var TodoItem = {
+        props:["content"],
+        template:"<li>{{content}}</li>"
+    }
+
+    var app = new Vue({
+        el:"#app",
+        components:{
+            TodoItem:TodoItem  //注册局部组件
+        },
+        data:{
+            items:[],
+            todoItem:""
+        },
+        methods:{
+            addItem:function(){
+                this.items.push(this.todoItem);
+                this.todoItem="";
+            }
+        }
+    });
+
+</script>
+</body>
+</html>
