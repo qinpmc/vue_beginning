@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src ="../vue.js"></script>
+</head>
+<body>
+MVVM 形式的todoList
+可增加todo项目（父组件传值给子组件）
+点击item删除该项目（子组件传值给父组件）
+<div id="app">
+    <input type="text" v-model="todoItem">
+    <button @click="addItem">添加</button>
+
+    <ul id="ul_1" >
+        <todo-item :content="item" v-for="(item,index) in items"
+                    :key="item" :index="index"
+                    @delete="handleDeleteItem"
+        ></todo-item>
+    </ul>
+</div>
+<script>
+
+    // 子组件
+    var TodoItem = {
+        props:["content","index"],  //注意：这里父组件传递item 、index给子组件属性 content 和 index
+        template:"<li @click='handleItemClick'>{{content}}</li>",
+        methods:{
+            handleItemClick:function(index){
+                this.$emit("delete",this.index);  //子组件向父组件传递delete事件和值index
+            }
+        }
+    }
+
+    var app = new Vue({
+        el:"#app",
+        components:{
+            TodoItem:TodoItem,  //注册局部组件,
+
+        },
+        data:{
+            items:[],
+            todoItem:""
+        },
+        methods:{
+            addItem:function(){
+                this.items.push(this.todoItem);
+                this.todoItem="";
+            },
+            handleDeleteItem:function(index){
+                this.items.splice(index,1);
+            }
+        }
+    });
+
+</script>
+</body>
+</html>
