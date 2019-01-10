@@ -12,7 +12,7 @@
 </div>
 <script>
     var app = new Vue({
-        //el: '#app',
+        el: '#app',
         data: {
             message : "haha is boy"
         },
@@ -20,25 +20,25 @@
             console.group('beforeCreate 创建前状态===============》');
             console.log("%c%s", "color:red" , "el     : " + this.$el); //undefined
             console.log("%c%s", "color:red","data   : " + this.$data); //undefined
-            console.log("%c%s", "color:red","message: " + this.message)
+            console.log("%c%s", "color:red","message: " + this.message);//undefined
         },
         created: function () {
             console.group('created 创建完毕状态===============》');
-            console.log("%c%s", "color:red","el     : " + this.$el); //undefined
-            console.log("%c%s", "color:red","data   : " + this.$data); //已被初始化
-            console.log("%c%s", "color:red","message: " + this.message); //已被初始化
+            console.log("%c%s", "color:red","el     : " + this.$el); //undefined （注释：$el 还未加载）
+            console.log(this.$data); //  {__ob__: Observer} message:(...)  (注释：$data已被初始化)
+            console.log("%c%s", "color:red","message: " + this.message); //  message: haha is boy （注释：$data已被初始化）
         },
         beforeMount: function () {
             console.group('beforeMount 挂载前状态===============》');
-            console.log("%c%s", "color:red","el     : " + (this.$el)); //已被初始化
-            console.log(this.$el);
-            console.log("%c%s", "color:red","data   : " + this.$data); //已被初始化
-            console.log("%c%s", "color:red","message: " + this.message); //已被初始化
+            console.log("%c%s", "color:red","el     : " + (this.$el)); // el：[object HTMLDivElement]  （注释:已被初始化）
+            console.log(this.$el); //   <div id="app"><p>{{ message }}</p> </div>    (注释:此时绑定的数据为加载)
+            console.log("%c%s", "color:red","data   : " + this.$data); //  (注释：$data已被初始化）
+            console.log("%c%s", "color:red","message: " + this.message); // (注释：message已被初始化）
         },
         mounted: function () {
             console.group('mounted 挂载结束状态===============》');
             console.log("%c%s", "color:red","el     : " + this.$el); //已被初始化
-            console.log(this.$el);
+            console.log(this.$el);  //   <div id="app"><p>haha is boy </p> </div>
             console.log("%c%s", "color:red","data   : " + this.$data); //已被初始化
             console.log("%c%s", "color:red","message: " + this.message); //已被初始化
         },

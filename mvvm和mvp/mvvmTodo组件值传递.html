@@ -14,10 +14,11 @@ MVVM 形式的todoList
     <button @click="addItem">添加</button>
 
     <ul id="ul_1" >
-        <todo-item :content="item" v-for="(item,index) in items"
+        注册的组件命名，驼峰改为 -小写字母
+        <todo-item-test :content="item" v-for="(item,index) in items"
                     :key="item" :index="index"
                     @delete="handleDeleteItem"
-        ></todo-item>
+        ></todo-item-test>
     </ul>
 </div>
 <script>
@@ -36,7 +37,7 @@ MVVM 形式的todoList
     var app = new Vue({
         el:"#app",
         components:{
-            TodoItem:TodoItem,  //注册局部组件,
+            TodoItemTest:TodoItem,  //注册局部组件,
 
         },
         data:{
