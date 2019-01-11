@@ -10,29 +10,32 @@
         .text-danger{
             border: solid blue 2px;
         }
+        .pre-dangerClass{
+            border: solid yellow 3px;
+        }
+
     </style>
     <script src ="../vue.js"></script>
 </head>
 <body>
     <div id="app">
         <ul>
-            对象语法 1： 直接绑定对象
-            <li v-bind:class="{active:isActive}">  样式active:isActive </li>
-            <li v-bind:class="{active:isActive,'text-danger':hasError}">  样式 :isActive/text-danger </li>
+            数组语法 1：
+            测试发现：如果数组中值为 xxx-xxxxx,必须加引号，否则报错，而此时表明直接绑定为该类名
+            <div v-bind:class="[activeClass,'pre-dangerClass']">test</div>
+
         </ul>
     </div>
     <div id="app2">
         <ul>
-            对象语法 2- 对象定义在vue实例的data里
-            <li v-bind:class="classObj">  样式classObj </li>
+
 
         </ul>
     </div>
 
     <div id="app3">
         <ul>
-            返回对象的计算属性 3 - 通过computed 属性计算出对象
-            <li v-bind:class="classObj">  样式classObj </li>
+
 
         </ul>
     </div>
@@ -42,9 +45,8 @@
     var app = new Vue({
         el:"#app",
         data:{
-            isActive:true,
-            //hasError:false,
-            hasError:true
+            activeClass:"active",
+            "pre-dangerClass":true
         }
     });
 
@@ -52,10 +54,7 @@
     var app2 = new Vue({
         el:"#app2",
         data:{
-            classObj:{
-                active:true,
-                'text-danger':true
-            }
+
         }
     });
 
@@ -63,17 +62,9 @@
     var app3 = new Vue({
         el:"#app3",
         data:{
-            isActive:true,
-            error:null
+
         },
-        computed:{
-            classObj:function(){
-                return {
-                    active:this.isActive &&  this.error,
-                    "text-danger":this.error && this.error.type==="fatal"
-                }
-            }
-        }
+
     });
     setTimeout(function(){
         app3.error = {
