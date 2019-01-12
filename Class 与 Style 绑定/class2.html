@@ -8,7 +8,7 @@
             background-color: red;
         }
         .text-danger{
-            border: solid blue 2px;
+            font-weight: bolder;
         }
         .pre-dangerClass{
             border: solid yellow 3px;
@@ -20,15 +20,16 @@
 <body>
     <div id="app">
         <ul>
-            数组语法 1：
+            数组语法 1： 数组中变量
             测试发现：如果数组中值为 xxx-xxxxx,必须加引号，否则报错，而此时表明直接绑定为该类名
-            <div v-bind:class="[activeClass,'pre-dangerClass']">test</div>
-
+            <div v-bind:class="[activeClass,'pre-danger','text-danger']">test</div>
+            上面div中 class绑定 变量activeClass、'pre-dangerClass'、'text-danger'
         </ul>
     </div>
     <div id="app2">
         <ul>
-
+            //数组语法：数组中使用对象
+            <div v-bind:class="[{ active: isActive }, errorClass]">test2</div>
 
         </ul>
     </div>
@@ -40,39 +41,28 @@
         </ul>
     </div>
 <script>
-    //第一种方式设置 css，写入模板里
+    //
 
     var app = new Vue({
         el:"#app",
         data:{
             activeClass:"active",
-            "pre-dangerClass":true
+            "pre-danger":"pre-dangerClass",  //此属性无效，对象里属性名带有- ，必须加引号
+            "text-danger":false  // 任意值都生效？，和不带 - 的属性有区别，如上activeClass；
+
         }
     });
 
-    // 第二种方式设置 css
     var app2 = new Vue({
         el:"#app2",
         data:{
-
+            isActive:true,
+            errorClass:"pre-dangerClass",
         }
     });
-
-    // 第三种方式设置 css，采用计算属性
-    var app3 = new Vue({
-        el:"#app3",
-        data:{
-
-        },
-
-    });
-    setTimeout(function(){
-        app3.error = {
-            type:"fatal"
-        }
-        console.log(app3.error)
-    },1000)
 /*
+    样式可以使用数组方式，数组中可以使用变量（如上 app），数组中可以使用对象（如上 app2）；
+    疑惑：使用变量的方式，变量名如果带有 - 特殊字符，要使样式生效，在该变量名和类名保持一致，变量值任意
 
     */
 
