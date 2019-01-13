@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src ="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--
+        Vue.set 、vm.$set 修改数组和对象
+        Vue.set(vm.items, indexOfItem, newValue)
+        vm.$set(vm.items, indexOfItem, newValue)
+
+        -->
+
+        <ul id="ul_1" >
+            Vue.set修改下标为1 的数组
+            <li v-for="item in arr1" :key="item">{{item}}</li>
+        </ul>
+        <ul id="ul_2" >
+            <li v-for="item in arr2" :key="item">{{item}}</li>
+        </ul>
+        <ul id="ul_3" >
+            <li v-for="item in object" :key="item">{{item}}</li>
+        </ul>
+    </div>
+
+<script>
+    //
+
+    var app = new Vue({
+        el:"#app",
+        data:{
+            arr1:[11,12,13],
+            arr2:[-11,-12,-13],
+            object: {
+                firstName: 'John',
+                lastName: 'Doe',
+                age: 30
+            }
+        }
+    });
+
+    setTimeout(function(){
+        Vue.set(app.arr1,1,99);
+    },2000)
+    setTimeout(function(){
+        app.$set(app.arr2,2,-99);
+    },1500)
+
+    setTimeout(function(){
+        app.$set(app.arr2,3,-33);  //新增
+    },3500)
+    setTimeout(function(){
+        app.$set(app.object,"firstName","Hello");  //修改属性"firstName"
+    },1500)
+    setTimeout(function(){
+        app.$set(app.object,"gender","male");  //新增"gender"
+    },3500)
+/*    Vue 不能检测以下变动的数组：
+
+    当你利用索引直接设置一个项时，例如：vm.items[indexOfItem] = newValue
+    当你修改数组的长度时，例如：vm.items.length = newLength
+
+ */
+</script>
+</body>
+</html>
