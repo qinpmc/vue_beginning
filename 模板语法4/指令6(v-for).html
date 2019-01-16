@@ -6,6 +6,8 @@
     <script src ="../vue.js"></script>
 </head>
 <body>
+
+    v-for 遍历
     <div id="app">
         <!--遍历数组-->
         <ul id="ul_1" >
@@ -24,12 +26,14 @@
 
         <!--用 v-for 通过一个对象的属性来迭代-->
         <ul id="ul_23" >
+            注意：对象遍历默认显示的是键值
             <li v-for="value in object">
                 {{ value }}
             </li>
         </ul>
 
         <ul id="ul_24" >
+
             <li v-for="(value,key,index ) in object">
                键：{{ key}} --- 值：{{ value }}---序号{{index}}
             </li>
