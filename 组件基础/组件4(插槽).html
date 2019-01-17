@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件开始</title>
+    <script src ="../vue.js"></script>
+</head>
+<body>
+//没有包含一个 slot 元素，则任何传入它的内容都会被抛弃。
+
+    // 1.无插槽
+<div id="app">
+    <navigation-link
+            v-bind:key="id"
+            v-bind:url="url"
+            v-bind:content="content"
+    > 原来的内容（无插槽会不保留） </navigation-link>
+</div>
+<hr>
+    // 2.带有插槽
+<div id="app2">
+    <navigation-link2
+            v-bind:key="id"
+            v-bind:url="url"
+            v-bind:content="content"
+    > 原来的内容（有插槽会保留） </navigation-link2>
+</div>
+
+    // 3.插槽中使用组件(!!! font-awesome 组件中绑定属性fontprop,绑定属性总是fontprop不是fontProp )
+    <div id="app3">
+        <navigation-link2
+                v-bind:key="id"
+                v-bind:url="url"
+                v-bind:content="content"
+        > <font-awesome v-bind:fontprop="fontProp"></font-awesome></navigation-link2>
+
+
+    </div>
+<script>
+    // 组件1 --没有插槽
+    Vue.component('navigation-link', {
+        props: ['url','content'],
+        template: '<a v-bind:href="url" >{{content}} </a>'
+    })
+
+
+    // 组件2 --有插槽
+    Vue.component('navigation-link2', {
+        props: ['url','content'],
+        template: '<a v-bind:href="url" >{{content}}<slot></slot> </a>'
+    })
+
+    //组件3----放入到插槽中使用
+    Vue.component('font-awesome', {
+        props: ['fontprop'],
+        template: '<h3 > {{fontprop}}</h3> '
+    })
+
+
+
+    new Vue({
+        el: '#app',
+        data:{
+            id:1,
+            url:"http://www.baidu.com",
+            content:"父组件内容"
+        }
+
+    })
+
+    new Vue({
+        el: '#app2',
+        data:{
+            id:1,
+            url:"http://www.baidu.com",
+            content:"父组件内容"
+        }
+    })
+    new Vue({
+        el: '#app3',
+        data:{
+            id:1,
+            url:"http://www.baidu.com",
+            content:"父组件内容",
+            fontProp:"fontprop"
+        }
+    })
+
+</script>
+</body>
+</html>
