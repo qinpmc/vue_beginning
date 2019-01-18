@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src ="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--
+            对象更改检测注意事项
+            !!  Vue 不能检测对象属性的添加或删除
+            应该使用：
+            1、 Vue.set(vm.userProfile, 'age', 27)
+            2、 vm.$set 实例方法，它是全局 Vue.set 的别名：
+            3、 为已有对象赋予多个新属性：
+            正确做法：
+           vm.userProfile = Object.assign({}, vm.userProfile, {
+              age: 27,
+              favoriteColor: 'Vue Green'
+            })
+
+            错误做法：
+            Object.assign(vm.userProfile, {
+              age: 27,
+              favoriteColor: 'Vue Green'
+            })
+
+        -->
+        <ul id="ul_1" >
+            <li v-for="item in object" :key="item">{{item}}</li>
+        </ul>
+        <ul id="ul_2" >
+            <li v-for="item in object2" :key="item">{{item}}</li>
+        </ul>
+        <ul id="ul_3" >
+            <li v-for="item in object3" :key="item">{{item}}</li>
+        </ul>
+    </div>
+
+<script>
+    // 列表渲染 v-for
+    var app = new Vue({
+        el:"#ul_1",
+        data:{
+            object: {
+                firstName: 'John',
+                lastName: 'Doe',
+                age: 30
+            }
+        }
+    });
+
+    var app2 = new Vue({
+        el:"#ul_2",
+        data:{
+            object2: {
+                firstName: 'John',
+                lastName: 'Doe',
+                age: 30
+            }
+        }
+    });
+
+    var app3 = new Vue({
+        el:"#ul_3",
+        data:{
+            object3: {
+                firstName: 'John',
+                lastName: 'Doe',
+                age: 30
+            }
+        }
+    });
+
+    setTimeout(function(){
+        Vue.set(app.object,"gender","male") ;
+    },2000);
+
+
+    setTimeout(function(){
+        app2.$set(app2.object2,"gender","female")
+    },2000);
+
+
+
+    setTimeout(function(){
+        app3.object3 = Object.assign({},app3.object3,{
+            gender:"male",
+            city:"peking"
+        })
+    },2500);
+
+</script>
+</body>
+</html>
