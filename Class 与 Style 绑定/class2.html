@@ -21,7 +21,8 @@
     <div id="app">
         <ul>
             数组语法 1： 数组中变量
-            测试发现：如果数组中值为 xxx-xxxxx,必须加引号，否则报错，而此时表明直接绑定为该类名
+            测试发现：如果数组中值为 xxx-xxxxx,必须加引号，否则报错，而此时表明直接绑定为该类名(因为有引号，则表示直接是类名，，而不是vue的data中的值)
+            即：数组中值不带引号，表明是变量，其值来自vue的data，而带引号，则表示直接引用该类名
             <div v-bind:class="[activeClass,'pre-danger','text-danger']">test</div>
             上面div中 class绑定 变量activeClass、'pre-dangerClass'、'text-danger'
         </ul>
@@ -47,8 +48,8 @@
         el:"#app",
         data:{
             activeClass:"active",
-            "pre-danger":"pre-dangerClass",  //此属性无效，对象里属性名带有- ，必须加引号
-            "text-danger":false  // 任意值都生效？，和不带 - 的属性有区别，如上activeClass；
+            "pre-danger":"pre-dangerClass",  //对象里属性名带有- ，必须加引号
+            "text-danger":false  // 任意值都生效 ，和不带 - 的属性有区别，如上activeClass；
 
         }
     });

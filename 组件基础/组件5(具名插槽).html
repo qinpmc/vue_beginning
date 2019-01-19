@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件开始</title>
+    <script src ="../vue.js"></script>
+</head>
+<body>
+//没有包含一个 slot 元素，则任何传入它的内容都会被抛弃。
+
+    // 1.
+<div id="app">
+    <h1>商场里面的商品</h1>
+    <shop>
+            <li slot='shoes' > 各种各样的鞋子</li>
+            <li slot='defualt' > 各种各样的衬衣 --没有对应的slot名字，不会保留</li>
+            <li slot='makeup' > 各种各样的化妆品</li>
+    </shop>
+</div>
+<hr>
+<div id="app2">
+    <h1>商场里面的商品2</h1>
+    <shop2>
+        <li slot='shoes' > 各种各样的鞋子</li>
+        <li slot='defualt' > 各种各样的衬衣 --没有对应的slot名字，不会保留</li>
+        <li> 没有对应的slot名字2，会被默认插槽保留</li>
+        <li slot='makeup' > 各种各样的化妆品</li>
+        <li> 没有对应的slot名字，会被默认插槽保留</li>
+    </shop2>
+</div>
+
+<hr>
+<div id="app3">
+    <h1>商场里面的商品3-----和上面app2一样效果</h1>
+    <shop2>
+        <template slot="shoes">
+            <li > 各种各样的鞋子</li>
+        </template>
+        <template slot="defualt">
+            <li > 各种各样的衬衣 --没有对应的slot名字，不会保留</li>
+        </template>
+        <li> 没有对应的slot名字2222，会被默认插槽保留</li>
+        <template slot="makeup">
+            <li > 各种各样的化妆品</li>
+        </template>
+        <li> 没有对应的slot名字，会被默认插槽保留</li>
+
+    </shop2>
+</div>
+<script>
+    Vue.component('shop', {
+        template: `
+            <div>
+                <h3> 模板里东西</h3>
+                <ul>
+                    <li>模板里的鞋子</li>
+                    <slot name="shoes"></slot>
+                    <li>模板里的衬衣</li>
+                    <slot name="skits"></slot>
+                    <li>模板里的化妆品</li>
+                    <slot name="makeup"></slot>
+                </ul>
+            </div>
+        `
+    })
+
+    Vue.component('shop2', {
+        template: `
+            <div>
+                <h3> 模板里东西2</h3>
+                <ul>
+                    <li>模板里的鞋子</li>
+                    <slot name="shoes"></slot>
+                    <li>模板里的衬衣</li>
+                    <slot name="skits"></slot>
+                    <li>模板里的化妆品</li>
+                    <slot name="makeup"></slot>
+                    <slot>xxxx</slot>
+                    <slot name="special">插槽special默认内容</slot>
+                </ul>
+            </div>
+        `
+    })
+
+    new Vue({
+        el: '#app',
+        data:{
+        }
+
+    })
+
+    new Vue({
+        el: '#app2',
+        data:{
+        }
+
+    })
+    new Vue({
+        el: '#app3',
+        data:{
+        }
+
+    })
+</script>
+</body>
+</html>
