@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>css animation</title>
+    <style>
+        div
+        {
+            width:100px;
+            height:100px;
+            background:red;
+            position:relative;
+            animation-name:myfirst;
+            animation-duration:3s;
+            animation-timing-function:linear;
+            animation-delay:0s;
+            animation-iteration-count:infinite;
+            animation-direction:alternate;
+            animation-play-state:running;
+        }
+
+        @keyframes myfirst
+        {
+            0%   {background:red; left:0px; top:0px;}
+            25%  {background:yellow; left:200px; top:0px;}
+            50%  {background:blue; left:200px; top:200px;}
+            75%  {background:green; left:0px; top:200px;}
+            100% {background:red; left:0px; top:0px;}
+        }
+    </style>
+</head>
+<body>
+<p><b>注意:</b>  CSS animation属性是如下属性的一个简写属性形式。</p>
+animation: name duration timing-function delay iteration-count direction fill-mode play-state;<br>
+<hr>
+animation-name	指定要绑定到选择器的关键帧的名称<br>
+animation-duration	动画指定需要多少秒或毫秒完成<br>
+animation-timing-function	设置动画将如何完成一个周期<br>
+animation-delay	设置动画在启动前的延迟间隔。<br>
+animation-iteration-count	定义动画的播放次数。<br>
+animation-direction	指定是否应该轮流反向播放动画。<br>
+animation-fill-mode	规定当动画不播放时（当动画完成时，或当动画有一个延迟未开始播放时），要应用到元素的样式。<br>
+animation-play-state	指定动画是否正在运行或已暂停。<br>
+<hr>
+animation-timing-function:指定动画将如何完成一个周期<br>
+linear	动画从头到尾的速度是相同的。	 <br>
+ease	默认。动画以低速开始，然后加快，在结束前变慢。 <br>
+ease-in	动画以低速开始。	 <br>
+ease-out	动画以低速结束。	 <br>
+ease-in-out	动画以低速开始和结束。	 <br>
+cubic-bezier(n,n,n,n)	在 cubic-bezier 函数中自己的值。可能的值是从 0 到 1 的数值。<br>
+<hr>
+animation-iteration-count:动画应该播放多少次。<br>
+<hr>
+animation-direction:指示动画是否反向播放。<br>
+normal	默认值。动画按正常播放。<br>
+reverse	动画反向播放。<br>
+alternate	动画在奇数次（1、3、5...）正向播放，在偶数次（2、4、6...）反向播放。<br>
+alternate-reverse	动画在奇数次（1、3、5...）反向播放，在偶数次（2、4、6...）正向播放。<br>
+<hr>
+animation-fill-mode:规定当动画不播放时，要应用到元素的样式。<hr>
+none：默认值，使得动画不会对动画等待和动画完成的元素样式产生改变<hr>
+backwards：在动画等待的那段时间内，元素的样式将设置为动画第一帧的样式<hr>
+forwards：在动画结束后，元素的样式设置为动画的最后一帧的样式<hr>
+both：相当于同时配置了forwards和backwards。也就是说，动画等待时，元素样式将设置为动画第一帧的样式；而在动画线束状态，元素样式将设置为动画最后一帧样式。<hr>
+
+<div></div>
+
+</body>
+</html>
