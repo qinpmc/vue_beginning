@@ -4,6 +4,10 @@
 1. https://segmentfault.com/a/1190000008010666?utm_source=tag-newest
 
 ###  生命周期初步理解
+
+![lifecycle](./lifecycle.png)
+
+
 使用demo：生命周期1.html，查看控制台：
 
 - beforecreated：el 和 data 并未初始化

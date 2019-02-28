@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>自定义指令</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+</head>
+<body>
+<p v-tack:foo class='p'>
+    I will now be tacked noto the page
+    <input v-focus="1+99" type='text'>
+    <input v-border type='text'>
+</p>
+
+</body>
+<script src ="../vue.js"></script>
+<script type="text/javascript">
+    // 自定义全局指令
+    Vue.directive('border',{
+        bind(el){  //bind 钩子函数：只调用一次，指令第一次绑定到元素时调用。在这里可以进行一次性的初始化设置
+            el.style.border='1px red solid'
+        }
+    })
+    new Vue({
+        el:'.p',
+        //自定义局部指令
+        directives:{
+            tack:{
+                inserted(el,binding,vnode){    // inserted：被绑定元素插入父节点时调用 (仅保证父节点存在，但不一定已被插入文档中)
+                    el.style.color='red';
+                    console.log(binding);
+                    console.log(vnode)
+                }
+            },
+            focus: {
+                // 指令的定义
+                inserted: function (el,binding,vnode) {
+                    el.focus();
+                    console.log(binding);
+
+                }
+            }
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>Hello VueRouter</h1>
+        <p>
+            <router-link to="/floor1">一楼</router-link>
+        </p>
+        <router-view></router-view>
+    </div>
+    <script>
+
+        const Floor1 = {
+            template: `
+            <div>
+                <h1>一楼内容</h1>
+                <router-link to="/floor1/floor2">二楼链接</router-link>
+                <router-view></router-view>
+            </div>`
+        };
+        const Floor2 = { template: '<div><h1>二楼内容</h1></div>' };
+
+        const routes = [
+            {
+                path: '/floor1',
+                component: Floor1,
+                children: [{
+                    // floor2 会被渲染在 Floor1 的 <router-view> 中
+                    path: 'floor2', // 可以写为：  '/floor1/floor2', 或  floor2，注意不带 /
+                    component: Floor2
+                }]
+            }
+        ]
+
+        const router = new VueRouter({
+            routes
+        });
+
+        new Vue({
+            router
+        }).$mount('#app');
+
+    </script>
+</body>
+</html>

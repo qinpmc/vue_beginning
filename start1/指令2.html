@@ -10,11 +10,11 @@
     <p v-if="seen">现在你看到我了</p>
 </div>
 
-
+// for 循环可以拿到循环的索引 index
 <div id="app-4">
     <ul>
-        <li v-for="todo in todos">
-            {{ todo.text }}
+        <li v-for="(todo,index ) in todos">
+            {{index}}- {{ todo.text }}:{{ todo.age }}
         </li>
     </ul>
 </div>

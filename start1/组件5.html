@@ -15,19 +15,21 @@
           todo 对象是变量，即其内容可以是动态的。
           我们也需要为每个组件提供一个“key”，稍后再
           作详细解释。
+
+          父组件传递参数 item 到子组件 item 的itemprop上
         -->
         <item
                 v-for="item in groceryList"
-                v-bind:item="item"
+                v-bind:itemprop="item"
                 v-bind:key="item.id">
         </item>
     </ol>
 </div>
 <script>
 
-    Vue.component('item', {
-        props: ['item'],
-        template: '<li>{{ item.text }}</li>'
+    Vue.component('item', {  // item -组件名
+        props: ['itemprop'],
+        template: '<li>{{ itemprop.text }}</li>'  // 这里是子组件的模板，使用itemprop
     })
 
     var app7 = new Vue({
