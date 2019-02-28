@@ -14,7 +14,9 @@
             1、 Vue.set(vm.userProfile, 'age', 27)
             2、 vm.$set 实例方法，它是全局 Vue.set 的别名：
             3、 为已有对象赋予多个新属性：
+
             正确做法：
+            // 重新指向新对象
            vm.userProfile = Object.assign({}, vm.userProfile, {
               age: 27,
               favoriteColor: 'Vue Green'

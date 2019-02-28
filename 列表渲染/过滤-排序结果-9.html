@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src ="../vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <ul>
+        注意：使用computed 调用函数后面不需要 （）
+        <li v-for="n in evenNumbers">{{ n }}</li>
+        <hr>
+        注意：使用methods中定义的函数 后面 需要 （）
+        <li v-for="n in even(numbers)">{{ n }}</li>
+    </ul>
+</div>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            numbers:[1,2,3,4]
+        },
+        computed:{
+            evenNumbers:function(){
+                return this.numbers.filter(function(number){
+                    return number %2 === 0;
+                })
+            }
+        },
+        methods:{
+            even:function(numbers){
+                return numbers.filter(function(number){
+                    return number %2 ==0 ;
+                })
+            }
+        }
+    })
+</script>
+
+</body>
+</html>
