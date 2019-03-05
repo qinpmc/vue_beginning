@@ -8,8 +8,12 @@
 <body>
     <div id="app">
         <span v-bind:id="dynamicId"> dynamicId</span> <br>
-        <h3>注意：布尔特性的属性，它们的存在即暗示为 true</h3>
-        <button v-bind:disabled="isDisabled">v-text-Message: </button><br>
+        <p>注意：布尔特性的属性，它们的存在即暗示为 true
+            在下面的按钮这个例子中：
+            如果 isButtonDisabled 的值是 null、undefined 或 false，
+            则 disabled 特性甚至不会被包含在渲染出来的  button  元素中。
+        </p>
+        <button v-bind:disabled="isButtonDisabled">v-text-Message: </button><br>
         <input type="checkbox" v-bind:checked="isChecked">足球</input>
     </div>
 
@@ -28,7 +32,7 @@
         el:"#app",
         data:{
             dynamicId:"span1",
-            isDisabled:true,
+            isButtonDisabled:undefined,
             isChecked:undefined
         }
     });

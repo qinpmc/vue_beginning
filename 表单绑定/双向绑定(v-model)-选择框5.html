@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src ="../vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        选择框 单选时：如果 v-model 表达式的初始值未能匹配任何选项， select 元素将被渲染为“未选中”状态
+        <div >
+            <select v-model="selected">
+                <option disabled value="">请选择</option>
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+            </select>
+            <span>Selected: {{ selected }}</span>
+        </div>
+
+        <hr>
+        多选时 (绑定到一个数组)：
+        <select v-model="multiSelected" multiple >
+            <option disabled value="">请选择</option>
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+        </select>
+        <span>multiSelected: {{ multiSelected }}</span>
+    </div>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                selected:"C",
+                multiSelected:["A","C"]
+            }
+        })
+    </script>
+</body>
+
+</html>

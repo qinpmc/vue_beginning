@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src ="../vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+         单个复选框，绑定到 **布尔值**
+        <div>
+            <input v-model="isChecked" type="checkbox" >
+            <p>isChecked is: {{ isChecked }}</p>
+        </div>
+        多个复选框，绑定到同一个**数组**：
+        <div  >
+            <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+            <label for="jack">Jack</label>
+            <input type="checkbox" id="john" value="John" v-model="checkedNames">
+            <label for="john">John</label>
+            <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+            <label for="mike">Mike</label>
+            <br>
+            <span>Checked names: {{ checkedNames }}</span>
+        </div>
+    </div>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                isChecked:false,
+                checkedNames:["John","Mike"]
+            }
+        })
+    </script>
+</body>
+
+</html>

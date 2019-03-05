@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src ="../vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        文本：
+        <div>
+            <input v-model="message" placeholder="edit me" value="init value">
+            <p>Message is: {{ message }}</p>
+        </div>
+        多行文本textarea
+        <div>
+            <textarea name="" id="" cols="30" rows="10" v-model="multiMes"></textarea>
+            <p>multiMes is: {{ multiMes }}</p>
+        </div>
+    </div>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                message:"hello",
+                multiMes:""
+            }
+        })
+    </script>
+</body>
+
+</html>

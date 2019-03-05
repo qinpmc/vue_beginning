@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src ="../vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <input type="radio" value="One" id="one" v-model="picked" name="pickRadio" >
+        <label for="one">One</label>
+        <br>
+        v-model 会忽略所有表单元素的 value、checked、selected 特性的初始值，如下单选框设置checked，但无效：<br>
+        <input type="radio" value="One" id="two" v-model="picked" name="pickRadio" checked>
+        <label for="two">Two</label>
+        <br>
+        <span>Picked:{{ picked }}</span>
+
+        <hr>
+
+        <input type="radio" value="Three" id="three" v-model="picked2" name="pickRadio2" >
+        <label for="three">Three</label>
+        <br>
+        <input type="radio" value="Four" id="four" v-model="picked2" name="pickRadio2" >
+        <label for="four">Four</label>
+        <br>
+        <span>Picked:{{ picked2 }}</span>
+    </div>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                picked:"",
+                picked2:"Four"
+            }
+        })
+    </script>
+</body>
+
+</html>

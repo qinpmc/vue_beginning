@@ -1,0 +1,20 @@
+{
+  "name": "vue_beginning",
+  "version": "1.0.0",
+  "description": "",
+  "main": "vue.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qinpmc/vue_beginning.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qinpmc/vue_beginning/issues"
+  },
+  "homepage": "https://github.com/qinpmc/vue_beginning#readme",
+  "dependencies": {}
+}
