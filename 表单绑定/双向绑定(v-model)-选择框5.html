@@ -12,9 +12,9 @@
         <div >
             <select v-model="selected">
                 <option disabled value="">请选择</option>
-                <option>A</option>
-                <option>B</option>
-                <option>C</option>
+                <option value="C">A</option>
+                <option value="b">B</option>
+                <option value="a">C</option>
             </select>
             <span>Selected: {{ selected }}</span>
         </div>
@@ -33,7 +33,7 @@
         var app = new Vue({
             el:"#app",
             data:{
-                selected:"C",
+                selected:"C", // 注意这里和option的value 对应，如果省略value属性，会和option中字符串匹配
                 multiSelected:["A","C"]
             }
         })

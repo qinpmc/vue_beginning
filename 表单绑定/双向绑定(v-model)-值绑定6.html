@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src ="../vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <select v-model="selected">
+            <!-- 内联对象字面量 -->
+            <option v-bind:value="{ number: 123 }">123</option>
+        </select>
+        <p>{{selected }}</p>
+    </div>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                selected:"123"
+            }
+        })
+
+        /*
+        // 当选中时
+        typeof vm.selected // => 'object'
+        vm.selected  // => {number: 123}
+        */
+    </script>
+</body>
+
+</html>
