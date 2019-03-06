@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src ="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        //内联 JavaScript 语句中调用方法
+        <button v-on:click="say('hello')">点我say Hello</button>
+
+    </div>
+
+    <div id="app2">
+        //内联 JavaScript 语句中调用方法,注意，方法不带() , methods中方法默认有参数event
+        <button v-on:click="say">点我</button>
+
+        <!--这种写法，无法得到event
+        <button v-on:click="say()">点我</button>-->
+    </div>
+
+    <div id="app3">
+        //内联 JavaScript 语句中调用方法,获取事件对象event：采用特殊变量$event
+        <button v-on:click="say3('hi',$event)">点我</button>
+    </div>
+<script>
+    //
+    var app = new Vue({
+        el:"#app",
+        methods:{
+            say(mes){
+                console.log(mes);
+            }
+        }
+        }
+    );
+
+    var app2 = new Vue({
+        el:"#app2",
+        methods:{
+            say(event){
+                console.log(event);
+            }
+        }
+        }
+    );
+
+    var app3 = new Vue({
+            el:"#app3",
+            methods:{
+                say3(mes,event){
+                    console.log(mes);
+                    console.log(event);
+                }
+            }
+        }
+    );
+</script>
+</body>
+</html>

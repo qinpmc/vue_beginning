@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .grandpa{
+            width: 120px;
+            height: 120px;
+            background: red;
+        }
+        .parent{
+            width: 80px;
+            height: 80px;
+            background: green;
+        }
+        .son{
+            width: 40px;
+            height: 40px;
+            background: yellow;
+        }
+    </style>
+    <script src ="../vue.js"></script>
+</head>
+<body>
+    <div id="app1">
+         .stop:阻止事件冒泡（默认冒泡），点击子元素div不会冒泡到父元素
+        <div class="parent"  @click="say('prarent')">
+            <div class="son" @click.stop="say('son')" ></div>
+        </div>
+    </div>
+    <div id="app2">
+        .capture:使用事件捕获，元素自身触发的事件先在此处理，然后才交由内部元素进行处理,放在父元素上有效
+        <div class="parent"  @click.capture="say('prarent')">
+            <div class="son" @click="say('son')" ></div>
+        </div>
+    </div>
+
+    <div id="app3">
+        .prevent:阻止事件默认行为,a标签不跳转，表单不提交等
+
+        <a href="http://w3school.com.cn/" @click.prevent="say('prevent')">W3School</a>
+
+    </div>
+
+    <div id="app4">
+        .self： 只当在 event.target 是当前元素自身时触发处理函数 -->
+        <!-- 即事件不是从内部元素触发的 -->
+
+        <div @click.self="say('grandpa')" class="grandpa">
+            <div @click.self="say('parent')"  class="parent">
+                <div @click.self="say('son')"  class="son">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        var app1 = new Vue({
+            el:"#app1",
+            methods:{
+                say(mes){
+                    console.log(mes);
+                }
+            }
+        })
+        var app2 = new Vue({
+            el:"#app2",
+            methods:{
+                say(mes){
+                    console.log(mes);
+                }
+            }
+        })
+        var app3 = new Vue({
+            el:"#app3",
+            methods:{
+                say(mes){
+                    console.log(mes);
+                }
+            }
+        })
+
+        var app4 = new Vue({
+            el:"#app4",
+            methods:{
+                say(mes){
+                    console.log(mes);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

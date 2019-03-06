@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src ="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        //简单的事件处理，逻辑在指令中，如 +=1
+        <button v-on:click="count+=1">点我</button>
+        <p>The button has been clicked {{ count }} times.</p>
+    </div>
+    <div id="app2">
+        //复杂的事件处理，逻辑在methods中，
+        <!--<button v-on:click="greet()">点我</button>-->
+
+        <button v-on:click="greet">点我</button>
+        <p>The button has been clicked {{ count }} times.</p>
+    </div>
+<script>
+    //
+    var app = new Vue({
+        el:"#app",
+        data:{
+            count:0
+            }
+        }
+    );
+
+    var app2 = new Vue({
+        el:"#app2",
+        data:{
+            count:0
+        },
+        methods:{
+            greet(){
+                this.count+=1;
+            }
+        }
+        }
+    );
+</script>
+</body>
+</html>
