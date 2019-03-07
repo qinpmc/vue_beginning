@@ -14,7 +14,7 @@
             v-bind:key="id"
             v-bind:url="url"
             v-bind:content="content"
-    > 原来的内容（无插槽会不保留） </navigation-link>
+    > 这段文字会消失（无插槽会不保留） </navigation-link>
 </div>
 <hr>
     // 2.带有插槽
@@ -23,16 +23,16 @@
             v-bind:key="id"
             v-bind:url="url"
             v-bind:content="content"
-    > 原来的内容（有插槽会保留） </navigation-link2>
+    > 这段文字仍存在（有插槽会保留） </navigation-link2>
 </div>
 
-    // 3.插槽中使用组件(!!! font-awesome 组件中绑定属性fontprop,绑定属性总是fontprop不是fontProp )
+    // 3.插槽中使用组件( 父组件 parentfontProp---> 传递给 font-awesome 的fontProp属性)
     <div id="app3">
         <navigation-link2
                 v-bind:key="id"
                 v-bind:url="url"
                 v-bind:content="content"
-        > <font-awesome v-bind:fontprop="fontProp"></font-awesome></navigation-link2>
+        > 这段文字仍存在（有插槽会保留） <font-awesome v-bind:fontprop="parentfontProp"></font-awesome></navigation-link2>
 
 
     </div>
@@ -53,7 +53,7 @@
     //组件3----放入到插槽中使用
     Vue.component('font-awesome', {
         props: ['fontprop'], // 这里写成 fontProp 错误？
-        template: '<h3 > {{fontprop}}</h3> '
+        template: '<h3 > font-awesome: {{fontprop}}</h3> '
     })
 
 
@@ -63,7 +63,7 @@
         data:{
             id:1,
             url:"http://www.baidu.com",
-            content:"父组件内容"
+            content:"父组件内容1"
         }
 
     })
@@ -73,7 +73,7 @@
         data:{
             id:1,
             url:"http://www.baidu.com",
-            content:"父组件内容"
+            content:"父组件内容2"
         }
     })
     new Vue({
@@ -81,8 +81,8 @@
         data:{
             id:1,
             url:"http://www.baidu.com",
-            content:"父组件内容",
-            fontProp:"fontprop"
+            content:"父组件内容3",
+            parentfontProp:"绑定属性"
         }
     })
 

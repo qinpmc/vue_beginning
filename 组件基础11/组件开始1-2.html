@@ -7,7 +7,8 @@
 </head>
 <body>
 <div id="app">
-// 
+
+// posts - post为外部组件数据，子组件blog-post通过mes 属性接收，然后在子组件中使用mes
     <blog-post
   v-for="post in posts"
   v-bind:key="post.id"
