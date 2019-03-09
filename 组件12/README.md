@@ -85,6 +85,62 @@ console.log(this.$refs.counter1.number);
 
 ```
 
+7. 作用域插槽
 
+
+插槽内容能够访问子组件中才有的数据是很有用的
+
+```
+/*  下列代码中
+ :sonUser="user" 
+ :sonUser2="user"
+
+是将子组件的user 数据 绑定到了 sonUser 和sonUser2 属性上。
+
+
+*/
+
+ Vue.component('current-user', {
+        template: `
+            <div>
+                <span>
+                    <div> 组件urrent-user 的内容 </div>
+                    <slot :sonUser="user">
+                        {{ user.lastName }}
+                    </slot>
+                    <slot :sonUser2="user" name="other">
+                        {{ user.firstName }}
+                    </slot>
+                </span>
+            </div>
+        `,
+
+/* 父组件使用时，利用
+v-slot:default="slotProps" ----默认的插槽
+v-slot:other="slotProps"  -----具名的插槽other
+
+表示 slotProps 接收子组件插槽中绑定的数据（user），使用方式为：
+slotProps.sonUser 和  slotProps.sonUser2
+
+*/
+
+<div id="app">
+        <current-user>
+            <template v-slot:default="slotProps">
+                {{ slotProps.sonUser.lastName }}
+                <br>
+            </template>
+            
+            <template v-slot:other="slotProps">
+                    {{ slotProps.sonUser2.firstName }}
+            </template>
+        </current-user>
+</div>
+
+```
+
+8. 动态组件
+可以使用 v-once 优化性能      
+v-once ：只渲染元素和组件一次。随后的重新渲染，元素/组件及其所有的子节点将被视为静态内容并跳过。这可以用于优化更新性能。  
 
 

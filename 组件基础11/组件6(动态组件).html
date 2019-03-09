@@ -45,13 +45,13 @@
 <script>
     // ！！！先注册组件 ，再创造vue实例 --new vue(...)
     Vue.component('tab-home', {
-        template: '<div>Home component</div>'
+        template: '<div v-once>Home component</div>'
     })
     Vue.component('tab-posts', {
-        template: '<div>Posts component</div>'
+        template: '<div v-once>Posts component</div>'
     })
     Vue.component('tab-archive', {
-        template: '<div>Archive component</div>'
+        template: '<div v-once>Archive component</div>'
     })
 
     new Vue({
