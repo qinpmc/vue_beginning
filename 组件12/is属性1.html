@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件开始</title>
+    <script src ="../vue.js"></script>
+</head>
+<body>
+<div id="app">
+    table 中包括自定义组件，但是table，ul等元素中必须是指定的元素，如tr、td、li等
+    直接把组件放到table中，渲染的组件跑到table外部，使用is 属性解决
+     <table>
+         <row ></row>
+         <row></row>
+     </table>
+     <hr>
+     <table>
+        <tr is="row" ></tr>
+        <tr is="row" ></tr>
+     </table>
+</div>
+ 
+<script>
+    // 组件
+    Vue.component("row",{
+        data: function(){
+            return {
+                content: "这是row组件"
+            }
+        },
+        template:'<tr><td>{{content}}</td></tr>'
+    });
+
+   
+    var app = new Vue({
+        el:'#app'
+    })
+ 
+</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件开始</title>
+    <script src ="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+//作用域插槽： 插槽内容能够访问子组件中才有的数据是很有用的
+
+    // 1.
+<div id="app">
+        <current-user>
+            <template v-slot:default="slotProps">
+                {{ slotProps.sonUser.lastName }}
+                <br>
+            </template>
+            
+            <template v-slot:other="slotProps">
+                    {{ slotProps.sonUser2.firstName }}
+            </template>
+        </current-user>
+</div>
+<hr>
+ 
+ 
+<script>
+    Vue.component('current-user', {
+        template: `
+            <div>
+                <span>
+                    <div> 组件urrent-user 的内容 </div>
+                    <slot :sonUser="user">
+                        {{ user.lastName }}
+                    </slot>
+                    <slot :sonUser2="user" name="other">
+                        {{ user.firstName }}
+                    </slot>
+                </span>
+            </div>
+        `,
+        data:function(){ // 子组件的数据，想让父组件使用
+            return {
+                user:{
+                    firstName:"ppp1",
+                    lastName:"zzz1"
+                }
+            }
+        }
+    })
+
+   
+    new Vue({
+        el: '#app',
+        data:{
+            user:{
+                    firstName:"222ppp",
+                    lastName:"222zzz"
+                }
+        }
+
+    })
+</script>
+</body>
+</html>

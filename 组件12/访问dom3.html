@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件开始</title>
+    <script src ="../vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <counter @increase="handleIncrease()" ref="counter1"> </counter>
+    <counter @increase="handleIncrease()" ref="counter2"> </counter>
+    {{total}}
+</div>
+ 
+<script>
+    // 组件
+    Vue.component("counter",{
+        data: function(){
+            return {
+                number: 0
+            }
+        },
+        methods:{
+            increase:function(){
+                this.number++;
+                this.$emit("increase");
+            }
+        },
+        template:'<div @click="increase()" > {{number}}</div>'
+    });
+
+ 
+
+
+    var app = new Vue({
+        el:'#app',
+        methods:{
+            handleIncrease:function(){
+                console.log(this.$refs.counter1); // 获取到子组件
+                console.log(this.$refs.counter1.number);
+                this.total = this.$refs.counter1.number+ this.$refs.counter2.number;
+            }
+        },
+        data:{
+            total:0
+        }
+    })
+ 
+</script>
+</body>
+</html>

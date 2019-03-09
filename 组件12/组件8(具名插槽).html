@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件开始</title>
+    <script src ="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+//没有包含一个 slot 元素，则任何传入它的内容都会被抛弃。
+
+    // 1.
+<div id="app">
+    <h1>商场里面的商品</h1>
+    Vue 2.6 以后
+    <shop>
+            <template v-slot:shoes></template>
+            
+    </shop>
+    Vue 2.6 以前
+    <shop>
+            <li slot="shoes"></li>
+            
+    </shop>
+</div>
+<hr>
+ 
+ 
+<script>
+    Vue.component('shop', {
+        template: `
+            <div>
+                <h3> 模板里东西</h3>
+                <ul>
+                    <li>模板里的鞋子</li>
+                    <slot name='shoes' > 各种各样的鞋子</slot>
+                </ul>
+            </div>
+        `
+    })
+
+   
+    new Vue({
+        el: '#app',
+        data:{
+        }
+
+    })
+</script>
+</body>
+</html>
