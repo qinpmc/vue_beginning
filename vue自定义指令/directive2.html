@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>自定义指令2</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+</head>
+<body>
+    <div>
+        指令钩子函数会被传入以下参数：<br>
+
+        el：指令所绑定的元素，可以用来直接操作 DOM 。<br>
+        binding：一个对象，包含以下属性：<br>
+        name：指令名，不包括 v- 前缀。<br>
+        value：指令的绑定值，例如：v-my-directive="1 + 1" 中，绑定值为 2。<br>
+        oldValue：指令绑定的前一个值，仅在 update 和 componentUpdated 钩子中可用。无论值是否改变都可用。<br>
+        expression：字符串形式的指令表达式。例如 v-my-directive="1 + 1" 中，表达式为 "1 + 1"。<br>
+        arg：传给指令的参数，可选。例如 v-my-directive:foo 中，参数为 "foo"。<br>
+        modifiers：一个包含修饰符的对象。例如：v-my-directive.foo.bar 中，修饰符对象为 { foo: true, bar: true }。<br>
+        vnode：Vue 编译生成的虚拟节点。移步 VNode API 来了解更多详情。<br>
+        oldVnode：上一个虚拟节点，仅在 update 和 componentUpdated 钩子中可用。<br>
+    </div>
+    <div class='p'>
+        <p v-demo:foo.a.b="message">段落</p>
+    </div>
+    v-demo:foo.a.b="message" -----------------<br>
+
+    arg: "foo" <br>
+    def: {bind: ƒ}<br>
+    expression: "message"<br>
+    modifiers:<br>
+        a: true<br>
+        b: true<br>
+    __proto__: Object<br>
+    name: "demo"<br>
+    rawName: "v-demo:foo.a.b"<br>
+    value: "hello directive"<br>
+
+</body>
+<script src ="../vue.js"></script>
+<script type="text/javascript">
+
+
+
+    new Vue({
+        el:'.p',
+        //自定义局部指令
+        directives:{
+            demo:{
+                bind(el,binding,vnode){    // 只调用一次，指令第一次绑定到元素时调用。
+                    el.style.color='blue';
+                    console.log(binding);
+                    console.log(vnode)
+                }
+            },
+ 
+        },
+        data:{
+            message:"hello directive"
+        }
+    })
+</script>
+</html>
