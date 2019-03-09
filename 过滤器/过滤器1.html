@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src ="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="mes"><br>
+        <p>{{mes|capitalize}}</p>
+    </div>
+</body>
+<script>
+ 
+
+    new Vue({
+        el:"#app", 
+        filters:{   // 局部注册自定义过滤器
+            capitalize:function(value){
+                if(!value) return "";
+                value = value.toString();
+                return value.charAt(0).toUpperCase()+value.slice(1)
+            }
+        },
+        data:{
+            mes:''
+        }
+    })
+
+</script>
+</html>

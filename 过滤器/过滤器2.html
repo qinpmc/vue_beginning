@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src ="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="mes"><br>
+        <p>{{mes|treate(3,true)}}</p>
+    </div>
+</body>
+<script>
+    // 全局注册自定义过滤器 --------过滤器带参数
+    Vue.filter('treate', function (value,sliceIndex,isCapitalize) {
+        if (!value) return ''
+        value = value.toString();
+        value = value.slice(sliceIndex);
+        return isCapitalize? value.charAt(0).toUpperCase() + value.slice(1):value;
+    })
+
+    new Vue({
+        el:"#app", 
+         
+        data:{
+            mes:''
+        }
+    })
+
+</script>
+</html>
