@@ -144,3 +144,120 @@ slotProps.sonUser 和  slotProps.sonUser2
 v-once ：只渲染元素和组件一次。随后的重新渲染，元素/组件及其所有的子节点将被视为静态内容并跳过。这可以用于优化更新性能。  
 
 
+9. 组件注册
+
+1）组件名
+
+
+- 使用 kebab-case(短横线分隔命名)：   
+
+```
+Vue.component('my-component-name', { /* ... */ })
+
+<my-component-name> 是可接受的。
+
+
+```
+
+- 使用 PascalCase(首字母大写命名) ：  
+
+```
+Vue.component('MyComponentName', { /* ... */ })
+
+<my-component-name> 和 <MyComponentName> 都是可接受的。
+
+```
+
+2）全局注册 和 局部注册
+
+全局注册： 
+
+```
+Vue.component('my-component-name', {
+  // ... 选项 ...
+})
+
+```
+
+ 
+全局注册在注册之后可以用在**任何**新创建的 Vue 根实例 (new Vue) 的模板中。
+
+
+局部注册：   
+
+```
+var ComponentA = { /* ... */ }
+var ComponentB = { /* ... */ }
+
+new Vue({
+  el: '#app',
+  components: {
+    'component-a': ComponentA,
+    'component-b': ComponentB
+  }
+})
+
+```
+
+
+局部注册的组件在其**子组件中不可用**。例如，如果你希望 ComponentA 在 ComponentB 中可用，则你需要这样写：
+
+```
+var ComponentA = { /* ... */ }
+
+var ComponentB = {
+  components: {
+    'component-a': ComponentA
+  },
+  // ...
+}
+
+
+```
+
+
+10. Prop 的大小写 (camelCase vs kebab-case)
+HTML 中的特性名是大小写不敏感的，所以浏览器会把所有大写字符解释为小写字符。   <br>
+这意味着当你使用 DOM 中的模板时，camelCase (驼峰命名法) 的 prop 名需要使用其等价的 kebab-case (短横线分隔命名) 命名
+
+```
+Vue.component('blog-post', {
+  // 在 JavaScript 中是 camelCase 的
+  props: ['postTitle'],
+  template: '<h3>{{ postTitle }}</h3>'
+})
+
+<!-- 在 HTML 中是 kebab-case 的 ,这里是将组件在父组件中使用  -->
+<blog-post post-title="hello!"></blog-post>
+```
+
+
+11. 自定义事件
+
+camelCased (驼峰式): myMessage
+PascalCase(帕斯卡式) :  WinterOfDiscontent
+kebab-case(短横线隔开式) ： post-title
+
+不同于组件和 prop，**事件名不存在任何自动化的大小写转换**
+
+推荐你始终使用 kebab-case 的事件名：
+
+v-on 事件监听器在 DOM 模板中会被自动转换为全小写 (因为 HTML 是大小写不敏感的)，所以 v-on:myEvent 将会变成 v-on:myevent——导致 myEvent 不可能被监听到
+
+
+
+
+11. 自定义事件--监听原生事件
+
+```
+子组件绑定事件，@click，如果子组件不用$emit("click") 发射出去，点击（click）没有反应----因为这里认为监听的是子组件发射的click自定义事件。
+<child1 content="点我没反应" @click="handleClick"></child1>
+<hr>
+为避免 用$emit("click") 发射出去 造成的过于麻烦，直接使用@click.native 即可。   
+<child1 content="点我有反应" @click.native="handleClick"></child1>
+
+```
+
+
+
+

@@ -7,7 +7,7 @@
 </head>
 <body>
 <div id="app">
-    子组件绑定事件，@click，如果子组件不用$emit("click") 发射出去，点击（click）没有反应。
+    子组件绑定事件，@click，如果子组件不用$emit("click") 发射出去，点击（click）没有反应----因为这里认为监听的是子组件发射的click自定义事件。
     <child1 content="点我没反应" @click="handleClick"></child1>
     <hr>
     为避免 用$emit("click") 发射出去 造成的过于麻烦，直接使用@click.native 即可。   
