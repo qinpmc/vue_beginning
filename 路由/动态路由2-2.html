@@ -24,7 +24,7 @@
     const User = {
         template:"<div>User {{ $route.params.id }}</div>",
         watch: {
-            '$route' (to, from) {   // 对路由变化作出响应...
+            '$route' :function(to, from) {   // 对路由变化作出响应...
                 console.log(to);
                 console.log(from);
             }
