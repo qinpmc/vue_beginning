@@ -9,23 +9,27 @@
 <body>
     <div id="app">
         <ul>
-            <li><router-link to="/relative-redirect">
-                /relative-redirect (redirects to /foo)
+            <li><router-link to="/to-foo">
+                /to/foo
             </router-link></li>
-            <li><router-link to="/relative-redirect-after">
-                /relative-redirect (redirects to /foo)
+            <li><router-link to="/to-foo-after">
+                /to/foo-after
+            </router-link></li>
+            <li><router-link to="/relative-redirect-to-after">
+                /relative-redirect (redirects to /to-foo-after)
             </router-link></li>
         </ul>
         <router-view></router-view>
     </div>
     <script>
-        const RelativeRedirect = { template: '<div>Relative-redirect default</div>' };
+        const RelativeRedirect = { template: '<div>default</div>' };
         const RelativeRedirectAfter = { template: '<div>Relative-redirect after</div>' };
 
         const router = new VueRouter({
             routes: [
-                { path: '/relative-redirect', redirect: '/relative-redirect-after',component: RelativeRedirect},
-                { path: '/relative-redirect-after', component: RelativeRedirectAfter}
+                { path: '/to-foo',component: RelativeRedirect},
+                { path: '/to-foo-after', component: RelativeRedirectAfter},
+                { path: '/relative-redirect-to-after', redirect:"/to-foo-after",component: RelativeRedirectAfter}
             ]
         });
         const app = new Vue({

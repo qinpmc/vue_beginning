@@ -8,14 +8,14 @@
 </head>
 <body>
     <div id="app">
-        <h1>Hello App!</h1>
+        <h1 @click="alert(this.$router)">Hello App!</h1>
         <p>
             <!-- 使用 router-link 组件来导航. -->
             <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
             <router-link  to="/user/foo">Go to Foo</router-link>
             <router-link  to="/user/bar">Go to Bar</router-link>
             <a @click="gotoFoo">Go to Foo</a>
-            <a @click="router.push({ path: '/user/bar' })">Go to Bar</a>
+            <a @click="console.log(this.$router)">Go to Bar</a>
         </p>
         <!-- 路由出口 -->
         <!-- 路由匹配到的组件将渲染在这里 -->
@@ -24,6 +24,8 @@
             <hr>
             <a @click="gotoFoo">Go to Foo</a>
             <a @click="gotoBar">Go to Bar</a>
+            <a @click="goBack">向后</a>
+            <a @click="goForward">向前</a>
         </div>
     </div>
 </body>
@@ -47,7 +49,15 @@
             },
             gotoBar:function(){
                 this.$router.push({ path: '/user/bar' })
+            },
+            goBack(){
+                router.go(-1)
+            },
+            goForward(){
+                router.go(1);
+                console.log(router === this.$router)
             }
+
         }
     }).$mount('#app')
 </script>
