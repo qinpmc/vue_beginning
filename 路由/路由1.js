@@ -20,7 +20,7 @@ const routes = [
 // 3. 创建 router 实例，然后传 `routes` 配置
 // 你还可以传别的配置参数, 不过先这么简单着吧。
 const router = new VueRouter({
-    routes:routes // (缩写) 相当于 routes: routes
+    routes // (缩写) 相当于 routes: routes
 })
 
 // 4. 创建和挂载根实例。
@@ -30,7 +30,8 @@ const app = new Vue({
     router:router
 }).$mount('#app')
 
-console.log(router);
+console.log(this); //undefined
+console.log(router );
 
 
 /*

@@ -28,9 +28,9 @@ const router = new VueRouter({
 //   base: __dirname,
   routes: [
     { path: '/', component: Hello }, // No props, no nothing
-    { path: '/hello/:name', component: Hello, props: true }, // Pass route.params to props
-    { path: '/static', component: Hello, props: { name: 'world' }}, // static values
-    { path: '/dynamic/:years', component: Hello, props: dynamicPropsFn }, // custom logic for mapping between route and props
+    { path: '/hello/:name', component: Hello, props: true }, // Pass route.params to props 布尔模式
+    { path: '/static', component: Hello, props: { name: 'world' }}, // static values   对象模式
+    { path: '/dynamic/:years', component: Hello, props: dynamicPropsFn }, // 函数模式 custom logic for mapping between route and props
     { path: '/attrs', component: Hello, props: { name: 'attrs' }}
   ]
 })
@@ -51,6 +51,20 @@ new Vue({
     </div>
   `
 }).$mount('#app')
+
+// <li><router-link to="/hello/haha">/hello/you</router-link></li>  对应  {path: '/hello/:name', component: Hello, props: true }
+// props 被设置为 true，route.params 将会被设置为组件属性。 
+
+//  -- 复习： 模式：/user/:username/post/:post_id	 匹配：/user/evan/post/123	  $route.params： { username: 'evan', post_id: '123'}  --
+//  因此 ：name 被传递的值为 "haha"
+
+
+//  <li><router-link to="/static">/static</router-link></li>    对应 { path: '/static', component: Hello, props: { name: 'world' }},  
+// name传递的值为 "world"
+
+
+// <li><router-link to="/dynamic/1">/dynamic/1</router-link></li>  对应 { path: '/dynamic/:years', component: Hello, props: dynamicPropsFn },
+// 采用的函数（即dynamicPropsFn）的方式，返回 { name: (now.getFullYear() + parseInt(route.params.years)) + '!'}
 
 </script>
 </body>

@@ -21,10 +21,7 @@ router.afterEach((to, from) => {
 
 在路由配置上直接定义 beforeEnter 守卫：
 
-
-
-
-
+ 
 
 组件守卫
 beforeRouteEnter

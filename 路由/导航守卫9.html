@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Navigation Guards</h1>
+        <ul>
+            <li>
+                <router-link to="/">/</router-link>
+            </li>
+            <li>
+                <router-link to="/foo">/foo</router-link>
+            </li>
+            <li>
+                <router-link to="/bar">/bar</router-link>
+            </li>
+            <li>
+                <router-link to="/baz">/baz</router-link>
+            </li>
+            <li>
+                <router-link to="/qux">/qux</router-link>
+            </li>
+            <li>
+                <router-link to="/qux-async">/qux-async</router-link>
+            </li>
+            <li>
+                <router-link to="/quux/1">/quux/1</router-link>
+            </li>
+            <li>
+                <router-link to="/quux/2">/quux/2</router-link>
+            </li>
+        </ul>
+        <router-view class="view"></router-view>
+    </div>
+    <script>
+        function guardRoute(to, from, next) {
+            if (window.confirm(`Navigate to ${to.path}?`)) {
+                next()
+            } else if (window.confirm(`Redirect to /baz`)) {
+                next("/baz")
+            } else {
+                next(false);
+            }
+        }
+
+        const Home = { template: "<div>home</div>" }
+        const Foo = { template: "<div>foo</div>" }
+        const Bar = { template: "<div>bar</div>" }
+
+        // Baz implements an in-component beforeRouteLeave hook
+        const Baz = {
+            data() {
+                return { saved: false }
+            },
+            template: `
+                <div>
+                <p>baz ({{ saved ? 'saved' : 'not saved' }})</p>
+                <button @click="saved = true">save</button>
+                </div>
+            `,
+            beforeRouteLeave(to, from, next) {
+                if (this.saved || window.confirm('Not saved, are you sure you want to navigate away?')) {
+                    next()
+                } else {
+                    next(false)
+                }
+            }
+        }
+
+        const Qux = {
+            data() {
+                return {
+                    msg: null
+                }
+            },
+            template: `<div>{{msg}}</div>`,
+            beforeRouteEnter(to, from, next) {
+                // setTimeout(() => {
+                //     next(vm => {
+                //         vm.msg = "Qux"
+                //     })
+                // }, 100)
+                setTimeout( function() {
+                    next(function(vm){
+                         vm.msg = "Qux"
+                    })
+                }, 100)
+
+            }
+        }
+
+        const Quux = {
+            data() {
+                return {
+                    prevId: 0
+                }
+            },
+            template: `<div>id: {{$route.params.id}} prevId:{{prevId}}</div>`,
+            beforeRouteUpdate(to, from, next) {
+                this.prevId = from.params.id;
+                next();
+            }
+        }
+
+        const router = new VueRouter({
+            mode: "history",
+            routes: [
+                { path: "/", component: Home },
+                { path: "/foo", component: Foo, beforeEnter: guardRoute },
+                { path: '/bar', component: Bar, meta: { needGuard: true } },
+
+                // Baz implements an in-component beforeRouteLeave hook
+                { path: '/baz', component: Baz },
+
+                // Qux implements an in-component beforeRouteEnter hook
+                { path: '/qux', component: Qux },
+                // in-component beforeRouteUpdate hook
+                { path: '/quux/:id', component: Quux },
+
+                {
+                path: '/qux-async', component: function(resolve){ 
+                    setTimeout(function(){
+                         resolve(Qux)
+                    }, 1000)
+
+                }}
+                // {  // 同上方写法
+                //     path: '/qux-async', component: resolve => {
+                //         setTimeout(() => {
+                //             resolve(Qux)
+                //         }, 0)
+                //     }
+                // },
+            ]
+        })
+
+
+        const app = new Vue({
+            router: router
+        }).$mount('#app');
+    </script>
+</body>
+
+</html>
