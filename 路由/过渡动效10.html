@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .fade-enter {
+            opacity: 0;
+        }
+
+        .fade-leave {
+            opacity: 1;
+        }
+
+        .fade-enter-active {
+            transition: opacity .5s;
+        }
+
+        .fade-leave-active {
+            opacity: 0;
+            transition: opacity .5s;
+        }
+    </style>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Navigation Guards</h1>
+        <ul>
+            <li>
+                <router-link to="/">/</router-link>
+            </li>
+            <li>
+                <router-link to="/foo">/foo</router-link>
+            </li>
+        </ul>
+        // <router-view> 是基本的动态组件，用 <transition> 组件给它添加一些过渡效果: 所有 使用该 view 的页面都具有 动画效果
+
+        <transition name="fade">
+            <router-view></router-view>
+        </transition>
+    </div>
+    <script>
+
+        const All = {
+            template: "<div>All match</div>"
+        };
+        const Foo = {
+            template: "<div>Foo match</div>"
+        };
+        const router = new VueRouter({
+            routes: [
+                { path: "/foo", component: Foo },
+                { path: "/*", component: All },  // 
+   
+
+            ]
+        });
+
+        const app = new Vue({
+            router: router
+        }).$mount('#app');
+    </script>
+</body>
+
+</html>
