@@ -3,8 +3,9 @@
     <div>
         <h2>{{msg}}</h2>
         <hr>
-        <h3>{{$store.state.count}}</h3>
-        <h3>{{count}}</h3>
+        <h3>$store.state.count:{{$store.state.count}}</h3>
+        <h3>count: {{count}}</h3>
+        <h3>mycount: {{mycount}}</h3>
     </div>
     <div>
         <button @click="$store.commit('add')">+</button>
@@ -31,7 +32,12 @@ export default {
         //     count:state => state.count
         // }),
 
-        computed:mapState(["count"]),
+        //computed:mapState(["count"]),
+        
+        computed:{
+            ...mapState(["count"]),
+            //mycount:() => mapState(["count"]).count
+        },
 
         data(){
             return {
