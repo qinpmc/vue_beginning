@@ -32,13 +32,23 @@ export default {
         //     count:state => state.count
         // }),
 
-        //computed:mapState(["count"]),
+        //computed:mapState(["count"]), // 当映射的计算属性的名称与 state 的子节点名称相同时
         
-        computed:{
-            ...mapState(["count"]),
-            //mycount:() => mapState(["count"]).count
-        },
-
+		/*
+        computed:mapState({
+			count:state => state.count,
+            mycount: "count"
+             
+        }),*/
+		
+		computed:{
+			...mapState(["count"]), // mapState 函数返回一个对象
+			//...mapState({mycount: "count"}) , // 和下方的写法等价
+			mycount:mapState(["count"]).count
+			
+			
+		},
+		
         data(){
             return {
                 msg:'hello vuex'
