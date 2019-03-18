@@ -16,10 +16,12 @@
                 <option value="b">B</option>
                 <option value="a">C</option>
             </select>
+            selected 显示的是 option的value值，而非其所包裹的字符
             <span>Selected: {{ selected }}</span>
         </div>
 
         <hr>
+        注意这里和option的value 对应，如果省略value属性，会和option中字符串匹配 <br>
         多选时 (绑定到一个数组)：
         <select v-model="multiSelected" multiple >
             <option disabled value="">请选择</option>

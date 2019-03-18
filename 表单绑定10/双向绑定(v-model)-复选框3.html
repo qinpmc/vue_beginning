@@ -8,12 +8,13 @@
 <body>
 
     <div id="app">
+         checked  特性的初始值 由于v-model 的存在被忽略 <br>
          单个复选框，绑定到 **布尔值**
         <div>
-            <input v-model="isChecked" type="checkbox" >
+            <input v-model="isChecked" type="checkbox" checked >
             <p>isChecked is: {{ isChecked }}</p>
         </div>
-        多个复选框，绑定到同一个**数组**：
+        多个复选框，绑定到同一个**数组**： [ "John", "Mike" ]
         <div  >
             <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
             <label for="jack">Jack</label>
