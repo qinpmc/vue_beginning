@@ -2,7 +2,7 @@ import Vue from "vue"
 import app from "./App.js"
 
 new Vue({
-	template:"<myapp></myapp>",
+	template:"<div>main<myapp></myapp></div>", // 可直接简写为<myapp></myapp>
 	components:{
 		"myapp":app
 	}
