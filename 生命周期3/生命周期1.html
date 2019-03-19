@@ -16,17 +16,26 @@
         data: {
             message : "haha is boy"
         },
+		
+		methods:{
+			show(){
+				console.log("show methods");
+			}
+		},
+		
         beforeCreate: function () {
             console.group('beforeCreate 创建前状态===============》');
             console.log("%c%s", "color:red" , "el     : " + this.$el); //undefined
             console.log("%c%s", "color:red","data   : " + this.$data); //undefined
             console.log("%c%s", "color:red","message: " + this.message);//undefined
+			console.log("%c%s", "color:red","methods: " + this.show);// undefined
         },
         created: function () {
             console.group('created 创建完毕状态===============》');
             console.log("%c%s", "color:red","el     : " + this.$el); //undefined （注释：$el 还未加载）
             console.log(this.$data); //  {__ob__: Observer} message:(...)  (注释：$data已被初始化)
             console.log("%c%s", "color:red","message: " + this.message); //  message: haha is boy （注释：$data已被初始化）
+			console.log("%c%s", "color:red","methods: " + this.show);// function () { [native code] }
         },
         beforeMount: function () {
             console.group('beforeMount 挂载前状态===============》');
@@ -34,6 +43,7 @@
             console.log(this.$el); //   <div id="app"><p>{{ message }}</p> </div>    (注释:此时绑定的数据为加载)
             console.log("%c%s", "color:red","data   : " + this.$data); //  (注释：$data已被初始化）
             console.log("%c%s", "color:red","message: " + this.message); // (注释：message已被初始化）
+			console.log("%c%s", "color:red","methods: " + this.show);// function () { [native code] }
         },
         mounted: function () {
             console.group('mounted 挂载结束状态===============》');
@@ -41,6 +51,7 @@
             console.log(this.$el);  //   <div id="app"><p>haha is boy </p> </div>
             console.log("%c%s", "color:red","data   : " + this.$data); //已被初始化
             console.log("%c%s", "color:red","message: " + this.message); //已被初始化
+			console.log("%c%s", "color:red","methods: " + this.show);// function () { [native code] }
         },
         beforeUpdate: function () {
             console.group('beforeUpdate 更新前状态===============》');
@@ -49,6 +60,7 @@
             console.log(this.$el.innerHTML); //<p>haha is boy</p>
             console.log("%c%s", "color:red","data   : " + this.$data);
             console.log("%c%s", "color:red","message: " + this.message);
+			console.log("%c%s", "color:red","methods: " + this.show);// 
         },
         updated: function () {
             console.group('updated 更新完成状态===============》');
@@ -57,6 +69,7 @@
             console.log(this.$el.innerHTML);//<p>koko</p>
             console.log("%c%s", "color:red","data   : " + this.$data);
             console.log("%c%s", "color:red","message: " + this.message);
+			console.log("%c%s", "color:red","methods: " + this.show);// 
         },
         beforeDestroy: function () {
             console.group('beforeDestroy 销毁前状态===============》');
