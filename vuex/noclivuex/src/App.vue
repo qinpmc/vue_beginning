@@ -41,8 +41,9 @@ export default {
              
         }),*/
 		
+		
 		computed:{
-			...mapState(["count"]), // mapState 函数返回一个对象
+			...mapState(["count"]), // mapState 函数返回一个对象,对象具有count属性，采用解构赋值
 			//...mapState({mycount: "count"}) , // 和下方的写法等价
 			mycount:mapState(["count"]).count
 			

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>html片段</title>
+    <script src ="../vue.js"></script>
+</head>
+<body>
+html 片段
+<button id='btn1'> add</button>
+<div id="app" :style="{ fontSize: postFontSize + 'em' }">
+ 
+</div>
+ 
+<script>
+    // 组件
+
+	
+	var oDiv = document.getElementById("app");
+	var newDiv = document.createElement("div");
+	newDiv.innerHTML = "<p id='p1'>original...{{test}} </p>"
+	setTimeout(function(){
+	
+		oDiv.appendChild(newDiv);
+		app.$forceUpdate()
+	},2000)
+	var oP= document.getElementById("p1");
+	var btn = document.getElementById('btn1');
+	btn.onclick = function(){
+		Vue.component('testhtml',{
+			 template:newDiv.innerHTML,
+			 data: function () {
+				return {
+				  test: 9
+				}
+			  },
+		})
+			
+	
+	}
+
+    	Vue.component('blog-post', {
+	  props: ['mes'], // 属性mes接收父组件传递的值
+	  template:`
+    <div class="blog-post">
+      <h3>{{ mes.title }}</h3>
+      <button @click="$emit('enlarge-text',0.1)">
+        Enlarge text
+      </button>
+      <div v-html="mes.content"></div>
+    </div>
+  `
+	})
+
+    var app = new Vue({
+        el:'#app',
+		data: {
+		postFontSize: 1,
+    posts: [
+      { id: 1, title: 'My journey with Vue' },
+      { id: 2, title: 'Blogging with Vue' },
+      { id: 3, title: 'Why Vue is so fun' }
+    ]
+  },
+  methods: {
+  onEnlargeText: function (enlargeAmount) {
+    this.postFontSize += enlargeAmount
+  }
+}
+		
+    })
+ 
+</script>
+</body>
+</html>
