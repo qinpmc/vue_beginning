@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件props非继承</title>
+    <script src ="../vue.js"></script>
+</head>
+<body>
+ 注销props: ['dataTitle']，data-title="learn vue" 会显示在html元素中，此时代表非 Prop 的特性
+ 
+不希望组件的根元素继承特性，你可以设置在组件的选项中设置 inheritAttrs: false;
+有了 inheritAttrs: false 和 $attrs，就可以手动决定这些特性会被赋予哪个元素。
+
+注意 ： inheritAttrs: false 选项不会影响 style 和 class 的绑定。
+    <div id="app">
+		<my-comp data-title="learn vue" class="mycls" style="color:red;"> </my-comp>
+	</div>
+
+<!-- 
+上述渲染结果：
+  
+ 
+-->
+
+ 
+<script>
+    // 组件
+	Vue.component('my-comp', {
+		//inheritAttrs: false,
+		props: ['dataTitle'], // 注销此句，data-title="learn vue" 会显示在html元素中，此时代表非 Prop 的特性
+        template: '<div>我是组件 </div>'
+    });
+    new Vue({
+        el: '#app'
+    });
+ 
+</script>
+</body>
+</html>
