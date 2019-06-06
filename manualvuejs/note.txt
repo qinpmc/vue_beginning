@@ -1,0 +1,23 @@
+https://www.cnblogs.com/xingyazhao/p/7767602.html
+
+1. 不采用 .vue文件
+组件并不使用.vue文件方式，因为这种文件是经过了vue-loader做了相应的处理，意思可以理解为将组件<template></template>中的模板编译到了组件对象中。
+此处选择原生的方式，那么就应该将模板写在组件选项'template'中（虽然这种方式没有语法高亮，但要记得我们这样做的目的），而我们的组件后缀是.js。
+
+
+2. 打包：
+在打包之前我们需要先修改vue npm包的package.json文件，将默认导出的‘只包含运行时’改为‘完整版’，
+即将如下两项的'runtime'去掉（运行时不包含编译器 | 编译器作用：用来将模板字符串编译成为 JavaScript 渲染函数的代码>，因此组件对象不支持 template 选项）：
+
+  "main": "dist/vue.runtime.common.js",
+  "module": "dist/vue.runtime.esm.js",
+
+  改为：
+
+  "main": "dist/vue.common.js",
+  "module": "dist/vue.esm.js",
+
+
+项目下运行：webpack 打包
+
+3. 浏览器打开 index.html 即可以看到结果

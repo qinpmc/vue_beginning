@@ -12,8 +12,9 @@
   "dependencies": {
     "babel-loader": "^7.1.5",
     "vue": "^2.6.9",
-    "webpack": "^4.29.6",
-    "webpack-cli": "^3.3.0"
+    "webpack": "^4.29.6"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "webpack-cli": "^3.3.2"
+  }
 }
