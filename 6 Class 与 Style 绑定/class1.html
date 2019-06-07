@@ -17,15 +17,19 @@
     <div id="app">
         <ul>
             对象语法 1： 直接绑定对象
-            <li v-bind:class="{active:isActive}">  样式active:isActive </li>
+            <li v-bind:class="{active:isActive}">  样式active:isActive </li> 
+            <!-- 渲染为：   <li v-bind:class="active">...</li> -->
+
+
             <li v-bind:class="{active:isActive,'text-danger':hasError}">  样式 :isActive/text-danger </li>
+             <!-- 渲染为：   <li v-bind:class="active text-danger">...</li> -->
         </ul>
     </div>
     <div id="app2">
         <ul>
             对象语法 2- 对象定义在vue实例的data里
             <li v-bind:class="classObj">  样式classObj </li>
-
+            <!-- 渲染为：   <li v-bind:class="active text-danger">...</li> -->
         </ul>
     </div>
 

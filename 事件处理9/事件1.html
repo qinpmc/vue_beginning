@@ -12,8 +12,8 @@
         <p>The button has been clicked {{ count }} times.</p>
     </div>
     <div id="app2">
-        //复杂的事件处理，逻辑在methods中，
-        <!--<button v-on:click="greet()">点我</button>-->
+        //复杂的事件处理，逻辑在methods中，此时method 可以包含括号或不包含括号 进行调用
+        <button v-on:click="greet()">点我</button>
 
         <button v-on:click="greet">点我</button>
         <p>The button has been clicked {{ count }} times.</p>
