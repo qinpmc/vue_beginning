@@ -6,14 +6,14 @@
     <script src ="../vue.js"></script>
 </head>
 <body>
-//没有包含一个 slot 元素，则任何传入它的内容都会被抛弃。
+//没有包含一个 slot 元素，则任何传入它的内容都会被抛弃。<br>
 
     // 1.无插槽
 <div id="app">
     <navigation-link
             v-bind:key="id"
             v-bind:url="url"
-            v-bind:content="content"
+            v-bind:cont="content"
     > 这段文字会消失（无插槽会不保留） </navigation-link>
 </div>
 <hr>
@@ -39,8 +39,8 @@
 <script>
     // 组件1 --没有插槽
     Vue.component('navigation-link', {
-        props: ['url','content'],
-        template: '<a v-bind:href="url" >{{content}} </a>'
+        props: ['url','cont'],
+        template: '<a v-bind:href="url" >{{cont}} </a>'
     })
 
 

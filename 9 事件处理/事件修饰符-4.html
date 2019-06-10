@@ -20,7 +20,7 @@
 </head>
 <body>
     <div id="app1">
-        click.prevent.self :会阻止所有的点击(下例子中，点击 div.son ,a标签既不会跳转，也不输出信息)，输出 3 1
+        click.prevent.self :会阻止所有的点击(下例子中，点击 div.son ,a标签既不会跳转，a标签也不输出信息)，输出 3 1
         <div @click="say(1)" class="parent">
             <a href="http://w3school.com.cn/" @click.prevent.self="say(2)">a标签
                 <div @click="say(3)" class="son">div标签</div>
@@ -29,7 +29,7 @@
     </div>
     <hr>
     <div id="app2">
-        click.self.prevent 只会阻止对元素自身的点击(下例子中，点击 div.son ,a标签会跳转，但不输出信息)，输出 3 1
+        click.self.prevent 只会阻止对元素自身的点击(下例子中，点击 div.son ,a标签会跳转，a标签不输出信息)，输出 3 1
         <div @click="say(1)" class="parent">
             <a href="http://w3school.com.cn/" @click.self.prevent="say(2)">a标签
                 <div @click="say(3)" class="son">div标签</div>
