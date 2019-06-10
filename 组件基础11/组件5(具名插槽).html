@@ -6,20 +6,20 @@
     <script src ="../vue.js"></script>
 </head>
 <body>
-//没有包含一个 slot 元素，则任何传入它的内容都会被抛弃。
+//没有包含一个 slot 元素，则任何传入它的内容都会被抛弃。<br>
 
-    // 1.
+
 <div id="app">
-    <h1>商场里面的商品</h1>
+    <h1>商场里面的商品1</h1>
     <shop>
-            <li slot='shoes' > 各种各样的鞋子</li>
-            <li slot='defualt' > 各种各样的衬衣 --没有对应的slot名字，不会保留</li>
-            <li slot='makeup' > 各种各样的化妆品</li>
+            <template v-slot:shoes > 各种各样的鞋子</template>
+            <template v-slot:defualt > 各种各样的衬衣 --没有对应的slot名字，不会保留</template>
+            <template v-slot:makeup > 各种各样的化妆品</template>
     </shop>
 </div>
 <hr>
 <div id="app2">
-    <h1>商场里面的商品2</h1>
+    <h1>商场里面的商品2 ---vue2.6 以前语法</h1>
     <shop2>
         <li slot='shoes' > 各种各样的鞋子</li>
         <li slot='defualt' > 各种各样的衬衣 --没有对应的slot名字，不会保留</li>
@@ -33,17 +33,17 @@
 <div id="app3">
     <h1>商场里面的商品3-----和上面app2一样效果</h1>
     <shop2>
-        <template slot="shoes">
-            <li > 各种各样的鞋子</li>
+        <template v-slot:shoes>
+            <li > 各种各样的鞋子33</li>
         </template>
-        <template slot="defualt">
-            <li > 各种各样的衬衣 --没有对应的slot名字，不会保留</li>
+        <template v-slot:defualt>
+            <li > 各种各样的衬衣 --没有对应的slot名字，不会保留33</li>
         </template>
-        <li> 没有对应的slot名字2222，会被默认插槽保留</li>
-        <template slot="makeup">
-            <li > 各种各样的化妆品</li>
+        <li> 没有对应的slot名字33，会被默认插槽保留33</li>
+        <template v-slot:makeup>
+            <li > 各种各样的化妆品33</li>
         </template>
-        <li> 没有对应的slot名字，会被默认插槽保留</li>
+        <li> 没有对应的slot名字，会被默认插槽保留33</li>
 
     </shop2>
 </div>
