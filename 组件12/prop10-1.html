@@ -10,6 +10,9 @@
 不希望组件的根元素继承特性，你可以设置在组件的选项中设置 inheritAttrs: false;
 有了 inheritAttrs: false 和 $attrs，就可以手动决定这些特性会被赋予哪个元素。
 
+$attrs： 包含了父作用域中不作为 prop 被识别 (且获取) 的特性绑定 (class 和 style 除外)。当一个组件没有声明任何 prop 时，这里会包含所有父作用域的绑定 (class 和 style 除外)，
+
+
 注意 ： inheritAttrs: false 选项不会影响 style 和 class 的绑定。
     <div id="app">
         <base-input

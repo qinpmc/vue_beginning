@@ -6,30 +6,44 @@
     <script src ="../vue.js"></script>
 </head>
 <body>
+本示例讲解组件传值及传值的参数格式校验
+
+
 <div id="app">
-    <child1 content="nice to meet you"></child1>
-    
+    <child :content="123"></child>
+    <child :content="'hello'"></child>   
+    <child :content="hello2"></child>     绑定变量 hello2----值为HELLo2222
+    <child content="hello2"></child>      绑定字符串值 hello2
+    <child content="{age:22}"></child>    绑定字符串值 {age:22}
+    <child content="123"></child>         绑定字符串值 123
+    <!-- <child :content="{age:22}"></child>  错误-->  
 </div>
  
+<!-- 
+渲染结果
+child 123
+child hello
+child HELLo2222
+child hello2
+child {age:22} 
+-->
+
+
 <script>
     // 组件
-    Vue.component("child1",{
-        // props:{
-        //     content:{
-        //         type:String,  
-        //         required:false,
-        //         default:" hello",
-        //         validator:function(value){
-        //             return value.length>=5;
-        //         }
-        //     } 
-        // },
-        template:'<div>child1 {{content}}</div>'
+    Vue.component("child",{
+        props:{
+            content:[String,Number]  // content: String ; 
+        },
+        template:'<div>child {{content}}</div>'
     });
  
 
     var app = new Vue({
         el:'#app',
+        data:{
+            hello2:"HELLo2222"
+        }
  
     })
  

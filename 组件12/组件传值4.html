@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件开始</title>
+    <script src ="../vue.js"></script>
+</head>
+<body>
+
+父组件传递给子组件的值，子组件接收后不能直接修改！！
+
+<div id="app">
+    <child1 :content="1" ></child1>
+    
+</div>
+ 
+<script>
+    // 组件
+    Vue.component("child1",{
+        props:{
+            content:{
+                type:Number
+            } 
+        },
+        data:function(){
+            return {
+                number:this.content
+            }
+        },
+        methods:{
+            handleClick:function(){
+                //this.content++; // 直接操作父组件传值（错误用法）
+                this.number++;
+            }
+        },
+        template:'<div @click="handleClick">child : {{number}} ----直接使用父组件传值（错误用法）{{content}}</div>'
+    });
+ 
+
+    var app = new Vue({
+        el:'#app',
+ 
+    })
+ 
+</script>
+</body>
+</html>

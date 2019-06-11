@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件开始</title>
+    <script src ="../vue.js"></script>
+</head>
+<body>
+        本示例讲解组件传值及传值的参数格式校验
+        包括：type   required default validator
+<div id="app">
+    <child1 content="nice to meet you"></child1>
+    
+</div>
+ 
+<script>
+    // 组件
+    Vue.component("child1",{
+        props:{
+            content:{
+                type:String,  
+                required:false,
+                default:" hello",
+                validator:function(value){
+                    return value.length>=5;
+                }
+            } 
+        },
+        template:'<div>child1 {{content}}</div>'
+    });
+ 
+
+    var app = new Vue({
+        el:'#app',
+ 
+    })
+ 
+</script>
+</body>
+</html>
