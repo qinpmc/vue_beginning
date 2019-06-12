@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -8,6 +9,7 @@
     <meta name="keywords" content="">
 
 </head>
+
 <body>
     <div>
         指令钩子函数会被传入以下参数：<br>
@@ -22,45 +24,39 @@
         modifiers：一个包含修饰符的对象。例如：v-my-directive.foo.bar 中，修饰符对象为 { foo: true, bar: true }。<br>
         vnode：Vue 编译生成的虚拟节点。移步 VNode API 来了解更多详情。<br>
         oldVnode：上一个虚拟节点，仅在 update 和 componentUpdated 钩子中可用。<br>
+        -----------------------------------------------------------------------------------------------------<br>
+        &lt; p v-demo:foo.a.b="message"&gt;段落&lt;/p&gt;
     </div>
+    <hr>
     <div class='p'>
         <p v-demo:foo.a.b="message">段落</p>
     </div>
-    v-demo:foo.a.b="message" -----------------<br>
-
-    arg: "foo" <br>
-    def: {bind: ƒ}<br>
-    expression: "message"<br>
-    modifiers:<br>
-        a: true<br>
-        b: true<br>
-    __proto__: Object<br>
-    name: "demo"<br>
-    rawName: "v-demo:foo.a.b"<br>
-    value: "hello directive"<br>
 
 </body>
-<script src ="../vue.js"></script>
+<script src="../vue.js"></script>
 <script type="text/javascript">
-
-
-
     new Vue({
-        el:'.p',
+        el: '.p',
         //自定义局部指令
-        directives:{
-            demo:{
-                bind(el,binding,vnode){    // 只调用一次，指令第一次绑定到元素时调用。
-                    el.style.color='blue';
-                    console.log(binding);
-                    console.log(vnode)
+        directives: {
+            demo: {
+                bind(el, binding, vnode) {    // 只调用一次，指令第一次绑定到元素时调用。
+                    var s = JSON.stringify
+                    el.innerHTML =
+                        'name: ' + s(binding.name) + '<br>' +
+                        'value: ' + s(binding.value) + '<br>' +
+                        'expression: ' + s(binding.expression) + '<br>' +
+                        'argument: ' + s(binding.arg) + '<br>' +
+                        'modifiers: ' + s(binding.modifiers) + '<br>' +
+                        'vnode keys: ' + Object.keys(vnode).join(', ')
                 }
             },
- 
+
         },
-        data:{
-            message:"hello directive"
+        data: {
+            message: "demo directive"
         }
     })
 </script>
+
 </html>
