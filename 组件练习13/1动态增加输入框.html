@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src ="../vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <label for="">起点</label>
+        <input type="text" name="" id="" v-model="origin"><br>
+        <button @click="addWaypoint">增加</button><br>
+        <div v-for="waypoint in waypoints">
+            <label for="" >{{ waypoint.name }}</label>
+            <input type="text" name="" id=""  v-model="waypoint.address ">
+            <button>定位途径点</button>
+        </div>
+        <button @click="delWaypoint">删除</button><br>
+        <label for="">终点</label>
+        <input type="text" name="" id="" v-model="destination">
+    </div>
+    <script>
+
+        var app  = new Vue({
+            el:"#app",
+            data:{
+                origin:"",
+                destination:"",
+                waypoints:[
+   
+                ],
+                step:{}
+    
+
+            },
+            methods:{
+                addWaypoint:function(){
+                    var index = this.waypoints.length;
+                    var name = "途径点"+(index+1);
+                    this.waypoints.push({
+                        name:name,
+                        addressName:"",
+                        address:null
+                    })
+                    console.log(this.waypoints.length)
+                },
+                delWaypoint:function(){
+                    this.waypoints.pop()
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
