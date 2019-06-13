@@ -9,6 +9,7 @@
 <body>
 <div id="app">
     <p>
+        <router-link to="/other">/other</router-link>
         <router-link to="/user/foo">/user/foo</router-link>
         <router-link to="/user/foo/profile">/user/foo/profile</router-link>
         <router-link to="/user/foo/posts">/user/foo/posts</router-link>
@@ -29,6 +30,9 @@
         const UserHome = { template: '<div>Home</div>' }
         const UserProfile = { template: '<div>Profile</div>' }
         const UserPosts = { template: '<div>Posts</div>' }
+        const Other = { template: '<div>Other</div>' }
+
+
 
         const router = new VueRouter({
             routes: [
@@ -46,6 +50,9 @@
                         // when /user/:id/posts is matched
                         { path: 'posts', component: UserPosts }
                     ]
+                },
+                {
+                    path: '/other', component: Other,
                 }
             ]
         })
