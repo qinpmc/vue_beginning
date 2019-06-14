@@ -1,6 +1,6 @@
-±¾Demo Ê¹ÓÃvue-cli Éú³É£¬µ«Éú³É¹ı³ÌÖĞÎ´Ñ¡Ôñvuex£¬²ÉÓÃÊÖ¶¯·½Ê½ÒıÈë vuex£º
-1.  °²×°vuex £ºnpm install vuex 
-2. ÔÚÉú³ÉµÄÏîÄ¿srcÄ¿Â¼ÖĞ£¬ÊÖ¶¯½¨Á¢store.js;
+æœ¬Demo ä½¿ç”¨vue-cli ç”Ÿæˆï¼Œä½†ç”Ÿæˆè¿‡ç¨‹ä¸­æœªé€‰æ‹©vuexï¼Œé‡‡ç”¨æ‰‹åŠ¨æ–¹å¼å¼•å…¥ vuexï¼š
+1.  å®‰è£…vuex ï¼šnpm install vuex 
+2. åœ¨ç”Ÿæˆçš„é¡¹ç›®srcç›®å½•ä¸­ï¼Œæ‰‹åŠ¨å»ºç«‹store.js;
 
 ```
 import Vue from 'vue'
@@ -24,7 +24,7 @@ export default new Vuex.Store({
 })
 
 ```
-3. ÔÚ main.js Èë¿ÚÎÄ¼şÒıÈë ¸Ãstore.js 
+3. åœ¨ main.js å…¥å£æ–‡ä»¶å¼•å…¥ è¯¥store.js 
 
 import store from './store'
 ....
@@ -36,10 +36,10 @@ new Vue({
 
 
 
-3.1 . Ò²¿ÉÔÚ ¸ù×é¼ş App.vue ÖĞµ¼Èë£¬È»ºó×÷Îª¸Ã×é¼şµÄ state ÊôĞÔ
+3.1 . ä¹Ÿå¯åœ¨ æ ¹ç»„ä»¶ App.vue ä¸­å¯¼å…¥ï¼Œç„¶åä½œä¸ºè¯¥ç»„ä»¶çš„ state å±æ€§
 
-vuex ¹ÙÍø£º
-Vuex Í¨¹ı store Ñ¡Ïî£¬Ìá¹©ÁËÒ»ÖÖ»úÖÆ½«×´Ì¬´Ó¸ù×é¼ş¡°×¢Èë¡±µ½Ã¿Ò»¸ö×Ó×é¼şÖĞ£¨Ğèµ÷ÓÃ Vue.use(Vuex)£© 
+vuex å®˜ç½‘ï¼š
+Vuex é€šè¿‡ store é€‰é¡¹ï¼Œæä¾›äº†ä¸€ç§æœºåˆ¶å°†çŠ¶æ€ä»æ ¹ç»„ä»¶â€œæ³¨å…¥â€åˆ°æ¯ä¸€ä¸ªå­ç»„ä»¶ä¸­ï¼ˆéœ€è°ƒç”¨ Vue.use(Vuex)ï¼‰ 
 
 
 ```
@@ -53,7 +53,7 @@ import {mapState} from 'vuex';
 export default {
       computed:{
 
-	...mapState(["count"]), // mapState º¯Êı·µ»ØÒ»¸ö¶ÔÏó
+	...mapState(["count"]), // mapState å‡½æ•°è¿”å›ä¸€ä¸ªå¯¹è±¡
                 mycount:mapState(["count"]).count
 	
        },
