@@ -58,11 +58,11 @@
             /not-found (redirects to /)
           </router-link></li>
         </ul>
-        <router-view class="view"></router-view>
+        <router-view ></router-view>
       </div>
 <script>
 
-    const Home = { template: '<router-view></router-view>' }
+const Home = { template: '<router-view></router-view>' }
 const Default = { template: '<div>default</div>' }
 const Foo = { template: '<div>foo</div>' }
 const Bar = { template: '<div>bar</div>' }
@@ -72,7 +72,7 @@ const Foobar = { template: '<div>foobar</div>' }
 const FooBar = { template: '<div>FooBar</div>' }
 
 const router = new VueRouter({
-  mode: 'history',
+ 
 //   base: __dirname,
   routes: [
     { path: '/', component: Home,

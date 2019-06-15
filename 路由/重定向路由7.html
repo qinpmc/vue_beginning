@@ -18,6 +18,9 @@
             <li><router-link to="/relative-redirect-to-after">
                 /relative-redirect (redirects to /to-foo-after)
             </router-link></li>
+            <li><router-link to="/relative-redirect-to-method">
+               方法重定向: /relative-redirect (redirects to /to-foo-after)
+            </router-link></li>
         </ul>
         <router-view></router-view>
     </div>
@@ -29,7 +32,14 @@
             routes: [
                 { path: '/to-foo',component: RelativeRedirect},
                 { path: '/to-foo-after', component: RelativeRedirectAfter},
-                { path: '/relative-redirect-to-after', redirect:"/to-foo-after",component: RelativeRedirectAfter}
+                { path: '/relative-redirect-to-after', redirect:"/to-foo-after",component: RelativeRedirectAfter},
+                {path: "/relative-redirect-to-method",redirect:to =>{
+                    return {
+                        path: '/to-foo' //,component: RelativeRedirect  //  return 重定向的 字符串路径/路径对象
+                    }
+                }}
+
+
             ]
         });
         const app = new Vue({
