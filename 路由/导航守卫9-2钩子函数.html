@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Navigation Guards hook </h1>
+        <router-link to="/foo">foo</router-link>
+        <router-link to="/bar">bar</router-link>
+        <router-view class="view"></router-view>
+    </div>
+    <script>
+
+        const Home = {
+            template: "<div>home</div>"
+        }
+        const Foo = {
+            template: "<div>foo</div>",
+            beforeRouteEnter(to, from, next) {
+                console.log("Foo组件守卫：beforeRouteEnter");
+                next();
+            },
+            beforeRouteUpdate(to, from, next) {
+                console.log("Foo组件守卫：beforeRouteUpdate");
+                next();
+            },
+            beforeRouteLeave(to, from, next) {
+                console.log("Foo组件守卫：beforeRouteLeave");
+                next();
+            },
+        }
+        const Bar = {
+            template: "<div>bar</div>",
+            beforeRouteEnter(to, from, next) {
+                console.log("Bar组件守卫：beforeRouteEnter");
+                next();
+            },
+            beforeRouteUpdate(to, from, next) {
+                console.log("Bar组件守卫：beforeRouteUpdate");
+                next();
+            },
+            beforeRouteLeave(to, from, next) {
+                console.log("Bar组件守卫：beforeRouteLeave");
+                next();
+            },
+        }
+
+        const router = new VueRouter({
+            routes: [
+                { path: "/", component: Home, },
+                { path: "/foo", component: Foo, },
+                {
+                    path: '/bar', component: Bar, beforeEnter: (to, from, next) => {
+                        console.log("Bar路由独享：beforeEnter");
+                        next();
+                    }
+                },
+            ]
+        })
+        router.beforeEach((to, from, next) => {
+            console.log("全局：beforeEach");
+            next();
+        })
+        router.afterEach((to, from) => {
+            console.log("全局：afterEach");
+        })
+
+        router.beforeResolve((to, from, next) => {
+            console.log("全局：beforeResolve");
+            next();
+        })
+
+        const app = new Vue({
+            router
+        }).$mount('#app');
+    </script>
+</body>
+
+</html>

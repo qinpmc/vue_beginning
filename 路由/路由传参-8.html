@@ -7,14 +7,33 @@
     <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
 </head>
 <body>
+    vm.$attrs:包含了父作用域中不作为 prop 被识别 (且获取) 的特性绑定 (class 和 style 除外)。
 <div id="app">
 
 </div>
 <script type="module">
 
-import Hello from './Hello-prop8.js'
 
 Vue.use(VueRouter)
+
+let Hello = Vue.component("Hello",{
+  props: {
+    name: {
+      type: String,
+      // default: 'Vue!'
+    },
+    foo:{
+      String
+    }
+  },
+  template:`
+    <div>
+        <h2 class="hello">Hello {{name}} {{foo}} {{ $attrs }}</h2>
+        <h2 class="hello">Hello {{$props["name"]}} {{ $attrs }}</h2>
+    </div>
+  `
+  }
+)
 
 function dynamicPropsFn (route) {
   const now = new Date()
@@ -23,8 +42,10 @@ function dynamicPropsFn (route) {
   }
 }
 
+
+
 const router = new VueRouter({
-  mode: 'history',
+  //mode: 'history',
 //   base: __dirname,
   routes: [
     { path: '/', component: Hello }, // No props, no nothing
@@ -42,12 +63,12 @@ new Vue({
       <h1>Route props</h1>
       <ul>
         <li><router-link to="/">/</router-link></li>
-        <li><router-link to="/hello/haha">/hello/you</router-link></li>
+        <li><router-link to="/hello/you">/hello/you</router-link></li>
         <li><router-link to="/static">/static</router-link></li>
-        <li><router-link to="/dynamic/1">/dynamic/1</router-link></li>
+        <li><router-link to="/dynamic/9">/dynamic/1</router-link></li>
         <li><router-link to="/attrs">/attrs</router-link></li>
       </ul>
-      <router-view class="view" foo="123" ttt="{name:'qq',age:22}}"></router-view>
+      <router-view class="view" foo="foo" ttt="{name:'qq',age:22}}"></router-view>
     </div>
   `
 }).$mount('#app')
