@@ -39,6 +39,8 @@
             template: "<div>bar</div>",
             beforeRouteEnter(to, from, next) {
                 console.log("Bar组件守卫：beforeRouteEnter");
+                console.log(to);
+                console.log(from)
                 next();
             },
             beforeRouteUpdate(to, from, next) {
