@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>组件开始</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <anchored-heading :level="2">
+      <a href="#">Hello world!</a>
+    </anchored-heading>
+  </div>
+</body>
+
+<script>
+  Vue.component('anchored-heading', {
+    render: function (createElement) {
+      return createElement(
+        'h' + this.level,   // 标签名称
+        this.$slots.default // 子节点数组
+      )
+    },
+    props: {
+      level: {
+        type: Number,
+        required: true
+      }
+    }
+  })
+  new Vue({
+    el: '#container'
+  });
+</script>
+
+</body>
+
+</html>

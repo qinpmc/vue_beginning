@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>组件开始</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+        <div id="container">
+          <tb-heading :level="1">
+            <a href="#">Hello world!</a>
+          </tb-heading>
+        </div>
+      </body>
+  
+      <script type="text/x-template" id="templateId">
+        <h1 v-if="level === 1">
+            <slot></slot>
+          </h1>
+          <h2 v-else-if="level === 2">
+            <slot></slot>
+          </h2>
+          <h3 v-else-if="level === 3">
+            <slot></slot>
+          </h3>
+          <h4 v-else-if="level === 4">
+            <slot></slot>
+          </h4>
+          <h5 v-else-if="level === 5">
+            <slot></slot>
+          </h5>
+          <h6 v-else-if="level === 6">
+            <slot></slot>
+          </h6>
+      </script>
+    
+      <script>
+        Vue.component('tb-heading', {
+          template: '#templateId',
+          props: {
+            level: {
+              type: Number,
+              required: true
+            }
+          }
+        });
+        new Vue({
+          el: '#container'
+        });
+      </script>
+ 
+</body>
+
+</html>
