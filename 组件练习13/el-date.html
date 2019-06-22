@@ -18,6 +18,10 @@
         <el-date-picker v-model="value1" type="datetimerange" start-placeholder="开始日期" end-placeholder="结束日期"
             @change="handleChange">
         </el-date-picker>
+        <el-button type="primary" @click="searchToday">查询今天</el-button>
+        <el-button type="primary" @click="searchWeek">查询本周</el-button>
+        <el-button type="primary" @click="searchMonth">查询本月</el-button>
+        <el-button type="primary" @click="searchYear">查询本年</el-button>
     </div>
     <script>
         var app = new Vue({
@@ -35,18 +39,97 @@
                     start = this.format(start);
                     end = this.format(end);
                 },
-                format(date){
+                format(date) {
                     let year = date.getFullYear();
-                    let month = this.toStandard(date.getMonth()+1);
+                    let month = this.toStandard(date.getMonth() + 1);
                     let day = this.toStandard(date.getDate());
                     let hours = this.toStandard(date.getHours());
                     let minitues = this.toStandard(date.getMinutes());
                     let seconds = this.toStandard(date.getSeconds());
-                    return ""+year+"-"+month+"-"+day+" "+hours+":"+minitues+":"+seconds;
+                    return "" + year + "-" + month + "-" + day + " " + hours + ":" + minitues + ":" + seconds;
                 },
-                toStandard(time){
-                    return time<10? "0"+time : time+"";
+                toStandard(time) {
+                    return time < 10 ? "0" + time : time + "";
+                },
+
+                searchToday() {
+                    let now = new Date();
+                    let nowString = this.format(now);
+                    let start = nowString.substring(0, 10) + " 00:00:00";
+                    let end = nowString.substring(0, 10) + " 23:59:59";
+
+                },
+                searchWeek() {
+
+                    let now = new Date();
+                    let weekday = now.getDay() || 7;
+                    now.setDate(now.getDate() - weekday + 1);
+                    let start = this.format(now);
+                    start = start.substring(0, 10) + " 00:00:00";
+                    now.setDate(now.getDate() + 6);
+                    let end = this.format(now);
+                    end = end.substring(0, 10) + " 23:59:59";
+                },
+
+                searchMonth() {
+                    let now = new Date();
+                    let year = now.getFullYear();
+                    let month = now.getMonth() + 1;
+                    now.setDate(1);
+                    let start = this.format(now);
+                    start = start.substring(0, 10) + " 00:00:00";
+                    let end, lastDay;
+                    switch (month) {
+                        case 1:
+                        case 3:
+                        case 5:
+                        case 7:
+                        case 8:
+                        case 10:
+                        case 12:
+                            now.setDate(31);
+                            end = this.format(now);
+                            end = end.substring(0, 10) + " 23:59:59";
+                            break;
+                        case 4:
+                        case 6:
+                        case 9:
+                        case 11:
+                            now.setDate(30);
+                            end = this.format(now);
+                            end = end.substring(0, 10) + " 23:59:59";
+                            break;
+                        case 2:
+                            if (this.isLeapYear(year)) {
+                                now.setDate(29);
+                                end = this.format(now);
+                                end = end.substring(0, 10) + " 23:59:59";
+                                break;
+                            } else {
+                                now.setDate(28);
+                                end = this.format(now);
+                                end = end.substring(0, 10) + " 23:59:59";
+                                break;
+                            }
+                    }
+                },
+                isLeapYear(year) {
+                    return (year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0);
+                },
+
+                searchYear(){
+                    let now = new Date("2001-02-03 12:11:01");
+                    now.setMonth(0);
+                    now.setDate(1);
+                    let start = this.format(now);
+                    start = start.substring(0, 10) + " 00:00:00";
+                    now.setMonth(11);
+                    now.setDate(31);
+                    let end = this.format(now);
+                    end = end.substring(0, 10) + " 23:59:59";
                 }
+
+
             }
         })
     </script>
