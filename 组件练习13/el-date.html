@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <el-date-picker v-model="value1" type="datetimerange" start-placeholder="开始日期" end-placeholder="结束日期"
+            @change="handleChange">
+        </el-date-picker>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    value1: '',
+                };
+            },
+            methods: {
+                handleChange(data) {
+                    console.log(data);
+                    let start = data[0];
+                    let end = data[1];
+                    start = this.format(start);
+                    end = this.format(end);
+                },
+                format(date){
+                    let year = date.getFullYear();
+                    let month = this.toStandard(date.getMonth()+1);
+                    let day = this.toStandard(date.getDate());
+                    let hours = this.toStandard(date.getHours());
+                    let minitues = this.toStandard(date.getMinutes());
+                    let seconds = this.toStandard(date.getSeconds());
+                    return ""+year+"-"+month+"-"+day+" "+hours+":"+minitues+":"+seconds;
+                },
+                toStandard(time){
+                    return time<10? "0"+time : time+"";
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
