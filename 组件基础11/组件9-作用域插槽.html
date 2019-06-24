@@ -12,6 +12,7 @@
 <div id="app">
     <current-user>
         <template v-slot:default="zuoyongyue">
+            test
                 {{ zuoyongyue.user.firstName }}
         </template>
     </current-user>
@@ -34,7 +35,7 @@
         template: `<div>
             <h3>子组件：</h3>
             {{ user.lastName }}
-            <slot :user="user"> </slot>
+            <slot   :user="user"> </slot>
             
             </div>`,
             data:function(){
