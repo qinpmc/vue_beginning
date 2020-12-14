@@ -16,11 +16,15 @@
         <button v-bind:disabled="isButtonDisabled">v-text-Message: </button><br>
         <input type="checkbox" v-bind:checked="isChecked">足球</input>
     </div>
-
-<!--
-
-    -->
-
+    <div>
+        <button disabled>纯 html disabled </button><br> 
+        <button disabled="disabled">纯 html disabled="disabled"  </button><br> 
+        <button disabled=false>纯 html disabled=false  </button><br> 
+        <input type="checkbox"  checked="checked">纯 html checked="checked" </input><br> 
+        <input type="checkbox"  checked>纯 html checked </input><br> 
+        <input type="checkbox" id="checkbox1" checked = false>纯 html  checked = false </input><br> 
+    </div>
+  
 </body>
 <script>
 
@@ -32,10 +36,15 @@
         el:"#app",
         data:{
             dynamicId:"span1",
-            isButtonDisabled:undefined,
+            isButtonDisabled:false,
             isChecked:undefined
         }
     });
+
+    document.getElementById("checkbox1").addEventListener("click",function(){
+        var checked = this.checked;
+        console.log(checked)
+    })
 
 </script>
 </html>
