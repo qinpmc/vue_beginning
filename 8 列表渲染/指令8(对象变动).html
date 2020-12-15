@@ -8,19 +8,10 @@
 <body>
     <div id="app">
         <!--
-        Vue.set 、vm.$set 修改数组和对象
-        Vue.set(vm.items, indexOfItem, newValue)
-        vm.$set(vm.items, indexOfItem, newValue)
-
+        1. Vue.set(object, propertyName, value) 方法向嵌套对象添加响应式属性
+        2. 还可以使用 vm.$set 实例方法，它只是全局 Vue.set 的别名
         -->
 
-        <ul id="ul_1" >
-            Vue.set修改下标为1 的数组
-            <li v-for="item in arr1" :key="item">{{item}}</li>
-        </ul>
-        <ul id="ul_2" >
-            <li v-for="item in arr2" :key="item">{{item}}</li>
-        </ul>
         <ul id="ul_3" >
             <li v-for="item in object" :key="item">{{item}}</li>
         </ul>
@@ -32,8 +23,6 @@
     var app = new Vue({
         el:"#app",
         data:{
-            arr1:[11,12,13],
-            arr2:[-11,-12,-13],
             object: {
                 firstName: 'John',
                 lastName: 'Doe',
@@ -43,25 +32,31 @@
     });
 
     setTimeout(function(){
-        Vue.set(app.arr1,1,99);
-    },2000)
-    setTimeout(function(){
-        app.$set(app.arr2,2,-99);
+        Vue.set(app.object,"firstName","mikael");  //修改属性"firstName"
     },1500)
 
-    setTimeout(function(){
-        app.$set(app.arr2,3,-33);  //新增
-    },3500)
-    setTimeout(function(){
-        app.$set(app.object,"firstName","Hello");  //修改属性"firstName"
-    },1500)
     setTimeout(function(){
         app.$set(app.object,"gender","male");  //新增"gender"
     },3500)
-/*    Vue 不能检测以下变动的数组：
 
-    当你利用索引直接设置一个项时，例如：vm.items[indexOfItem] = newValue
-    当你修改数组的长度时，例如：vm.items.length = newLength
+    setTimeout(function(){
+        app.object = Object.assign({}, app.object, {
+            job: "it",
+            favoriteColor: 'Green'
+        })
+    },4500)
+
+/*    由于 JavaScript 的限制，Vue 不能检测对象属性的添加或删除：
+
+        var vm = new Vue({
+          data: {
+            a: 1
+          }
+        })
+        // `vm.a` 现在是响应式的
+
+        vm.b = 2
+        // `vm.b` 不是响应式的
 
  */
 </script>

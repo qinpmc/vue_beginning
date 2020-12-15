@@ -57,12 +57,12 @@
 
 
     setTimeout(function(){
-        app.arr1.push(99);
+        app.arr1.push(9);
     },2000);
 
 
     setTimeout(function(){
-        app.arr2.slice(1);
+        app.arr2.slice(1); //不会改变原始数组arr2
         console.log(app.arr2); // [ -11,-12,-13]
     },2000);
 
@@ -71,9 +71,21 @@
     但总是返回一个新数组。当使用非变异方法时，可以用新数组替换旧数组*/
     setTimeout(function(){
         app.arr2 = app.arr2.slice(1); //替换原数组
-        console.log(app.arr2); // [ -11,-12,-13]
+        console.log(app.arr2); // [-12,-13]
     },2500);
 
+
+    setTimeout(function(){
+        Vue.set(app.arr1,1,99);
+    },4000)
+
+    setTimeout(function(){
+        app.$set(app.arr2,2,-99);
+    },4500)
+
+    setTimeout(function(){
+        app.$set(app.arr2,3,-33);  //新增
+    },5500)
 
 /*    Vue 不能检测以下变动的数组：
 
