@@ -1,45 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Title</title>
-    <script src ="../vue.js"></script>
-</head>
-<body>
-
+    <script src="../vue.js"></script>
+  </head>
+  <body>
     <div id="app">
-        选择框 单选时：如果 v-model 表达式的初始值未能匹配任何选项， select 元素将被渲染为“未选中”状态
-        <div >
-            <select v-model="selected">
-                <option disabled value="">请选择</option>
-                <option value="C">A</option>
-                <option value="b">B</option>
-                <option value="a">C</option>
-            </select>
-            selected 显示的是 option的value值，而非其所包裹的字符
-            <span>Selected: {{ selected }}</span>
-        </div>
-
-        <hr>
-        注意这里和option的value 对应，如果省略value属性，会和option中字符串匹配 <br>
-        多选时 (绑定到一个数组)：
-        <select v-model="multiSelected" multiple >
-            <option disabled value="">请选择</option>
-            <option>A</option>
-            <option>B</option>
-            <option>C</option>
+      选择框 单选时：如果 v-model 表达式的初始值未能匹配任何选项， select
+      元素将被渲染为“未选中”状态
+      <div>
+        <select v-model="selected">
+          <option disabled value="">请选择</option>
+          <option value="a">A</option>
+          <option value="b">B</option>
+          <option value="c">C</option>
         </select>
-        <span>multiSelected: {{ multiSelected }}</span>
+        selected 显示的是 option的value值，而非其所包裹的字符
+        <span>Selected: {{ selected }}</span>
+      </div>
+
+      <hr />
+      注意这里和option的value 对应，如果省略value属性，会和option中字符串匹配
+      <br />
+      多选时 (绑定到一个**数组**)：
+      <select v-model="multiSelected" multiple>
+        <option disabled value="">请选择</option>
+        <option>IT</option>
+        <option>EE</option>
+        <option>RE</option>
+      </select>
+      <span>multiSelected: {{ multiSelected }}</span>
     </div>
     <script>
-        var app = new Vue({
-            el:"#app",
-            data:{
-                selected:"C", // 注意这里和option的value 对应，如果省略value属性，会和option中字符串匹配
-                multiSelected:["A","C"]
-            }
-        })
+      var app = new Vue({
+        el: "#app",
+        data: {
+          selected: "b", // 注意这里和option的value 对应，
+          multiSelected: ["IT", "RE"], //如果省略value属性，会和option中字符串匹配
+        },
+      });
     </script>
-</body>
-
+  </body>
 </html>

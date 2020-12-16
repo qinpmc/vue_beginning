@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>组件开始</title>
+    <script src="../vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app1">
+      // posts - post为外部组件数据，子组件blog-post通过
+      **多个属性**接收，然后在子组件中使用mes
+      <blog-post1
+        v-for="post in posts"
+        v-bind:key="post.id"
+        v-bind:title="post.title"
+        v-bind:content="post.content"
+        v-bind:comments="post.comments"
+        v-bind:published-at="post.publishedAt"
+      ></blog-post1>
+    </div>
+
+    <hr />
+    <div id="app2">
+      // posts - post为外部组件数据，子组件blog-post通过
+      **mes属性**接收，然后在子组件中使用mes
+      <blog-post2
+        v-for="post in posts"
+        v-bind:key="post.id"
+        v-bind:mes="post"
+      ></blog-post2>
+    </div>
+
+    <script>
+      // 组件1
+      Vue.component("blog-post1", {
+        props: ["title", "content", "comments", "publishedAt"], // 多个属性 接收父组件传递的值
+        template: `<div class="blog-post">
+            <h3>{{ title }}</h3>
+            <div v-html="content"></div>
+            <p>{{ comments }}</p>
+            <p>{{ publishedAt }}</p>
+          </div>`,
+      });
+
+      var app1 = new Vue({
+        el: "#app1",
+        data: {
+          posts: [
+            {
+              id: 1,
+              title: "My journey with Vue1",
+              content: "<span> ***</span>",
+              comments: "good",
+              publishedAt: "2020-8-1",
+            },
+            {
+              id: 2,
+              title: "Blogging with Vue1",
+              content: "<span> @@@</span>",
+              comments: "nice",
+              publishedAt: "2020-8-2",
+            },
+            {
+              id: 3,
+              title: "Why Vue is so fun1",
+              content: "<span> $$$</span>",
+              comments: "bad",
+              publishedAt: "2020-8-3",
+            },
+          ],
+        },
+      });
+
+      // 组件2 --重构
+      Vue.component("blog-post2", {
+        props: ["mes"], // 属性mes接收父组件传递的值
+        template: `<div class="blog-post">
+            <h3>{{ mes.title }}</h3>
+            <div v-html="mes.content"></div>
+            <p>{{ mes.comments }}</p>
+            <p>{{ mes.publishedAt }}</p>
+          </div>`,
+      });
+
+      var app2 = new Vue({
+        el: "#app2",
+        data: {
+          posts: [
+            {
+              id: 1,
+              title: "My journey with Vue",
+              content: "<span> ***</span>",
+              comments: "good",
+              publishedAt: "2020-9-1",
+            },
+            {
+              id: 2,
+              title: "Blogging with Vue",
+              content: "<span> @@@</span>",
+              comments: "nice",
+              publishedAt: "2020-9-2",
+            },
+            {
+              id: 3,
+              title: "Why Vue is so fun",
+              content: "<span> $$$</span>",
+              comments: "bad",
+              publishedAt: "2020-9-3",
+            },
+          ],
+        },
+      });
+
+      /*
+      # Prop 的大小写 (camelCase vs kebab-case)
+      HTML 中的 attribute 名是大小写不敏感的，所以浏览器会把所有大写字符解释为小写字符。这意味着当你使用 DOM 中的模板时，camelCase (驼峰命名法) 的 prop 名需要使用其等价的 kebab-case (短横线分隔命名) 命名：
+
+      Vue.component('blog-post', {
+        // 在 JavaScript 中是 camelCase 的
+        props: ['postTitle'],
+        template: '<h3>{{ postTitle }}</h3>'
+      })
+      <!-- 在 HTML 中是 kebab-case 的 -->
+      <blog-post post-title="hello!"></blog-post>
+      重申一次，如果使用字符串模板，那么这个限制就不存在了。
+
+      */
+    </script>
+  </body>
+</html>

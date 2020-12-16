@@ -10,10 +10,10 @@
     <div id="app">
         文本：
         <div>
-            <input v-model="message" placeholder="edit me" value="init value">
+            <input v-model="message" placeholder="edit me"  >
             <p>Message is: {{ message }}</p>
         </div>
-        多行文本textarea
+        多行文本textarea: 在文本区域插值 (<textarea>{{text}}</textarea>) 并不会生效，应用 v-model 来代替。
         <div>
             <textarea name="" id="" cols="30" rows="10" v-model="multiMes"></textarea>
             <p>multiMes is: {{ multiMes }}</p>
