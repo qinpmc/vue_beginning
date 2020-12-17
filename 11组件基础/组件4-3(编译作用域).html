@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>组件开始</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+  
+    // 2.1插槽中使用组件( 父组件 parentfontProp---> 传递给 font-awesome
+    的fontProp属性) ！！注意：插槽里的 font-awesome子组件中 fontProp属性接受的是 vue实例中的parentfontProp值（值为"父组件绑定属性2"），并非 组件navigation-link2 的 parentfontProp值(值为"navigation-link2 绑定属性") 
+    <div id="app2">
+      <navigation-link2
+        v-bind:key="id"
+        v-bind:url="url"
+        v-bind:content="content"
+      >
+        <div>这段文字仍存在（有插槽会保留）</div>
+
+        <font-awesome v-bind:fontprop="parentfontProp"></font-awesome
+      ></navigation-link2>
+    </div>
+    
+    <hr />
+    // 2.2插槽中使用组件( 父组件 parentfontProp---> 传递给 font-awesome
+    的fontProp属性)
+    <pre>
+      '<a v-bind:href="url" >{{content}}<slot></slot> <span> {{parentfontProp}} </span><font-awesome v-bind:fontprop="parentfontProp"></font-awesome> </a>'
+    </pre>
+
+
+
+    <div id="app22">
+      <navigation-link22
+        v-bind:key="id"
+        v-bind:url="url"
+        v-bind:content="content"
+      >
+        <div>这段文字仍存在（有插槽会保留）</div>
+
+        <font-awesome v-bind:fontprop="parentfontProp"></font-awesome></navigation-link22>
+    </div>
+
+    <script>
+      // 组件2 --有插槽(font-awesome 组件放在 navigation-link22 组件插槽中，不是子组件 )
+      Vue.component("navigation-link2", {
+        data: function () {
+          return {
+            parentfontProp: "navigation-link2 绑定属性",
+          };
+        },
+        props: ["url", "content"],
+        template:
+          '<a v-bind:href="url" >{{content}}<slot></slot> <span> {{parentfontProp}}</span> </a>',
+      });
+
+      // 组件22 --有插槽(font-awesome 组件放在 navigation-link22 组件template中，才是子组件 )
+      Vue.component("navigation-link22", {
+        data: function () {
+          return {
+            parentfontProp: "navigation-link22绑定属性",
+          };
+        },
+        props: ["url", "content"],
+        template:
+          '<a v-bind:href="url" >{{content}}<slot></slot> <span> {{parentfontProp}} </span><font-awesome v-bind:fontprop="parentfontProp"></font-awesome> </a>',
+      });
+
+      //组件3----放入到插槽中使用
+      Vue.component("font-awesome", {
+        props: ["fontprop"], // 这里写成 fontProp 错误, 表示绑定的属性为 font-prop
+        template: "<h3 > font-awesome: {{fontprop}}</h3> ",
+      });
+ 
+      new Vue({
+        el: "#app2",
+        data: {
+          id: 1,
+          url: "http://www.baidu.com",
+          content: "父组件内容2",
+          parentfontProp: "父组件绑定属性2",
+        },
+      });
+      new Vue({
+        el: "#app22",
+        data: {
+          id: 2,
+          url: "http://www.sina.com",
+          content: "父组件内容222",
+          parentfontProp: "父组件绑定属性222",
+        },
+      });
+
+
+
+
+
+    </script>
+  </body>
+</html>

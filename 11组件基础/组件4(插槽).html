@@ -15,7 +15,7 @@
       </navigation-link>
     </div>
     <hr />
-    
+
     // 2.带有插槽
     <div id="app2">
       <navigation-link2
@@ -26,8 +26,7 @@
         这段文字仍存在（有插槽会保留）
       </navigation-link2>
     </div>
-    
-    
+      
     <script>
       // 组件1 --没有插槽
       Vue.component("navigation-link", {
@@ -60,8 +59,9 @@
         el: "#app2",
         data: {
           id: 1,
-          url: "http://www.baidu.com",
+          url: "http://www.google.com",
           content: "父组件内容2",
+          parentfontProp:"未使用上"
         },
       });
  

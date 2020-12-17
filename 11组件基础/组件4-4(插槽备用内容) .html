@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>组件开始</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    // <br />
+
+    <div id="app">
+      组件中无内容，会使用slot中 默认内容
+      <submit-button :cont="cont" :type="type"></submit-button>
+      <br>
+      组件中有内容，会替代slot中内容
+      <submit-button :cont="cont" :type="type">{{cont}}</submit-button>
+    </div>
+
+    <hr />
+
+    <script>
+      // 组件1 -- 插槽带有备用内容Submit： <slot>Submit</slot>
+      Vue.component("submit-button", {
+        props: ["cont","type"],
+        template: `<button  >
+                      {{cont}}
+                      <slot>Submit 按钮</slot>
+                    </button>`,
+      });
+
+      new Vue({
+        el: "#app",
+        data: {
+          id: 1,
+          url: "http://www.baidu.com",
+          cont: "测试",
+          type:"submit"
+        },
+      });
+    </script>
+  </body>
+</html>
