@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>组件开始</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    //没有包含一个 slot 元素，则任何传入它的内容都会被抛弃。<br />
+
+    <div id="app">
+      <navigation-link :url="profile">
+        <br />
+        父级里面无法直接访问子组件定义的数据
+        <!-- 该句放开报错  Logged in as {{ cont }} -->
+      </navigation-link>
+      <hr />
+      <navigation-link2 :url="profile">
+        插槽跟模板的其它地方一样可以访问相同的实例 property
+        (也就是相同的“作用域”)，而不能访问 navigation-link2 组件的作用域
+        <br />
+        访问不到url，但是可以访问profile<br />
+        Clicking here will send you to url: {{ url }}<br />
+        Clicking here will send you to profile: {{ profile }}
+      </navigation-link2>
+    </div>
+
+    <script>
+      // 组件1
+      Vue.component("navigation-link", {
+        props: ["url"],
+        data: function () {
+          return {
+            cont: "子组件navigation-link",
+          };
+        },
+        template: '<a v-bind:href="url" >{{cont}} 超链接1</a><slot></slot>',
+      });
+
+      // 组件2 --
+      Vue.component("navigation-link2", {
+        props: ["url"],
+        template: '<div><a v-bind:href="url" >超链接2:{{url}}</a> <br> <slot></slot></div>',
+      });
+
+      new Vue({
+        el: "#app",
+        data: {
+          id: 1,
+          content: "父组件内容1",
+          profile: "tttt",
+        },
+      });
+      /*
+      父级组件里面无法直接访问子组件定义的数据
+      插槽跟模板的其它地方一样可以访问相同的实例 property (也就是相同的“作用域”)，而不能访问 子组件 的作用域
+      
+      */
+    </script>
+  </body>
+</html>

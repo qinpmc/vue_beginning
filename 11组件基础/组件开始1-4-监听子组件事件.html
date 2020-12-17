@@ -22,14 +22,14 @@
       Vue.component("blog-post", {
         props: ["mes"], // 属性mes接收父组件传递的值
         template: `
-    <div class="blog-post">
-      <span>{{ mes.title }}</span>
-      <button @click="$emit('enlarge-text',0.1)">
-        Enlarge text
-      </button>
-      <span v-html="mes.content"></span>
-    </div>
-  `,
+        <div class="blog-post">
+          <span>{{ mes.title }}</span>
+          <button @click="$emit('enlarge-text',0.1)">
+            Enlarge text
+          </button>
+          <span v-html="mes.content"></span>
+        </div>
+        `,
       });
 
       var app = new Vue({
