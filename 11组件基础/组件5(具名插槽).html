@@ -2,11 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>组件开始</title>
+    <title>具名插槽</title>
     <script src="../vue.js"></script>
   </head>
   <body>
-    //没有包含一个 slot 元素，则任何传入它的内容都会被抛弃。<br />
+    //具名插槽<br />
 
     <div id="app">
       <h1>商场里面的商品1</h1>
@@ -44,7 +44,7 @@
         <template v-slot:makeup>
           <li>各种各样的化妆品33</li>
         </template>
-        <li>没有对应的slot名字，会被默认插槽保留33</li>
+        <li>没有对应的slot名字，**这里也会被默认插槽保留**33</li>
       </shop2>
     </div>
     <script>
@@ -71,12 +71,12 @@
                 <ul>
                     <li>模板里的鞋子</li>
                     <slot name="shoes"></slot>
+                    <slot name="special">插槽special默认内容</slot>
                     <li>模板里的衬衣</li>
                     <slot name="skits"></slot>
                     <li>模板里的化妆品</li>
                     <slot name="makeup"></slot>
                     <slot>xxxx 默认的插槽</slot>
-                    <slot name="special">插槽special默认内容</slot>
                 </ul>
             </div>
         `,
