@@ -19,7 +19,7 @@
         background: #e0e0e0;
       }
       .tab-button.active {
-        background: #e0e0e0;
+        background: red;
       }
       .tab {
         border: 1px solid #ccc;
@@ -59,11 +59,7 @@
           currentTab: "Home",
           tabs: ["Home", "Posts", "Archive"],
         },
-        methods: {
-          handleTab: function (tab) {
-            this.currentTab = tab;
-          },
-        },
+
         computed: {
           currentTabComponent: function () {
             return "tab-" + this.currentTab.toLowerCase();

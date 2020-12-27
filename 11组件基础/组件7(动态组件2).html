@@ -33,7 +33,7 @@
         v-for="tab in tabs"
         v-bind:key="tab.name"
         v-bind:class="['tab-button', { active: currentTab.name === tab.name }]"
-        v-on:click="currentTab = tab"
+        v-on:click="change(tab)"
       >
         {{ tab.name }}
       </button>
@@ -68,6 +68,11 @@
           tabs: tabs,
           currentTab: tabs[0],
         },
+		methods:{
+			change:function(tab){
+				this.currentTab = tab;
+			}
+		}
       });
     </script>
   </body>
