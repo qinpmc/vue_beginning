@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>组件开始</title>
+    <script src="../vue.js"></script>
+    <style></style>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        错误：
+        <!-- <span>test1:</span>
+        <current-user> {{ user.firstName }} </current-user> -->
+      </div>
+      <hr />
+      <div>
+        <span>test2:</span>
+        <current-user1>
+          <template v-slot:default="slotProps">
+            {{ slotProps.user.firstName }}
+          </template>
+        </current-user1>
+      </div>
+    </div>
+    <script>
+      Vue.component("current-user", {
+        template: `<span>
+            <slot>{{ user.lastName }}</slot>
+          </span>`,
+        data: function () {
+          return {
+            user: {
+              lastName: "pp",
+              firstName: "qq",
+            },
+          };
+        },
+      });
+
+      Vue.component("current-user1", {
+        template: `<span>
+          <slot v-bind:user="user">{{ user.lastName }}</slot>
+          </span>`,
+        data: function () {
+          return {
+            user: {
+              lastName: "pp",
+              firstName: "qq",
+            },
+          };
+        },
+      });
+
+      new Vue({
+        el: "#app",
+      });
+    </script>
+  </body>
+</html>
