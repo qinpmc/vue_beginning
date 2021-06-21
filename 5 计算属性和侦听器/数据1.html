@@ -1,39 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Title</title>
-    <script src ="../vue.js"></script>
-</head>
-<body>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
     <div id="app">
-        <!--
+      <!--
             数据属性
         -->
-        <ul id="ul_1" >
-            <li> {{ mes }}</li>
-        </ul>
+      <ul id="ul_1">
+        <li>{{ mes }}</li>
+      </ul>
+    </div>
+    <div id="app2">
+      <!--
+            数据属性
+        -->
+      <ul id="ul_1">
+        <li>{{ mes2 }}</li>
+      </ul>
     </div>
 
-<script>
-    //
+    <script>
+      //
 
-    var app = new Vue({
-        el:"#app",
-        data:{
-            mes:"HelloWorld"
-        }
-    });
+      var app = new Vue({
+        el: "#app",
+        data: {
+          mes: "HelloWorld",
+        },
+      });
 
-    console.log(app.$data.mes); // HelloWorld
-    console.log(app.mes); // HelloWorld
+      console.log(app.$data.mes); // HelloWorld
+      console.log(app.mes); // HelloWorld
 
-/*
+      var app2 = new Vue({
+        el: "#app2",
+        // data :function(){
+        //     return {
+        //         mes2: "app2"  
+        //     }
+        // }
+        data: () => {
+            return {
+                  mes2: "app2222mes2"  
+            }
+        }  
+
+      });
+
+      /*
       //被代理的属性是响应的，也就是说值的任何改变都是触发视图的重新渲染
        控制台输入 app.mes = 111；
        视图上显示为 111
     */
-
-</script>
-</body>
+    </script>
+  </body>
 </html>
