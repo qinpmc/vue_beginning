@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- import CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    />
+    <style>
+      tr:hover {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <label for="">类型：</label>
+        <el-select v-model="taskState" placeholder="请选择">
+          <el-option
+            v-for="item in stateOptions"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          >
+          </el-option>
+        </el-select>
+      </div>
+      <div>
+        <label for="">地点：</label>
+        <el-input
+          v-model="location"
+          placeholder="请在地图上选择地址"
+          style="width: 200px;"
+        ></el-input>
+      </div>
+      <div>
+        <label for="">描述：</label>
+        <el-input
+          type="textarea"
+          :rows="2"
+          placeholder="请输入描述内容"
+          v-model="description"
+          style="width: 200px;"
+        >
+        </el-input>
+      </div>
+      <div>
+        <label for="">图片/视频：</label>
+        <input type="file" multiple>
+      </div>
+      <div>
+        <el-button type="primary" @click="save">提交</el-button>
+        <el-button type="primary" @click="cancel">取消</el-button>
+      </div>
+      
+    </div>
+  </body>
+  <!-- import Vue before Element -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <!-- import JavaScript -->
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data: function () {
+        return {
+          stateOptions: [
+            {
+              value: 1,
+              label: "内涝积水",
+            },
+            {
+              value: 2,
+              label: "工程调度 ",
+            },
+            {
+              value: 3,
+              label: "洪水灾情",
+            },
+            {
+              value: 4,
+              label: "物资调度",
+            },
+            {
+              value: 5,
+              label: "力量调度",
+            },
+          ],
+          taskState: "",
+          location: "",
+          description:""
+        };
+      },
+      methods: {
+        save:function(){
+          console.log("save")
+        },
+        cancel:function(){
+          console.log("cancel")
+        }
+      },
+      created: function () {
+        this.taskState = 1;
+      },
+
+      mounted: function () {},
+    });
+  </script>
+</html>

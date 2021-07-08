@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- import CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    />
+    <style>
+      tr:hover {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <label for="">负责人：</label>
+        <el-select v-model="personInCharge" placeholder="请选择负责人">
+          <el-option
+            v-for="item in persons"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          >
+          </el-option>
+        </el-select>
+        <div>
+          <label for="">类型：</label>
+          <span>{{taskDetail.type}}</span>
+        </div>
+        <div>
+          <label for="">地点：</label>
+          <span>{{taskDetail.location}}</span>
+        </div>
+        <div>
+          <label for="">描述：</label>
+          <span>{{taskDetail.description}}</span>
+        </div>
+        <div>
+          <label for="">图片/视频：</label>
+          <img :src="taskDetail.imgs" alt="" />
+          <video :src="taskDetail.videos" controls="controls"></video>
+        </div>
+        <div>
+          <el-button type="primary" @click="save">提交</el-button>
+          <el-button type="primary" @click="cancel">取消</el-button>
+        </div>
+      </div>
+      <div></div>
+      <div></div>
+    </div>
+  </body>
+  <!-- import Vue before Element -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <!-- import JavaScript -->
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data: function () {
+        return {
+          taskDetail: {},
+          personInCharge: "",
+        };
+      },
+      methods: {
+        save: function () {
+          console.log("save");
+        },
+
+        // 判断是否为图片格式--img标签可打开的
+        isImage: function (str) {
+          var reg = /\.(png|jpg|gif|jpeg|webp)$/;
+          return reg.test(str);
+          // var right_type = new Array("avi","wmv","mpg","mpeg","mov","rm","ram","swf","flv","mp4","wma","avi","rm","rmvb","flv","mpg","mkv")
+        },
+        cancel: function () {
+          console.log("cancel");
+        },
+      },
+      created: function () {
+        this.persons = [
+          {
+            value: 1,
+            label: "张三",
+          },
+          {
+            value: 2,
+            label: "李四 ",
+          },
+          {
+            value: 3,
+            label: "王五",
+          },
+        ];
+      },
+      mounted: function () {
+        this.taskDetail = {
+          type: "内涝积水",
+          location: "华阳街道xxx号",
+          description: "描述文字",
+          imgs: "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2860128743,3052625495&fm=11&gp=0.jpg",
+          videos: "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4",
+        };
+      },
+    });
+  </script>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- import CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    />
+  </head>
+  <body>
+    参考：https://www.cnblogs.com/wazy999/p/14060386.html
+    <div id="app">
+      <template>
+        <div>
+          <input type="file" accept="image/*" @change="loadFile" multiple>
+          <img id="file" width="40" height="20" v-show="showImg"/>
+          <!-- <input type="file" accept="video/*" @change="loadFile" />
+          <video
+            id="file"
+            width="480"
+            height="270"
+            v-show="showVideo"
+            controls
+          /> -->
+        </div>
+      </template>
+    </div>
+  </body>
+  <!-- import Vue before Element -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+  <script>
+    new Vue({
+      el: "#app",
+      data: function () {
+        return {
+          showImg: false,
+          showVideo: false,
+        };
+      },
+      methods: {
+        loadFile: function (event) {
+          const reader = new FileReader();
+          const that = this;
+          
+          reader.onload = function () {
+            const output = document.querySelector("#file");
+            that.showVideo = true;
+            that.showImg = true;
+            output.src = URL.createObjectURL(new Blob([reader.result]));
+          };
+          reader.readAsArrayBuffer(event.target.files[0]);
+        },
+      },
+    });
+  </script>
+</html>

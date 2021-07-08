@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <style>
+      #file-list {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      #file-list li {
+        list-style: none;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        width: 150px;
+        height: 150px;
+        line-height: 150px;
+        font-size: 14px;
+        color: #fff;
+        border-radius: 4px;
+        margin: 0 6px 6px 0;
+        background: #ededed;
+        overflow: hidden;
+        overflow: hidden;
+      }
+      #file-list li .img-misk {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        transition: all 0.3s;
+        opacity: 0;
+      }
+      #file-list li:hover .img-misk {
+        opacity: 1;
+      }
+      #file-list li span {
+        margin: 0 4px;
+        cursor: pointer;
+      }
+      #file-list li img {
+        max-width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div id="showimg">
+        <ul id="file-list"></ul>
+        <label for="upgteimg">Select some files</label>
+        <input type="file" id="upgteimg" value="" multiple="multiple" hidden />
+      </div>
+    </div>
+    <script>
+      //http://www.manongjc.com/detail/16-flildkanqbvrgzd.html
+      window.onload = function () {
+        let readFile = document.querySelector("#upgteimg"),
+          showui = document.querySelector("#file-list"),
+          dataObj = {},
+          index = 0,
+          imgDele = readFile.querySelector(".delete"),
+          imgView = readFile.querySelector(".view");
+
+        // 上传图片
+        readFile.addEventListener("change", function () {
+          for (let i = 0; i < this.files.length; i++) {
+            let url = URL.createObjectURL(this.files[i]);
+            let reader = new FileReader();
+            let file = this.files[i];
+
+            index++; // image index
+
+            reader.readAsDataURL(this.files[i]);
+
+            (function (index) {
+              reader.onload = (e) => {
+                // let result = `<li data-id="${index}" data-url="${url}">
+                //                         <div class="img-misk">
+                //                             <span class="view" data-id="${index}">查看</span>
+                //                             <span class="delete" data-id="${index}">删除</span>
+                //                         </div>
+                //                         <img class="showimg" src="${url}"/>
+                //                     </li>`;
+
+                let result = `<li data-id="${index}" data-url="${url}">
+                                
+                                        <img class="showimg" src="${url}"/>
+                                    </li>`;
+                showui.innerHTML += result;
+                dataObj[index] = url;
+              };
+            })(index);
+          }
+        });
+
+        // if (!readFile['value'].match(/.jpg|.gif|.png|.jpeg|.bmp/i)) {
+        //     return alert("格式");
+        // }
+
+        // 操作图片
+        showui.addEventListener("click", function (e) {
+          var e = e || window.event,
+            target = e.srcElement || e.target,
+            index = target.getAttribute("data-id"),
+            name = target.className;
+          switch (name) {
+            case "delete":
+              return deleteImg(index);
+            case "view":
+              return viewImg(index);
+          }
+        });
+
+        // delete image
+        function deleteImg(index) {
+          let oLi = document.querySelectorAll("li");
+          oLi.forEach((item) => {
+            if (item.dataset.id == index) return item.remove();
+            console.log(index);
+          });
+          delete dataObj[index];
+        }
+
+        // view image
+        function viewImg(index) {
+          document.body.appendChild("<div>2</div>");
+
+          console.log(index);
+        }
+      };
+    </script>
+  </body>
+</html>

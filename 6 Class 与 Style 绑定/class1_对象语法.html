@@ -73,7 +73,7 @@
         computed:{
             classObj:function(){
                 return {
-                    active:this.isActive &&  this.error,
+                    active:this.isActive ||  this.error,
                     "text-danger":this.error && this.error.type==="fatal"
                 }
             }

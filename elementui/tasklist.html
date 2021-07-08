@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- import CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    />
+    <style>
+      tr:hover {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <el-button type="primary" @click="addTask">新建</el-button> <br />
+      <label for="">任务状态：</label>
+      <el-select v-model="value" placeholder="请选择" @change="filterByState">
+        <el-option
+          v-for="item in options"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value"
+        >
+        </el-option>
+      </el-select>
+
+      <el-table :data="tableData" style="width: 700px" @row-click="showDetail">
+        <el-table-column prop="type" label="类型" width="180">
+        </el-table-column>
+        <el-table-column prop="date" label="时间" width="180">
+        </el-table-column>
+        <el-table-column prop="statusLable" label="状态"> </el-table-column>
+        <el-table-column prop="operate" label="操作" width="180">
+          <template scope="scope">
+            <div class="sub-body" @click.stop="operate(scope.row,scope.column)">
+              {{ scope.row.operate }}
+            </div>
+          </template>
+        </el-table-column>
+      </el-table>
+    </div>
+  </body>
+  <!-- import Vue before Element -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <!-- import JavaScript -->
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data: function () {
+        return {
+          options: [
+            {
+              value: 0,
+              label: "全部",
+            },
+            {
+              value: 1,
+              label: "待处置",
+            },
+            {
+              value: 2,
+              label: "处置中",
+            },
+            {
+              value: 3,
+              label: "已处置",
+            },
+          ],
+          value: "",
+          tableData: [],
+          statusMapping: {
+            1: "待处置",
+            2: "处置中",
+            3: "已处置",
+          },
+        };
+      },
+      methods: {
+        addTask: function () {
+          console.log("新建任务页面");
+        },
+        showDetail: function (row, column, event) {
+          console.log(row, column, event);
+          console.log("详情");
+        },
+        // operate0:function(row, column, cell, event){
+        //   console.log(row, column, cell, event);
+        //   console.log(cell.cellIndex);
+        // },
+        operate: function (val, val2) {
+          console.log(val);
+          console.log(val2);
+          console.log("操作");
+        },
+        filterByState(value) {
+          console.log(value);
+          console.log("过滤");
+          if (value === 0) {
+            this.tableData = this.oldTableData;
+            return;
+          }
+          this.tableData = this.oldTableData.filter(function (
+            currentValue,
+            index,
+            arr
+          ) {
+            return currentValue.status === value;
+          });
+        },
+
+        transStatus(res) {
+          let that = this;
+          for (let i = 0; i < res.length; i++) {
+            let key = res[i].status + "";
+            res[i].statusLable = that.statusMapping[key];
+          }
+        },
+      },
+      created: function () {
+        this.value = this.options[0].value;
+      },
+
+      mounted: function () {
+        this.tableData = [
+          {
+            date: "2016-05-02",
+            type: "内涝积水",
+            status: 1,
+            operate: "派发",
+          },
+          {
+            date: "2016-05-04",
+            type: "工程调度",
+            status: 2,
+            operate: "转派",
+          },
+          {
+            date: "2016-05-01",
+            type: "洪水灾情",
+            status: 2,
+            operate: "转派",
+          },
+          {
+            date: "2016-05-03",
+            type: "物资调度",
+            status: 3,
+            operate: "",
+          },
+          {
+            date: "2016-04-03",
+            type: "物资调度",
+            status: 3,
+            operate: "",
+          },
+        ];
+        this.transStatus(this.tableData);
+        this.oldTableData = this.tableData; //备份全部数据，用于过滤
+      },
+    });
+  </script>
+</html>

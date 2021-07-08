@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- import CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    />
+  </head>
+  <body>
+    参考：https://www.cnblogs.com/wazy999/p/14060386.html
+    <div id="app">
+      <template>
+        <div>
+          <!-- <input type="file" accept="image/*" @change="loadFile">
+          <img id="file" width="480" height="270" v-show="showImg"/> -->
+          <input
+            type="file"
+            accept="video/*"
+            @change="loadFile"
+            multiple
+            id="uploadFileEle"
+          />
+
+          <div id="previewVideo"></div>
+        </div>
+      </template>
+    </div>
+  </body>
+  <!-- import Vue before Element -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+  <script>
+    new Vue({
+      el: "#app",
+      data: function () {
+        return {
+          showImg: false,
+          showVideo: false,
+        };
+      },
+      methods: {
+        loadFile: function (event) {
+          var previewVideo = document.querySelector("#previewVideo");
+          var fileEle = document.querySelector("#uploadFileEle");
+          var flag = false,
+            count = 0;
+
+          for (let i = 0; i < event.target.files.length; i++) {
+            const reader = new FileReader();
+            const that = this;
+            //如果是SSR渲染需要加上如下判断（比如nuxt）
+
+            reader.onload = function () {
+              const output = document.createElement("video");
+              output.src = URL.createObjectURL(new Blob([reader.result]));
+              output.style.width = "480px";
+              output.style.height = "270px";
+              output.controls = "controls";
+              previewVideo.appendChild(output);
+              count++;
+              if (count === event.target.files.length) {
+                fileEle.outerHTML = fileEle.outerHTML;
+              }
+            };
+            reader.readAsArrayBuffer(event.target.files[i]);
+          }
+        },
+      },
+    });
+  </script>
+</html>
