@@ -9,6 +9,9 @@
     <div id="app">
       <custom-input v-model="searchText"></custom-input>
       <p>searchText:{{searchText}}</p>
+      <hr>
+      <custom-input2 v-model="searchText2"></custom-input2>
+      <p>searchText:{{searchText2}}</p>
     </div>
 
     <script>
@@ -25,10 +28,19 @@
                     </div>`,
       });
 
+      Vue.component("custom-input2", {
+        props: ["value"],
+        template: `<div>
+                        <input v-bind:value="value" ><br>
+                        子组件值：<span>{{ value }}</span>
+                    </div>`,
+      });
+
       var app = new Vue({
         el: "#app",
         data: {
           searchText: "",
+          searchText2: "",
         },
       });
     </script>

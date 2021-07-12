@@ -1,3 +1,85 @@
+
+# 深入组件
+
+## 组件名大小写
+ 
+
+给予组件的名字可能依赖于你打算拿它来做什么。当直接在 DOM 中使用一个组件 (而不是在字符串模板或单文件组件) 的时候，我们强烈推荐遵循 W3C 规范中的自定义组件名 (字母全小写且必须包含一个连字符)。这会帮助你避免和当前以及未来的 HTML 元素相冲突。
+
+
+- 使用 kebab-case
+
+
+```
+Vue.component('my-component-name', { /* ... */ })
+```
+
+
+
+- 使用 PascalCase
+
+```
+Vue.component('MyComponentName', { /* ... */ })
+```
+
+当使用 PascalCase (首字母大写命名) 定义一个组件时，你在引用这个自定义元素时两种命名法都可以使用。
+也就是说 <my-component-name> 和 <MyComponentName> 都是可接受的。
+!! 注意，尽管如此，**直接在 DOM (即非字符串的模板) 中使用时只有 kebab-case 是有效的**(https://cn.vuejs.org/v2/guide/components-registration.html#%E7%BB%84%E4%BB%B6%E5%90%8D)。
+
+示例： 组件名称大小写1.html
+
+
+## 组件注册
+
+
+1. 全局注册
+ 
+```
+Vue.component('my-component-name', {
+  // ... 选项 ...
+})
+```
+
+2. 局部注册
+
+全局注册所有的组件意味着即便你已经不再使用一个组件了，它仍然会被包含在你最终的构建结果中。这造成了用户下载的 JavaScript 的无谓的增加。
+
+
+在一个假设的 ComponentB.js 或 ComponentB.vue 文件中，注册ComponentA 和 ComponentC，然后 都可以在 ComponentB 的模板中使用 
+
+```
+import ComponentA from './ComponentA'
+import ComponentC from './ComponentC'
+
+export default {
+  components: {
+    ComponentA,
+    ComponentC
+  },
+  // ...
+}
+```
+
+## Prop 的大小写
+
+当使用 DOM 中的模板时，camelCase (驼峰命名法) 的 prop 名需要使用其等价的 kebab-case (短横线分隔命名) 命名：
+
+Vue.component('blog-post', {
+  // 在 JavaScript 中是 camelCase 的
+  props: ['postTitle'],
+  template: '<h3>{{ postTitle }}</h3>'
+})
+<!-- 在 HTML 中是 kebab-case 的 -->
+<blog-post post-title="hello!"></blog-post>
+
+
+示例： 组件prop大小写2.html
+
+
+
+
+
+
 # 组件注意事项：
 
 1. table 中包括自定义组件，但是table，ul等元素中必须是指定的元素，如tr、td、li等     

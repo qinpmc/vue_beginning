@@ -108,3 +108,5 @@ vm.b = 2
 ></my-component>
 
 ```
+
+v-for : 不能支持 div等的循环，会产生错误。

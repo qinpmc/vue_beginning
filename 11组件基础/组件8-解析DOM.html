@@ -8,12 +8,14 @@
   </head>
   <body>
     <div id="app">
-      // tab 组件会渲染到table外部
+      // tab 组件会渲染到table外部(错误使用)
       <table>
+        <tr><td>前面的内容（渲染后实际跑到了组件内容的后面！！）</td></tr>
         <tab></tab>
       </table>
       <hr />
       <table>
+          <tr><td>前面的内容</td></tr>
         <tr is="tab"></tr>
       </table>
     </div>

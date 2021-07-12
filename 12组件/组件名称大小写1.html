@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>组件开始</title>
+    <script src="../vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+        当直接在 DOM 中使用一个组件 (而不是在字符串模板或单文件组件) 的时候，
+        我们强烈推荐遵循 W3C 规范中的自定义组件名 (字母全小写且必须包含一个连字符)
+        <br>
+      1. 错误的组件名使用：使用 PascalCase (首字母大写命名)
+      <MyComponentTest1></MyComponentTest1>
+
+      <br>
+      2. 正确的组件名使用：使用 kebab-case (短横线分隔命名)
+      <my-component-test1></my-component-test1>
+    </div>
+ 
+    <script>
+      // 组件
+      Vue.component("MyComponentTest1", {
+        data: function () {
+          return {
+            count: 0,
+          };
+        },
+        template:
+          '<button v-on:click="count++">Clicked {{ count}} times.</button>',
+      });
+
+      
+      var app = new Vue({
+        el: "#app",
+      });
+      
+    </script>
+  </body>
+</html>

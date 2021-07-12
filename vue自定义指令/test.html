@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 120px;
+            height: 120px;
+            background-color: #eee;
+        }
+    </style>
+</head>
+
+<body>
+</body>
+<div id="app">
+    <button v-drag>点击</button>
+    <div class="box" v-drag:[place]></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+
+    Vue.directive('drag', {
+        inserted: function (el, bancing) {
+            console.log(bancing)
+            if (bancing.arg) {
+                l = bancing.arg.left;
+                t = bancing.arg.top;
+            } else {
+                l = t = 0;
+            }
+            el.style.position = 'absolute';
+            el.style.left = l + 'px';
+            el.style.top = t + 'px';
+            el.onmousedown = function (e) {
+                var x = e.offsetX;
+                var y = e.offsetY;
+                document.onmousemove = function (eve) {
+                    var left = eve.clientX - x;
+                    var top = eve.clientY - y;
+                    el.style.left = left + 'px';
+                    el.style.top = top + 'px';
+                }
+                document.onmouseup = function (eve) {
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+                }
+            }
+        }
+    })
+    new Vue({
+        el: '#app',
+        data: {
+            place: {
+                left: 100,
+                top: 100
+            }
+        }
+    })
+</script>
+
+</html>
