@@ -24,7 +24,7 @@
         addEventListener(type, listener[, options ])
 
         - useCapture  可选
-            Boolean，在DOM树中，注册了listener的元素， 是否要先于它下面的EventTarget，调用该listener。 当userCapture(设为true) 时，沿着DOM树向上冒泡的事件，不会触发listener。
+            Boolean，在DOM树中，注册了listener的元素， 是否要先于它下面的EventTarget，调用该listener。 当userCapture(设为false 时，沿着DOM树向上冒泡的事件，不会触发listener。
         - options 可选
         对象。可用的选项如下：
             - capture:  Boolean，表示 listener 会在该类型的事件捕获阶段传播到该 EventTarget 时触发。
@@ -46,7 +46,7 @@
                 once: false
             })
     <div id="app1">
-        click.prevent.self :会阻止所有的点击(下例子中，点击 div.son ,a标签既不会跳转，也不输出信息)，输出 3 1
+ 
         <div v-on:scroll.passive="onScroll" class="parent">
     
         </div>

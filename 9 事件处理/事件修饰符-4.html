@@ -19,13 +19,20 @@
     <script src ="../vue.js"></script>
 </head>
 <body>
+        v-on:click.prevent.self 会阻止所有的点击，而 v-on:click.self.prevent 只会阻止对元素自身的点击。
     <div id="app1">
         // @click.prevent.self 
-        点击div.son标签，会输出3, 1。不但阻止输出 2 ，还阻止了a的默认跳转。
-        因为点击的时候会**先prevent**，阻止默认事件，阻止了跳转;然后判断是否是self，因为点击到的是div.son标签，所以不是self。但是a标签是self,阻止输出2 。（https://www.oschina.net/question/1785591_2273843?sort=default）
- 
+        1. 点击div.son标签，会输出3, 1。不但阻止输出 2 ，还阻止了a的默认跳转。
+        因为点击的时候会**先prevent**，阻止默认事件，阻止了跳转;然后判断是否是self，因为点击到的是div.son标签，所以不是self。
+        所以阻止输出2 。（https://www.oschina.net/question/1785591_2273843?sort=default）
 
-        click.prevent.self :会阻止所有的点击(下例子中，点击 div.son ,a标签既不会跳转，a标签也不输出信息)，输出 3 1
+        click.prevent.self :会阻止所有的点击(下例子中，点击 div.son ,a标签既不会跳转，a标签也不输出信息)，输出 3 1，不跳转
+
+        2. 点击 a 标签，会输出2, 1， 阻止了a的默认跳转。
+ 
+        -1) 点击a 标签 ,会先prevent，阻止默认事件，阻止了跳转;再判断self，由于是点击的是a标签， 所以会执行click事件，输出2；
+        -2）点击事件继续冒泡到div.parent，输出1
+        
         <div @click="say(1)" class="parent">
             <a href="http://w3school.com.cn/" @click.prevent.self="say(2)">a标签
                 <div @click="say(3)" class="son">div标签</div>
@@ -35,11 +42,17 @@
     <hr>
     <div id="app2">
         // @click.self.prevent
-        点击div标签，会输出3, 1,跳转到/#。只阻止了输出2 。
-        因为会先判断self，点击到div3.son，不是self，所以不会执行click事件，就不会执行阻止默认事件，也不会输出2，所以可以跳转但没有输出2。（https://www.oschina.net/question/1785591_2273843?sort=default）
+        1. 点击div.son标签，会输出3, 1,跳转到/#。只阻止了输出2 。
+        -1) 点击div.son ,输出了3；
+        -2）点击事件冒泡到 a标签，会先判断self，由于是点击的div3.son，不是self，所以不会执行click事件，不会输出2，就不会执行阻止默认事件， 
+        所以可以跳转但没有输出2。（https://www.oschina.net/question/1785591_2273843?sort=default）
+        -3）点击事件继续冒泡到div.parent，输出1 
+        click.self.prevent 只会阻止对元素自身的点击(下例子中，点击 div.son ,a标签会跳转，a标签不输出信息)，输出 3 1，并跳转
 
 
-        click.self.prevent 只会阻止对元素自身的点击(下例子中，点击 div.son ,a标签会跳转，a标签不输出信息)，输出 3 1
+        2. 点击 a 标签，会输出2, 1， 阻止了a的默认跳转。
+        -1) 点击a 标签 ,会先判断self，由于是点击的是a标签， 所以会执行click事件，输出2，执行阻止默认事件；
+        -2）点击事件继续冒泡到div.parent，输出1
         <div @click="say(1)" class="parent">
             <a href="http://w3school.com.cn/" @click.self.prevent="say(2)">a标签
                 <div @click="say(3)" class="son">div标签</div>

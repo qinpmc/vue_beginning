@@ -8,9 +8,22 @@
 </head>
 
 <body>
+    HTML 中的特性名是大小写不敏感的，所以浏览器会把所有大写字符解释为小写字符。   <br>
+    这意味着当你使用 DOM 中的模板时，camelCase (驼峰命名法) 的 prop 名需要使用其等价的 kebab-case (短横线分隔命名) 命名
   <div id="app">
     正确的prop绑定：
+    静态绑定：
     <blog-post post-title="hello11111!"></blog-post>
+
+    动态绑定(:post-title)：
+    <blog-post :post-title="content"></blog-post>
+
+    以上渲染结果：
+
+    <!-- 正确的prop绑定： 静态绑定：
+    hello11111!
+    动态绑定(:post-title)：
+    hahahaha -->
 
   </div>
   <div id="app2">
@@ -29,6 +42,11 @@
 
     var app = new Vue({
       el: "#app",
+      data:function(){
+        return {
+          content:"hahahaha"
+        }
+      }
     });
 
 

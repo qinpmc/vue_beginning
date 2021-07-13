@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>组件开始</title>
+    <title>深入组件</title>
     <script src="../vue.js"></script>
 </head>
 
@@ -16,7 +16,8 @@
 
  
 
-    一个组件上的 v-model 默认会利用名为 value 的 prop 和名为 input 的事件，但是像单选框、复选框等类型的输入控件可能会将 value 特性用于不同的目的。**model** 选项可以用来避免这样的冲突：
+    一个组件上的 v-model 默认会利用名为 value 的 prop 和名为 input 的事件，
+    但是像单选框、复选框等类型的输入控件可能会将 value 特性用于不同的目的。**model** 选项可以用来避免这样的冲突：
     <script>
         // 组件
         Vue.component('base-checkbox', {

@@ -83,7 +83,7 @@ vm.items.splice(newLength)
 ```
 var vm = new Vue({
     data: {
-    a: 1
+        a: 1
     }
 })
 // `vm.a` 现在是响应式的
@@ -109,4 +109,5 @@ vm.b = 2
 
 ```
 
+###  注意点
 v-for : 不能支持 div等的循环，会产生错误。

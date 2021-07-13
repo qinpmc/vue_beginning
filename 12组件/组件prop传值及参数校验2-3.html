@@ -13,11 +13,18 @@
 <div id="app">
     <child :content="123"></child>
     <child :content="'hello'"></child>   
-    <child :content="hello2"></child>     绑定变量 hello2----值为HELLo2222
-    <child content="hello2"></child>      绑定字符串值 hello2
-    <child content="{age:22}"></child>    绑定字符串值 {age:22}
-    <child content="123"></child>         绑定字符串值 123
+    <child :content="hello2"></child>     
+    <child content="hello2"></child>      
+    <child content="{age:22}"></child>    
+    <child content="123"></child>         
     <!-- <child :content="{age:22}"></child>  错误-->  
+    <hr>解释：
+    //绑定数字值 123
+    //绑定字符串值 hello
+    //绑定变量 hello2----值为HELLo2222
+    //绑定字符串值 hello2
+    //绑定字符串值 {age:22}
+    //绑定字符串值 123
 </div>
  
 <!-- 

@@ -1,7 +1,41 @@
 
 # 深入组件
 
-## 组件名大小写
+
+
+## 组件注册
+
+
+### 全局注册
+ 
+```
+Vue.component('my-component-name', {
+  // ... 选项 ...
+})
+```
+
+### 局部注册
+
+全局注册所有的组件意味着即便你已经不再使用一个组件了，它仍然会被包含在你最终的构建结果中。这造成了用户下载的 JavaScript 的无谓的增加。
+
+
+在一个假设的 ComponentB.js 或 ComponentB.vue 文件中，注册ComponentA 和 ComponentC，然后 都可以在 ComponentB 的模板中使用 
+
+```
+import ComponentA from './ComponentA'
+import ComponentC from './ComponentC'
+
+export default {
+  components: {
+    ComponentA,
+    ComponentC
+  },
+  // ...
+}
+```
+
+
+### 组件名大小写
  
 
 给予组件的名字可能依赖于你打算拿它来做什么。当直接在 DOM 中使用一个组件 (而不是在字符串模板或单文件组件) 的时候，我们强烈推荐遵循 W3C 规范中的自定义组件名 (字母全小写且必须包含一个连字符)。这会帮助你避免和当前以及未来的 HTML 元素相冲突。
@@ -29,38 +63,11 @@ Vue.component('MyComponentName', { /* ... */ })
 示例： 组件名称大小写1.html
 
 
-## 组件注册
 
 
-1. 全局注册
- 
-```
-Vue.component('my-component-name', {
-  // ... 选项 ...
-})
-```
+## Prop
 
-2. 局部注册
-
-全局注册所有的组件意味着即便你已经不再使用一个组件了，它仍然会被包含在你最终的构建结果中。这造成了用户下载的 JavaScript 的无谓的增加。
-
-
-在一个假设的 ComponentB.js 或 ComponentB.vue 文件中，注册ComponentA 和 ComponentC，然后 都可以在 ComponentB 的模板中使用 
-
-```
-import ComponentA from './ComponentA'
-import ComponentC from './ComponentC'
-
-export default {
-  components: {
-    ComponentA,
-    ComponentC
-  },
-  // ...
-}
-```
-
-## Prop 的大小写
+### Prop 的大小写
 
 当使用 DOM 中的模板时，camelCase (驼峰命名法) 的 prop 名需要使用其等价的 kebab-case (短横线分隔命名) 命名：
 
@@ -74,6 +81,81 @@ Vue.component('blog-post', {
 
 
 示例： 组件prop大小写2.html
+       组件prop传值及参数校验2-2.html
+       组件prop传值及参数校验2-3.html
+
+### 传递静态或动态 Prop
+
+给 prop 传入一个**静态**的值(title=)：
+
+```
+<blog-post title="My journey with Vue"></blog-post>
+```
+
+ 通过 v-bind 给prop 动态赋值(v-bind:title)，例如：
+
+```
+<!-- 动态赋予一个变量的值 -->
+<blog-post v-bind:title="post.title"></blog-post>
+```
+
+
+ 数字、布尔值、数组、对象 即便是静态的，也应该使用动态方式v-bind:绑定赋值
+
+
+```
+<!-- 即便 `42` 是静态的，我们仍然需要 `v-bind` 来告诉 Vue -->
+<!-- 这是一个 JavaScript 表达式而不是一个字符串。-->
+<blog-post v-bind:likes="42"></blog-post>
+ 
+
+<!-- 即便 `false` 是静态的，我们仍然需要 `v-bind` 来告诉 Vue -->
+<!-- 这是一个 JavaScript 表达式而不是一个字符串。-->
+<blog-post v-bind:is-published="false"></blog-post>
+
+ 
+<!-- 即便数组是静态的，我们仍然需要 `v-bind` 来告诉 Vue -->
+<!-- 这是一个 JavaScript 表达式而不是一个字符串。-->
+<blog-post v-bind:comment-ids="[234, 266, 273]"></blog-post>
+
+ 
+<!-- 即便对象是静态的，我们仍然需要 `v-bind` 来告诉 Vue -->
+<!-- 这是一个 JavaScript 表达式而不是一个字符串。-->
+<blog-post
+  v-bind:author="{
+    name: 'Veronica',
+    company: 'Veridian Dynamics'
+  }"
+></blog-post>
+
+
+```
+!! **父组件传递给子组件的值，子组件接收后不能直接修改！！**
+ 
+### 替换/合并已有的 Attribute
+- https://cn.vuejs.org/v2/guide/components-props.html 
+
+对于绝大多数 attribute 来说，从外部提供给组件的值会替换掉组件内部设置好的值。所以如果传入 type="text" 就会替换掉 type="date" 并把它破坏！庆幸的是，class 和 style attribute 会稍微智能一些，即两边的值会被合并起来，从而得到最终的值：form-control date-picker-theme-dark。
+
+## 自定义事件
+
+
+### 事件名
+
+不同于组件和 prop，事件名**不存在任何自动化的大小写转换**。而是触发的事件名需要完全匹配监听这个事件所用的名称,所以就没有理由使用 camelCase 或 PascalCase 了
+
+并且 v-on 事件监听器在 DOM 模板中会被自动转换为全小写 (因为 HTML 是大小写不敏感的)，所以 v-on:myEvent 将会变成 v-on:myevent——导致 myEvent 不可能被监听到。因此，**推荐始终使用 kebab-case 的事件名**
+
+
+
+
+###  将原生事件绑定到组件
+
+
+示例： 组件绑定原生事件3.html
+
+
+
 
 
 
