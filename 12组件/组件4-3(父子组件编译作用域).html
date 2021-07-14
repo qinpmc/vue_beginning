@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>组件开始</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    https://blog.csdn.net/qq_44824148/article/details/113055166
+    <div id="app">
+        以下 isShow，names 均使用父组件的data中定义的值，因此会显示
+        <cpn v-show="isShow"></cpn>
+        <hr>
+        <cpn v-for="item in names"></cpn>
+    </div>
+
+    <template id="cpn">
+        <div>
+            <h2>我是子组件</h2>
+            <p>我是内容, 哈哈哈</p>
+            <button v-show="isShow">按钮(不会显示，这里使用子组件的isShow)</button>
+        </div>
+    </template>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '你好啊',
+                isShow: true,   // 父组件的 isShow 为true
+                names:["张三","李四"] // 父组件的 names
+            },
+            components: {
+                cpn: {
+                    template: '#cpn',
+                    data() {
+                        return {
+                            isShow: false,  // 子组件的 isShow 为false，
+                            names:["zhangsan","lisi"] // 子组件的 names
+                        }
+                    }
+                },
+            }
+        })
+    </script>
+
+</body>
+
+</html>

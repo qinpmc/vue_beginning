@@ -18,9 +18,11 @@
         {{ zuoyongyue.user.firstName }}
       </current-user>
       <hr />
+
+      // 动态插槽名
       <current-user>
-        <template v-slot:[dynamicslotname]>
-          {{ dynamicslotname.user.firstName }}
+        <template v-slot:[dynamicslotname] ="anyName">
+          {{ anyName.user.firstName }}
         </template>
       </current-user>
     </div>
@@ -30,6 +32,7 @@
             <h3>子组件：</h3>
             {{ user.lastName }}
             <slot   :user="user"> </slot>
+            <slot   :user="xman" name="xman"> </slot>
             </div>`,
         data: function () {
           return {
@@ -37,16 +40,24 @@
               lastName: "pp",
               firstName: "qq",
             },
+            xman:{
+              lastName:"SuperMan",
+              firstName:"X_"
+            }
           };
         },
       });
 
-      new Vue({
+      var app = new Vue({
         el: "#app",
         data: {
-          dynamicslotname: "ds",
+          dynamicslotname: "default",
         },
       });
+
+      setTimeout(function(){
+          app.$data.dynamicslotname = "xman"
+      },3000)
     </script>
   </body>
 </html>

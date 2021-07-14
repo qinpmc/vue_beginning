@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>组件开始</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    //没有包含一个 slot 元素，则任何传入它的内容都会被抛弃。<br />
+
+    // 1.无插槽
+    <div id="app">
+      <navigation-link v-bind:key="id" v-bind:url="url" v-bind:cont="content">
+        这段文字会消失（无插槽会不保留）
+      </navigation-link>
+    </div>
+    <hr />
+
+    // 2.带有插槽
+    <div id="app2">
+      <navigation-link2
+        v-bind:key="id"
+        v-bind:url="url"
+        v-bind:content="content"
+      >
+      插槽内可以包含任何模板代码，包括 HTML：
+      <div>这段文字仍存在（有插槽会保留）</div>
+      <h5>插槽能保留</h5>
+        文字字符串保留
+        <br> 
+        甚至其它的组件：
+        <navigation-link v-bind:key="id" v-bind:url="url" v-bind:cont="content1">
+      
+          </navigation-link>
+      </navigation-link2>
+    </div>
+      
+    <script>
+      // 组件1 --没有插槽
+      Vue.component("navigation-link", {
+        props: ["url", "cont"],
+        template: '<a v-bind:href="url" >{{cont}} </a>',
+      });
+
+      // 组件2 --有插槽
+      Vue.component("navigation-link2", {
+        data: function () {
+          return {
+            parentfontProp: "子组件的parentfontProp属性",
+          };
+        },
+        props: ["url", "content"],
+        template:
+          '<a v-bind:href="url" >{{content}}<slot></slot> <span><br> {{parentfontProp}}</span> </a>',
+      });
+  
+      new Vue({
+        el: "#app",
+        data: {
+          id: 1,
+          url: "http://www.baidu.com",
+          content: "父组件内容1",
+        },
+      });
+
+      new Vue({
+        el: "#app2",
+        data: {
+          id: 1,
+          url: "http://www.google.com",
+          content1:"另外一个组件渲染内容",
+          content: "父组件内容2",
+          parentfontProp:"父组件的parentfontProp属性 未使用上"
+        },
+      });
+ 
+    </script>
+  </body>
+</html>

@@ -156,6 +156,219 @@ Vue.component('blog-post', {
 
 
 ###  .sync 修饰符
+示例： 组件监听子组件事件3_2.html
+
+子组件 绑定click事件(@click="updateFontSize")，点击 后 执行子组件 updateFontSize 方法，  
+该方法 为： this.$emit("update:font-size", 4);  
+发生 "update:font-size" 事件， 其中 update: 为固定写法。    
+
+
+父组件：<blog-post2 :font-size.sync="fontSize" ></blog-post2>，
+点击子组件后  ，父组件通过 :font-size 绑定属性（对应传统的监听事件，@font-size），然后接收子组件的值（这里示例中为4），
+父组件中data中的 fontSize 值更新为4 
+
+```
+// 子组件
+Vue.component("blog-post2", {
+        props: ["mes"], // 属性mes接收父组件传递的值
+        template: `
+        <div class="blog-post">
+          <span>{{ mes.title }}</span>
+          <button @click="updateFontSize">
+            Enlarge text
+          </button>
+          <span v-html="mes.content"></span>
+        </div>
+        `,
+        methods: {
+          updateFontSize: function () {
+            this.$emit("update:font-size", 4); // "update:fontSize" 会失效
+            // v-on 事件监听器在 DOM 模板中会被自动转换为全小写 (因为 HTML 是大小写不敏感的)，所以 v-on:myEvent 将会变成 v-on:myevent——导致 myEvent 不可能被监听到。因此，**推荐始终使用 kebab-case 的事件名**
+          },
+        },
+      });
+
+// 父组件 dom
+  <div id="app2" :style="{ fontSize: fontSize + 'em' }">
+      <blog-post2
+        v-for="post in posts"
+        v-bind:key="post.id"
+        v-bind:mes="post"
+        :font-size.sync="fontSize"
+      ></blog-post2>
+    </div>
+
+
+//父组件
+      var app2 = new Vue({
+        el: "#app2",
+        data: {
+          fontSize: 2,
+          posts: [...],
+        },
+        methods: {},
+        watch: {
+          fontSize: {
+            handler: function (newVal, oldVal) {
+              console.log(newVal);
+            },
+          },
+        },
+      });
+
+```
+
+
+
+##  插槽
+
+### 插槽内容
+
+- 插槽内可以包含任何模板代码，包括 HTML 
+- 甚至其它的组件 
+- <slot></slot> 放在 子组件 中
+
+示例：插槽4.html
+
+```
+// 子组件 <navigation-link> 的模板（slot 插槽放在子组件中） ：
+
+<a
+  v-bind:href="url"
+  class="nav-link"
+>
+  <slot></slot>
+</a>
+
+// 父组件使用：
+
+<navigation-link url="/profile">
+  <!-- 添加一个 Font Awesome 图标 -->
+  <span class="fa fa-user"></span>
+  Your Profile
+</navigation-link>
+
+```
+
+### 编译作用域
+
+- 父组件中不能使用子组件data中的数据 
+- 子组件也不能直接使用父组件的数据[可以使用父子组件通信间接使用] 
+
+(https://www.jianshu.com/p/3780035f2a79)
+
+
+
+### 具名插槽
+需要多个插槽可以使用具名插槽
+ - <slot> 元素有一个特殊的 attribute：name。这个 attribute 可以用来定义额外的插槽
+ - 向具名插槽提供内容的时候，我们可以在一个 <template> 元素上使用 v-slot 指令，并以 v-slot 的参数的形式提供其名称
+ - 任何没有被包裹在带有 v-slot 的 <template> 中的内容都会被视为默认插槽的内容
+ 
+
+子组件<base-layout>：使用name="XXX" 为插槽命名
+
+```
+<div class="container">
+  <header>
+    <slot name="header"></slot>
+  </header>
+  <main>
+    <slot></slot>
+  </main>
+  <footer>
+    <slot name="footer"></slot>
+  </footer>
+</div>
+```
+
+父组件使用：一个**<template>元素**上使用 v-slot 指令
+
+```
+<base-layout>
+  <template v-slot:header>
+    <h1>Here might be a page title</h1>
+  </template>
+
+  <p>A paragraph for the main content.</p>
+  <p>And another one.</p>
+
+  <template v-slot:footer>
+    <p>Here's some contact info</p>
+  </template>
+</base-layout>
+```
+
+### 作用域插槽
+
+- 插槽内容能够访问子组件中才有的数据
+
+子组件中： 将data中的user绑定 <slot v-bind:user="user">
+```
+template: `<span>
+          <slot v-bind:user="user">{{ user.lastName }}</slot>
+          </span>`,
+
+data: function () {
+          return {
+            user: {
+              lastName: "pp",
+              firstName: "qq",
+            },
+          };         
+
+```
+
+父组件中： <template v-slot="anyName">  v-slot="xxxx", "xxxx" 可以为任意名，此文简写写法
+
+或者 完整写法：
+<template v-slot:default="slotProps">
+
+```
+<current-user1>
+    <template v-slot="anyName">
+        {{ anyName.user.firstName }}
+    </template>
+</current-user1>
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,6 +1,9 @@
 # Vue入门
 
- 
+ vue-property-decorator用法
+ - https://www.jianshu.com/p/d8ed3aa76e9b
+
+
 // 注册组件，传入一个扩展过的构造器
 Vue.component('my-component', Vue.extend({ /* ... */ }))
 

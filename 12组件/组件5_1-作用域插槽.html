@@ -21,6 +21,14 @@
             {{ slotProps.user.firstName }}
           </template>
         </current-user1>
+
+        简写：
+        <current-user1>
+            <template v-slot="anyName">
+              {{ anyName.user.firstName }}
+            </template>
+          </current-user1>
+
       </div>
     </div>
     <script>

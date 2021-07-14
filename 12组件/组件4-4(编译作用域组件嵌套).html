@@ -8,8 +8,9 @@
   <body>
   
     // 2.1插槽中使用组件( 父组件 parentfontProp---> 传递给 font-awesome
-    的fontProp属性) ！！注意：插槽里的 font-awesome子组件中 fontProp属性接受的是 vue实例中的parentfontProp值（值为"父组件绑定属性2"），并非 组件navigation-link2 的 parentfontProp值(值为"navigation-link2 绑定属性") 
-    <div id="app2">
+    的fontProp属性) ！！注意：插槽里的 font-awesome子组件中 fontProp属性接受的是 vue实例中的parentfontProp值（值为"父组件绑定属性2"），
+    并非 组件navigation-link2 的 parentfontProp值(值为"navigation-link2 绑定属性") 
+    <div id="app1">
       <navigation-link2
         v-bind:key="id"
         v-bind:url="url"
@@ -30,7 +31,7 @@
 
 
 
-    <div id="app22">
+    <div id="app2">
       <navigation-link22
         v-bind:key="id"
         v-bind:url="url"
@@ -73,7 +74,7 @@
       });
  
       new Vue({
-        el: "#app2",
+        el: "#app1",
         data: {
           id: 1,
           url: "http://www.baidu.com",
@@ -82,7 +83,7 @@
         },
       });
       new Vue({
-        el: "#app22",
+        el: "#app2",
         data: {
           id: 2,
           url: "http://www.sina.com",
