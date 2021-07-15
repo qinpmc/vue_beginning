@@ -7,6 +7,9 @@
     <style></style>
   </head>
   <body>
+
+      table 中包括自定义组件，但是table，ul等元素中必须是指定的元素，如tr、td、li等
+      直接把组件放到table中，渲染的组件跑到table外部，使用is 属性解决
     <div id="app">
       // tab 组件会渲染到table外部(错误使用)
       <table>

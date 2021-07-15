@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>组件开始</title>
+    <script src="../vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <son></son>
+        -----------------------------------------
+        <son ref="son">
+            <grandson></grandson>
+        </son>
+        <hr>
+        <son2 ref="son2"></son2>
+        <hr>
+        父组件调用子组件：通过 dom 上绑定 ref（内部 $refs)
+        <button @click='handleClick'>点击</button>
+        <button @click='handleClick2'>点击2</button>
+    </div>
+
+    <script>
+
+        // 孙组件 
+        Vue.component("grandson", {
+            inject: ["message"],
+            data() {
+                return {
+                    title: '孙组件'
+                }
+            },
+            methods: {
+                show() {
+                    console.log(this.$root.title); // 父组件
+                    console.log(this.$root == this.$parent.$parent); // true
+                },
+            },
+            template: `<div>
+                        <h3>{{title}}</h3>
+                        <p>message：{{ message }}</p>
+                        <button @click='show'>孙组件show</button>
+                    </div>`,
+        });
+
+        // 子组件
+        Vue.component("son", {
+            inject: ["message"],
+            data() {
+                return {
+                    title: '子组件'
+                }
+            },
+            template: `<div>
+                        <h3>{{ title }}</h3>
+                        <p>message：{{ message }}</p>
+                        <slot></slot>
+                    </div>`,
+        });
+
+        // 子组件2
+        Vue.component("son2", {
+            inject: ["message", "getMessage"],
+            data() {
+                return {
+                    title: '子组件2'
+                }
+            },
+            methods: {
+                show() {
+                    console.log(this.$root.title); // 父组件
+                    console.log(this.$root == this.$parent); // true
+                },
+                showMessage() {
+                    // 这里是通过依赖注入获取的 父组件  getMessage方法
+                    var mes = this.getMessage();
+                    console.log(mes); // 
+                }
+            },
+            // 以下 {{ message }} 通过依赖注入获取的 父组件 的message
+            template: `<div>
+                        <h3>{{ title }}</h3>
+                        <p>message：{{ message }}</p>
+                        <grandson ref='grandson'></grandson>
+                        <button @click='show'>子组件show</button>
+                        <button @click='showMessage'>孙组件调用父组件</button>
+                    </div>`,
+        });
+
+        new Vue({
+            el: "#app",
+            data() {
+                return {
+                    title: '父组件'
+                }
+            },
+            // provide: {
+            //     message: '父组件提供信息',
+            //     getMessage:function(){
+            //         return this.message;
+            //     }
+            // },
+
+            provide: function () {
+                return {
+                    message: '父组件提供信息',
+                    getMessage: function () {
+                        return this.message;
+                    }
+                }
+            },
+            computed: {
+
+            },
+            methods: {
+                handleClick() {
+                    console.log(this.$refs.son.title); //子组件
+                },
+                handleClick2() {
+                    console.log(this.$refs.son2.title); //子组件2
+                    console.log(this.$refs.son2.$refs.grandson.title); //孙组件 
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

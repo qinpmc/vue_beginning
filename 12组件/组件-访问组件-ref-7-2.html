@@ -9,7 +9,8 @@
 <div id="app">
     <counter @increase="handleIncrease()" ref="counter1"> </counter>
     <counter @increase="handleIncrease()" ref="counter2"> </counter>
-    {{total}}
+    <hr>
+    综合：{{total}}
 </div>
  
 <script>
@@ -26,7 +27,7 @@
                 this.$emit("increase");
             }
         },
-        template:'<div @click="increase()" > {{number}}</div>'
+        template:'<button @click="increase()" > 增加： {{number}}</button>'
     });
 
  

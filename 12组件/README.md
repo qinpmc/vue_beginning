@@ -301,7 +301,7 @@ Vue.component("blog-post2", {
 
 ### 作用域插槽
 
-- 插槽内容能够访问子组件中才有的数据
+- 插槽内容（父组件中）能够访问子组件中才有的数据
 
 子组件中： 将data中的user绑定 <slot v-bind:user="user">
 ```
@@ -335,19 +335,130 @@ data: function () {
 ```
 
 
+### 独占默认插槽的缩写语法
+
+```
+
+      <current-user>
+        <template v-slot:default="zuoyongyue">
+          test {{ zuoyongyue.user.firstName }}
+        </template>
+      </current-user>
+      <hr />
+
+      当被提供的内容只有默认插槽时，组件的标签才可以被当作插槽的模板来使用（v-slot 直接用在组件上，没有用 template）
+      <current-user v-slot:default="zuoyongyue">
+        {{ zuoyongyue.user.firstName }}
+      </current-user>
+      <hr />
+
+      进一步简写：
+      <current-user v-slot="zuoyongyue2">
+        {{ zuoyongyue2.user.firstName }}
+      </current-user>
+      <hr />
+
+```
+
+
+## 动态组件 & 异步组件
+
+### 在动态组件上使用 keep-alive
+
+<keep-alive> 包裹动态组件时，会缓存不活动的组件实例，而不是销毁它们
 
 
 
+### 异步组件
+
+
+```
+// 全局注册
+Vue.component(
+  'async-webpack-example',
+  // 这个动态导入会返回一个 `Promise` 对象。
+  () => import('./my-async-component')
+)
+
+
+// 用局部注册的时候，你也可以直接提供一个返回 Promise 的函数：
+new Vue({
+  // ...
+  components: {
+    'my-component': () => import('./my-async-component')
+  }
+})
+
+```
 
 
 
+## 边界情况
+
+- 访问根实例，$root，如 this.$root.foo
+- 访问父级组件实例， $parent，如this.$parent.map 
+- 访问子组件实例或子元素， 子组件上绑定 ref="xxx">,使用 this.$refs.xxx.yy
+
+- 依赖注入， 使用 $parent property 无法很好的扩展到更**深层级的嵌套** 组件上,可以使用 依赖注入
+
+```
+// 父组件
+// provide: {
+  //     message: '父组件提供信息',
+  //     getMessage:function(){
+  //         return this.message;
+  //     }
+  // },
+
+  provide: function () {
+      return {
+          message: '父组件提供信息',
+          getMessage: function () {
+              return this.message;
+          }
+      }
+  },
 
 
+// 
 
 
+// 子组件2
+Vue.component("son2", {
+    inject: ["message", "getMessage"],
+    data() {
+        return {
+            title: '子组件2'
+        }
+    },
+    methods: {
+        show() {
+            console.log(this.$root.title); // 父组件
+            console.log(this.$root == this.$parent); // true
+        },
+        showMessage() {
+            // 这里是通过依赖注入获取的 父组件  getMessage方法
+            var mes = this.getMessage();
+            console.log(mes); // 
+        }
+    },
+    // 以下 {{ message }} 通过依赖注入获取的 父组件 的message
+    template: `<div>
+                <h3>{{ title }}</h3>
+                <p>message：{{ message }}</p>
+                <grandson ref='grandson'></grandson>
+                <button @click='show'>子组件show</button>
+                <button @click='showMessage'>孙组件调用父组件</button>
+            </div>`,
+});
+```
 
+注意点: template 中直接访问this 可能不是 vue组件，而是window
 
-
+```
+//template: '<tr @click="show(this)" ref="rowComp"><td>{{content}}</td></tr>' // 这里的this 是 window
+template: '<tr @click="show(this.$refs.rowComp)" ref="rowComp"><td>{{content}}</td></tr>' // 这里的this 是 window
+```
 
 
 
