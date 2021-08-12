@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>组件开始</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    插件：
+    <loading></loading>
+    <button @click="globalMethod()">globalMethod</button>
+    <button @click="instanceMethod()">instanceMethod</button>
+  </div>
+
+  <script>
+    // 插件
+    const Loading = {
+      install: function (Vue) {
+        Vue.component("loading", {
+          template: '<div>Loading ......</div>'
+        });
+        //1.添加全局方法或属性
+        Vue.myGlobalMethod = function () {
+          console.log('Vue函数对象的方法myGlobalMethod()')
+        };
+        //添加实例方法
+        Vue.prototype.$myMethod = function () {
+          console.log('Vue实例对象的方法$myMethod()')
+        }
+      }
+    }
+
+    Vue.use(Loading);
+
+
+    var app = new Vue({
+      el: "#app",
+      methods:{
+        globalMethod:function(){
+          Vue.myGlobalMethod();
+        },
+        instanceMethod:function(){
+          this.$myMethod();
+        }
+      }
+    });
+
+  </script>
+</body>
+
+</html>

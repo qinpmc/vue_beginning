@@ -1,3 +1,6 @@
+
+- https://blog.csdn.net/csdn15002274757/article/details/108366582
+
 分为三大类：全局守卫、路由守卫、组件守卫
 
 全局守卫

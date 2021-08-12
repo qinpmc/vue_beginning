@@ -48,7 +48,9 @@
 
       Vue.component("current-user1", {
         template: `<span>
-          <slot v-bind:user="user">{{ user.lastName }}</slot>
+          <h3>{{ user.lastName }}</h3>
+          <br>
+          <slot v-bind:user="user"> </slot>
           </span>`,
         data: function () {
           return {

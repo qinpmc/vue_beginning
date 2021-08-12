@@ -10,6 +10,7 @@
 </head>
 <body>
 <div class='p'>
+    指令需要多个值，可以传入一个 JavaScript 对象字面量:
     <p v-demo="{ color: 'white', text: 'hello!' }">段落</p>
 </div>
 自定义指令接收 对象字面量<br>
@@ -24,7 +25,8 @@ v-demo ="{ color: 'white', text: 'hello!' }" 的 binding.value-----------------<
         //自定义局部指令
         directives:{
             demo:{
-                bind(el,binding,vnode){    // 只调用一次，指令第一次绑定到元素时调用。   
+                bind(el,binding,vnode){    // 只调用一次，指令第一次绑定到元素时调用。 
+                //指令需要多个值，可以传入一个 JavaScript 对象字面量  
                     console.log(binding.value);
                 }
             },
