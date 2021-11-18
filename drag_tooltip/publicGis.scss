@@ -1,0 +1,413 @@
+@import "~@/assets/style/unit/color.scss";
+
+::v-deep .el-color-picker__trigger {
+  border: 1px solid #0092d9;
+}
+
+.form-group {
+  height: 60px;
+  display: flex;
+}
+
+::v-deep {
+
+  .el-select input,
+  textarea {
+    color: #a2adbd !important;
+    width: 245px;
+    border: 1px #00acfc solid;
+    background-color: rgba(3, 16, 33, 0.85);
+  }
+
+  //下拉框
+  .el-select-dropdown {
+    background-color: #0b1726 !important;
+    opacity: 0.85 !important;
+    box-shadow: rgb(41, 153, 218) 0px 0px 3px 1px inset !important;
+    border: 1px solid rgb(41, 153, 218) !important;
+    padding: 0px !important;
+    position: relative !important;
+    left: 0px !important;
+    top: -7px !important;
+  }
+
+  .el-select .el-input.is-focus .el-input__inner {
+    color: #a2adbd !important;
+  }
+
+  .el-popper[x-placement^="bottom"] .popper__arrow::after {
+    border-bottom-color: rgb(41, 153, 218) !important;
+  }
+
+  //鼠标移入颜色
+  .el-select-dropdown__item .selected .hover {
+    background-color: #07537d !important;
+  }
+
+  .el-select-dropdown__item.hover,
+  .el-select-dropdown__item:hover {
+    background-color: #07537d !important;
+  }
+
+  //鼠标移入颜色
+  .el-select-dropdown__item {
+    color: #fff !important;
+  }
+
+  //下拉框
+
+
+  .el-select-dropdown__item .selected .hover {
+    background-color: #07537d !important;
+  }
+
+  .el-select-dropdown__item.hover,
+  .el-select-dropdown__item:hover {
+    background-color: #07537d !important;
+  }
+
+  .el-select .el-input.is-focus .el-input__inner {
+    color: #a2adbd !important;
+  }
+
+  .el-input-number .el-input,
+  .el-input__inner {
+    width: 245px;
+    color: #a2adbd !important;
+
+    background-color: rgba(3, 16, 33, 0.85);
+  }
+
+  //number输入框
+  .el-input-number__decrease,
+  .el-input-number__increase {
+    height: 36px;
+    color: #fff;
+    background: #00acfc;
+    border-right: 1px solid #00acfc;
+    border-left: 1px solid #00acfc;
+  }
+
+  .el-input__inner {
+    border: 1px #00acfc solid;
+  }
+
+  textarea:active {
+    border: 1px #00acfc solid;
+  }
+
+
+  //gis弹框  
+
+  .warningBox {
+    color: #fff;
+    font-size: 16px;
+    margin:0 20px;
+
+    .flexbox {
+      display: -moz-box;
+      /* Firefox */
+      display: -ms-flexbox;
+      /* IE10 */
+      display: -webkit-box;
+      /* Safari */
+      display: -webkit-flex;
+      /* Chrome, WebKit */
+      display: flexbox;
+      display: flex;
+    }
+
+    .tab_title {
+      justify-content: center;
+      align-items: center;
+      border-bottom: 1px solid #255485;
+
+      li {
+        list-style: none;
+        padding: 10px 0;
+        width: 25%;
+        cursor: pointer;
+        text-align: center;
+
+        i {
+          display: inline-block;
+          width: 24px;
+          height: 24px;
+          background: url(/image/gis/early-warning/icons_bg.png) no-repeat 0 0;
+          vertical-align: middle;
+          margin-right: 8px;
+          margin-bottom: 1px;
+        }
+
+        i.warning_info {
+          background-position: 0 -254px;
+        }
+
+        i.monitoring_curve {
+          background-position: 0 -296px;
+        }
+      }
+
+      li.active {
+        color: #00faff;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .search {
+    float: right;
+    width: 60px;
+    text-align: center;
+    line-height: 30px;
+    display: block;
+    color: #fff;
+    border: 0;
+    cursor: pointer;
+    margin-bottom: 1px;
+    border-radius: 4px;
+    background: url(/image/gis/early-warning/search.png) no-repeat center;
+    background-size: 100% 100%;
+
+    &:active {
+      border: none;
+    }
+  }
+
+  .times {
+    display: inline-flex;
+    border: 1px solid #1d577f;
+    border-radius: 4px;
+    padding: 0;
+    margin: 0;
+
+    li {
+      list-style: none;
+      width: 64px;
+      text-align: center;
+      line-height: 30px;
+      cursor: pointer;
+      border-right: 1px solid #1d577f;
+    }
+
+    li.li-active {
+      box-shadow: inset 0px 0px 19px 4px rgba(0, 156, 250);
+      background-color: transparent;
+    }
+
+    li:first-child.li-active {
+      border-bottom-left-radius: 4px;
+      border-top-left-radius: 4px;
+    }
+
+    li:last-child {
+      border-right: 0;
+
+      &.li-active {
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+      }
+    }
+  }
+
+  .block {
+    vertical-align: top;
+  }
+
+  //基本详情页面（分2层）
+  .details {
+    padding: 3px 10px;
+    border: 1px solid #01ddff;
+    box-shadow: inset 0px 0px 16px 1px #01ddff;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &.active {
+      border: 1px solid #DFC80D;
+      box-shadow: inset 0px 0px 16px 1px #DFC80D;
+    }
+  }
+
+  .titleInfo {
+    font-weight: bold;
+    font-family: "Microsoft YaHei";
+    font-size: 16px !important;
+    margin-top: 10px;
+    color: #00faff;
+    background: url(/image/gis/early-warning/title_info.png) no-repeat 0 12px;
+    padding-bottom: 10px;
+  }
+
+  dl {
+    margin: 0;
+
+    dt {
+      color: #ffffffe0;
+      background: url(/image/gis/early-warning/title_info.png) no-repeat 0 12px;
+      padding-bottom: 10px;
+      margin-bottom: 4px;
+    }
+
+    dd {
+      margin: 0;
+
+      ul {
+        overflow: hidden;
+        padding: 0;
+
+        li {
+          list-style: none;
+          color: #ffffffe0;
+          font-size: 14px;
+          float: left;
+          width: 50%;
+          line-height: 30px;
+
+          span {
+            color: #ffffffe0;
+          }
+        }
+      }
+    }
+  }
+
+  .baseBox {
+    color: #ffffffe0;
+    font-size: 14px !important;
+    padding: 10px;
+    overflow: hidden;
+
+    li {
+      font-size: 14px !important;
+      list-style: none;
+      line-height: 28px;
+
+      padding: 5px;
+    }
+    i {
+      color: #ffffffad!important;
+      font-style: inherit;
+    }
+  }
+   //基本详情页面（分2层）
+   //基本详情页面（单层）
+  .singleBox{
+    color: #ffffffe0;
+    font-size: 14px !important;
+    padding-top: 10px;
+    li {
+      font-size: 14px !important;
+      list-style: none;
+      line-height: 34px;
+      padding: 0 2px !important;
+      width: 100%;
+      i {
+        color: #ffffffad!important;
+        font-style: inherit;
+      }
+    }
+  }
+  //基本详情页面（单层）
+}
+
+///table样式改写
+::v-deep .el-table {
+  background-color: transparent;
+}
+//行颜色
+::v-deep .el-table__body {
+  text-align: center;
+  color: #fff;
+  .el-table__row:nth-child(2n+1) {
+    background: #0a264cf7;
+  }
+  .el-table__row:nth-child(2n) {
+    background: #0A3269;
+  }
+  //表格鼠标悬浮时的样式 （高亮）移入
+  .el-table__row:hover {
+    background-color: #1351a7e6;
+  }
+  //表格鼠标悬停的样式（背景颜色）
+  tbody tr:hover td{
+    background-color: #1351a7e6;
+
+  }
+  td {
+    padding: 8px 0;
+  }
+  .el-table--striped .el-table__body tr.el-table__row--striped td{
+    background: #0A3269;
+  }
+}
+
+.div-header1{
+  background: #00faff;
+}
+//表格鼠标悬停的样式（背景颜色）
+// ::v-deep {
+//   .el-table {
+//     tbody tr {
+//       &:hover {
+//         td {
+//           background-color: #2cce34;
+//         }
+//       }
+//     }
+//   }
+// }
+//表格鼠标悬浮时的样式 （高亮）
+// ::v-deep {
+//   .el-table--enable-row-hover {
+//     .el-table__body tr {
+//       &:hover {
+//         background: red;
+//         border: 1px solid #313463;
+//       }
+//     }
+//   }
+// }
+//头部样式
+::v-deep .el-table .el-table__header th {
+  color: #fff;
+  background-color: #0C3D88 !important;
+}
+//边框样式
+::v-deep .el-table td,
+::v-deep .el-table th.is-leaf {
+  border-bottom: 0;
+}
+::v-deep .el-table::before {
+  display: none;
+}
+///table样式改写
+
+::v-deep .el-input__inner,
+::v-deep .el-range-input {
+  background-color: transparent;
+}
+
+::v-deep .el-input__inner {
+  border: 1px solid #1d577f;
+}
+
+::v-deep .el-date-editor--datetimerange.el-input__inner {
+  width: 355px;
+  height: 32px;
+}
+
+::v-deep .el-date-editor .el-range__icon,
+::v-deep .el-date-editor .el-range-separator {
+  line-height: 27px;
+}
+
+::v-deep .el-date-editor .el-range-input,
+::v-deep .el-date-editor .el-range-separator {
+  color: #fff !important;
+  background-color: transparent !important;
+}
+
+::v-deep .el-scrollbar__wrap {
+  overflow-x: hidden;
+}

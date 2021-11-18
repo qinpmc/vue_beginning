@@ -2,6 +2,19 @@
 
 vscode的帮助： ctrl+shift+p
 
+vscode 折叠展开代码：
+
+使用Ctrl+Shift+p搜索fold和unfold，以查看 折叠和展开快捷键
+
+
+vscode 默认单击资源管理器里的文件时，会使用预览模式打开，再单击另一资源管理器中的文件时，会使用同一个 tab页 预览，而不是在一个新的 tab页 打开文件；标签页上的文件是斜体的样式；
+
+- 可以双击标题栏这个斜体的文字；
+- 双击资源管理器里的文件时，会在新的标签页打开；
+- 若是不想预览模式，可以file-preferences-settings 在设置中搜索 workbench.editor.enablePreview ,找到此项后，保持不勾选状态，这样就会局关闭了预览模式，打开的文件都会生成新的标签页；
+
+
+
  vue-property-decorator用法
  - https://www.jianshu.com/p/d8ed3aa76e9b
 
@@ -396,8 +409,16 @@ declare module 'vue/types/vue' {
     }
 
 
+npm打包报错：
+
+```
+FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed 
+- JavaScript heap out of memory
+
+```
 
 
+setx NODE_OPTIONS --max_old_space_size=10240
 
 
 
