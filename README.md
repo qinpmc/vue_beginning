@@ -375,10 +375,10 @@ engineeringDangerParams: {
 
 ```
 
-
+## 项目中一些问题拾遗
 
 - 1，	tslint.json 添加：
-    "no-string-literal": false  解决类似  obj[“key”] 报错的问题
+    "no-string-literal": false  解决类似  obj["key"] 报错的问题
 
 - 2，	src目录下增加 typings目录，typings目录下增加 vue-extend.d.ts文件，           
 解决在vue原型上添加属性后（如Vue.prototype.Bus = new Vue();）编译报错的问题， vue-extend.d.ts内容为:
@@ -409,7 +409,7 @@ declare module 'vue/types/vue' {
     }
 
 
-npm打包报错：
+- 6  npm打包报错：
 
 ```
 FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed 
@@ -419,6 +419,60 @@ FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed
 
 
 setx NODE_OPTIONS --max_old_space_size=10240
+
+
+- 7  vue 劫持问题
+
+- 7.1 使用 vue-nonreactive
+  - 安装， npm install vue-nonreactive --save
+  - 引入，
+  
+  ```
+  import Vuenoractive from 'vue-nonreactive';
+  Vue.use(Vuenoractive);
+  
+  ```
+  - 使用，
+  
+  ```
+  (Vue as any).nonreactive(this.map);
+  ```
+  
+- 7.2 重写vue Observer.prototype.walk
+
+```
+
+const Observer = new Vue().$data.__ob__.constructor;
+const defineReactive$$1 = (Vue.util as any).defineReactive;
+Observer.prototype.walk = function walk(obj: any) {
+  if (obj.map && obj.map.targetId == 'g2map') {
+    //delete obj.map.__ob__;
+    return;
+  }
+
+  var keys = Object.keys(obj);
+  for (var i = 0; i < keys.length; i++) {
+    if (keys[i] === 'map' || keys[i] === 'injectContainer') {
+      break;
+    }
+    defineReactive$$1(obj, keys[i]);
+  }
+};
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
