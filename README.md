@@ -459,13 +459,45 @@ Observer.prototype.walk = function walk(obj: any) {
   }
 };
 
+/*********************************************/
+const Observer = new Vue().$data.__ob__.constructor;
+const defineReactive$$1 = (Vue.util as any).defineReactive;
+Observer.prototype.walk = function walk(obj: any) {
+  if (obj.mode === 0) {
+    return;
+  }
+
+  if (obj.viewport_ && obj.tileQueue_) {
+    return;
+  }
+
+  if (obj.map && obj.map.mode === 0) {
+    //delete obj.map.__ob__;
+    return;
+    console.log('obj.map...........................................', obj);
+  }
+
+  var keys = Object.keys(obj);
+  for (var i = 0; i < keys.length; i++) {
+    if (keys[i] === 'map') {
+      Object.defineProperty(obj, keys[i], { configurable: false });
+    }
+
+    if (keys[i] === 'map') {
+      console.log('map...........................................', obj);
+    }
+
+    defineReactive$$1(obj, keys[i]);
+  }
+};
+
 ```
 
 
 
 
-
-
+## process.env.NODE_ENV详解
+- https://www.jianshu.com/p/f4638f5df1c7
 
 
 
