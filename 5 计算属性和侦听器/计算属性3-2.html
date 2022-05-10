@@ -1,60 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src ="../vue.js"></script>
+    <script src="../vue.js"></script>
 </head>
+
 <body>
     <div id="app">
         <!--
             计算属性/监听属性
         -->
-        <ul id="ul_1" >
+        <ul id="ul_1">
             <li>age：{{age}}</li>
             <li>这个是根据原始值计算的属性comhFullname：{{comhFullname}}</li>
             <li>这个是采用调用方法methFullname()计算的值 ：{{ methFullname()}}</li>
         </ul>
     </div>
 
-<script>
-    //
+    <script>
+        //
 
-    var app = new Vue({
-        el:"#app",
-        data:{
-            firstname:"Dell",
-            lastname:"Lee",
-            fullname:"Dell Lee",
-            age:28
-        },
-        methods:{
-            methFullname:function(){ // 界面上绑定时 ，需像函数调用需要（）
-                console.log("methFullname");
-                return this.firstname+" "+ this.lastname; // 值不会缓存，修改age 导致刷新页面，此函数总会执行
-            }
-        },
-        computed:{
-            comhFullname:function(){ // 界面上绑定时 无需像函数调用需要（）
-                console.log("comhFullname");
-                return this.firstname+" "+ this.lastname; //计算的值会缓存,比如控制台修改age,此函数不触发
-            }
-        },
-        watch:{
-            firstname:function(){
-                this.fullname = this.firstname + " "+ this.lastname; //firstname值变化才触发
+        var app = new Vue({
+            el: "#app",
+            data: {
+                firstname: "Dell",
+                lastname: "Lee",
+                fullname: "Dell Lee",
+                age: 28
             },
-            lastname:function(){
-                this.fullname = this.firstname + " "+ this.lastname; //lastname值变化才触发
+            methods: {
+                methFullname: function () { // 界面上绑定时 ，需像函数调用需要（）
+                    console.log("methFullname");
+                    return this.firstname + " " + this.lastname; // 值不会缓存，修改age 导致刷新页面，此函数总会执行
+                }
+            },
+            computed: {
+                comhFullname: function () { // 界面上绑定时 无需像函数调用需要（）
+                    console.log("comhFullname");
+                    return this.firstname + " " + this.lastname; //计算的值会缓存,比如控制台修改age,此函数不触发
+                }
+            },
+            watch: {
+                firstname: function () {
+                    this.fullname = this.firstname + " " + this.lastname; //firstname值变化才触发
+                },
+                lastname: function () {
+                    this.fullname = this.firstname + " " + this.lastname; //lastname值变化才触发
+                }
             }
-        }
-    });
+        });
 /*
     控制台进行如下调试：
-    app.age = 100;
+    app.age = 100; // 此时vue会触发重新渲染时
     methFullname 执行（方法），控制台输出 methFullname  ，而 comhFullname 不执行(计算属性)
     */
 
-</script>
+    </script>
 </body>
+
 </html>
