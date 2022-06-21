@@ -499,12 +499,38 @@ Observer.prototype.walk = function walk(obj: any) {
 ## process.env.NODE_ENV详解
 - https://www.jianshu.com/p/f4638f5df1c7
 
+## this.$Bus.$on 执行多次问题
+原因：  每次进入组件时，$on执行一次注册，因此造成$emit 一次，但是执行多次回调；
+解决方案： 每次created之前取消注册，或者beforeDestroy时销毁注册。
 
+```
 
+  created() {
+    this.$Bus.$off("feature-analysis-clicked");
+    this.$Bus.$off("resoure-icon-clicked");
+    this.$Bus.$off("river-selected");
+  },
+  mounted() {
+    this.treeId = "tree1";
+    this.nodeIds = [];
+    // this.getResearchList(this.treeId);
+    this.$refs.NearbyAnalysis.setAddCommit("xunQingJianCe/addAnalysisLayer");
+    this.$refs.NearbyAnalysis.setRemoveCommit("xunQingJianCe/removeAnalysisLayer");
+    this.$Bus.$on("river-selected", (riverId) => {
+      this.riverAnalysis(riverId);
+      this.getResearchList();
+    });
+    this.$Bus.$on("resoure-icon-clicked", (id, data) => {
+      this.$nextTick(() => {
+        this.$Bus.$emit("openAnalysisDetailInfo", id, data, true);
+      });
+    });
+    this.$Bus.$on("feature-analysis-clicked", (featuer) => {
+      this.featureNearbyAnalysis(featuer);
+    });
+  },
 
-
-
-
+```
 
 
 
