@@ -1,3 +1,7 @@
+- https://zhuanlan.zhihu.com/p/114502325?from_voters_page=true   vue插槽（slot）详解
+- https://www.jianshu.com/p/457faf21629f vue插槽slot
+
+
 #  组件
  
  
@@ -48,6 +52,7 @@ data: {
   
 
 ## 插槽 
+https://zhuanlan.zhihu.com/p/114502325?from_voters_page=true
 
 ### 插槽内容
  
