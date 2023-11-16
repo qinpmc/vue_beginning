@@ -15,7 +15,27 @@ vscode 默认单击资源管理器里的文件时，会使用预览模式打开�
 - 双击资源管理器里的文件时，会在新的标签页打开；
 - 若是不想预览模式，可以file-preferences-settings 在设置中搜索 workbench.editor.enablePreview ,找到此项后，保持不勾选状态，这样就会局关闭了预览模式，打开的文件都会生成新的标签页；
 
+vscode代码编辑器折叠所有区域的代码快捷键
 
+（1）折叠所有区域代码的快捷键：ctrl+k, ctrl+0;
+
+​先按下ctrl和K，再按下ctrl和0; (注意这个是零，不是欧)
+
+（2）展开所有折叠区域代码的快捷键：ctrl +k, ctrl+J;
+
+​先按下ctrl和K，再按下ctrl和J
+
+（3）自动格式化代码的快捷键：ctrl+k, ctrl+f;
+
+​先按下ctrl和K，再按下ctrl和f;
+
+
+chrome.exe 改为chrome1.exe后 造成live server无法打开chrome的解决方案:
+打开 live server的settings，修改如下：
+
+"liveServer.settings.AdvanceCustomBrowserCmdLine": "C:\\Users\\qinpei\\AppData\\Local\\Google\\Chrome\\Application\\chrome1.exe --private-window",
+  
+ 
 
  vue-property-decorator用法
  - https://www.jianshu.com/p/d8ed3aa76e9b
