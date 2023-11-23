@@ -36,6 +36,10 @@ chrome.exe 改为chrome1.exe后 造成live server无法打开chrome的解决方�
 "liveServer.settings.AdvanceCustomBrowserCmdLine": "C:\\Users\\qinpei\\AppData\\Local\\Google\\Chrome\\Application\\chrome1.exe --private-window",
   
  
+chrome.exe 改为chrome1.exe后 造成webstorm 无法打开chrome的解决方案:
+单击-文件file-设置settings- tools - web浏览器,重新设置chrome的path即可
+ 
+
 
  vue-property-decorator用法
  - https://www.jianshu.com/p/d8ed3aa76e9b
